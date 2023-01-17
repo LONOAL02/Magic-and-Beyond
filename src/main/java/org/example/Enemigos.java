@@ -16,8 +16,8 @@ public class Enemigos extends Personajes{
         switch (num){
             case 1:
                 nombre= "Soldado de Godrick";
-                setAtaque(20);
-                setVida(500);
+                setAtaque(30);
+                setVida(1000);
                 setMana(300);
                 setNivel(1);
                 setVelAtaque(3);

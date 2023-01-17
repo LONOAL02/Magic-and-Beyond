@@ -10,6 +10,7 @@ public class Historia {
     Armas arma = new Armas();
     Combate combate = new Combate();
     Enemigos enemy = new Enemigos();
+    Curas curas = new Curas();
     public void inicioJuego(){
         System.out.println("Introduce el nombre de tu personaje:");
         nombrePJ=scr.next();
@@ -87,12 +88,31 @@ public class Historia {
                 System.out.println("A donde quieres apuntar: "+"\n"+"1. Cuerpo (90% Daño x1)"+"\n"+"2. Piernas (70% Daño x2)"+"\n"+"3. Cabeza (50% Daño x3)");
                 int apuntado=scr.nextInt();
                 enemy.setVida(combate.atacar(apuntado,enemy.getVida(),pj.calcularAtaque(), arma.getDaño()));
-            }if (enemy.getVida()<=0){
-                System.out.println("Enemigo derrotado.");
-                System.out.println(pj.getVida());
-                break;
+                if (enemy.getVida()<=0){
+                    System.out.println("Enemigo derrotado.");
+                    System.out.println("Vida restante"+pj.getVida());
+                    break;
+                }
+                pj.setVida(combate.recibirAtaque(pj.getVida(),enemy.getAtaque()));
+            }else{
+                System.out.println("Tienes: \n"+"1. "+curas.getCuras50()+" viales de 50."+"\n"+"2. "+curas.getCuras100()+" viales de 100."+"\n"+"3. "+curas.getCuras200()+" viales de 200."+"\n Que vial quieres usar: ");
+                int elecCuras= scr.nextInt();
+                switch (elecCuras){
+                    case 1:
+                        pj.setVida(curas.curacion50(pj.getVida()));
+                        break;
+                    case 2:
+                        pj.setVida(curas.curacion100(pj.getVida()));
+                        break;
+                    case 3:
+                        pj.setVida(curas.curacion200(pj.getVida()));
+                        break;
+                    default:
+                        break;
+                }
             }
-            pj.setVida(combate.recibirAtaque(pj.getVida(),enemy.getAtaque()));
+
+
             System.out.println("Tu vida: "+pj.getVida());
             System.out.println("Vida del enemigo: "+enemy.getVida());
         }while (enemy.getVida()>0&&pj.getVida()>0);
