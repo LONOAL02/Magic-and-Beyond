@@ -1,13 +1,13 @@
 package org.example;
 
 public class Personajes {
-    int vida;
-    int ataque;
-    int velAtaque;
-    int mana;
-    int nivel;
+    float vida;
+    float ataque;
+    float velAtaque;
+    float mana;
+    float nivel;
 
-    public Personajes(int vida, int ataque, int velAtaque, int mana, int nivel) {
+    public Personajes(float vida, float ataque, float velAtaque, float mana, float nivel) {
         this.vida = vida;
         this.ataque = ataque;
         this.velAtaque = velAtaque;
@@ -15,43 +15,46 @@ public class Personajes {
         this.nivel = nivel;
     }
 
-    public int getVida() {
+    public Personajes() {
+    }
+
+    public float getVida() {
         return vida;
     }
 
-    public void setVida(int vida) {
+    public void setVida(float vida) {
         this.vida = vida;
     }
 
-    public int getAtaque() {
+    public float getAtaque() {
         return ataque;
     }
 
-    public void setAtaque(int ataque) {
+    public void setAtaque(float ataque) {
         this.ataque = ataque;
     }
 
-    public int getVelAtaque() {
+    public float getVelAtaque() {
         return velAtaque;
     }
 
-    public void setVelAtaque(int velAtaque) {
+    public void setVelAtaque(float velAtaque) {
         this.velAtaque = velAtaque;
     }
 
-    public int getMana() {
+    public float getMana() {
         return mana;
     }
 
-    public void setMana(int mana) {
+    public void setMana(float mana) {
         this.mana = mana;
     }
 
-    public int getNivel() {
+    public float getNivel() {
         return nivel;
     }
 
-    public void setNivel(int nivel) {
+    public void setNivel(float nivel) {
         this.nivel = nivel;
     }
 }

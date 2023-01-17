@@ -14,9 +14,9 @@ public class Armas {
     final float D = 1f;
 
     //Stats base de las armas
-    int daño;
-    int ergonomía;
-    int pcritico;
+    float daño;
+    float ergonomía;
+    float pcritico;
     String calidad;
 
     public Armas() {
@@ -48,6 +48,7 @@ public class Armas {
                 escaladoint= D;
                 ergonomía=8;
                 pcritico=100;
+                break;
             case 2:
                 nombreArma="Arco Largo";
                 calidad="Común";
@@ -58,6 +59,7 @@ public class Armas {
                 escaladoint= D;
                 ergonomía=4;
                 pcritico=100;
+                break;
             case 3:
                 nombreArma="Bastón Albináurico";
                 calidad="Común";
@@ -68,6 +70,7 @@ public class Armas {
                 escaladoint= B;
                 ergonomía=3;
                 pcritico=100;
+                break;
             case 4:
                 nombreArma="Daga";
                 calidad="Común";
@@ -78,6 +81,7 @@ public class Armas {
                 escaladoint= D;
                 ergonomía=2;
                 pcritico=130;
+                break;
             case 5:
                 nombreArma="Antorcha de Acero";
                 calidad="Común";
@@ -88,8 +92,9 @@ public class Armas {
                 escaladoint= D;
                 ergonomía=3;
                 pcritico=100;
+                break;
             case 6:
-                nombreArma="Arco Largo";
+                nombreArma="Arco Grande";
                 calidad="Común";
                 daño=125;
                 escaladof= C;
@@ -98,8 +103,261 @@ public class Armas {
                 escaladoint= D;
                 ergonomía=10;
                 pcritico=100;
+                break;
+            case 7:
+                nombreArma="Aplastagigantes";
+                calidad="Común";
+                daño=155;
+                escaladof= C;
+                escaladod= D;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=27;
+                pcritico=100;
+                break;
+            case 8:
+                nombreArma="Balista de Mano";
+                calidad="Común";
+                daño=135;
+                escaladof= D;
+                escaladod= D;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=10;
+                pcritico=100;
+                break;
+            case 9:
+                nombreArma="Ballesta de Soldado";
+                calidad="Común";
+                daño=54;
+                escaladof= D;
+                escaladod= D;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=4;
+                pcritico=100;
+                break;
+            case 10:
+                nombreArma="Uchigatana";
+                calidad="Común";
+                daño=115;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=6;
+                pcritico=100;
+                break;
+            case 11:
+                nombreArma="Espada Dorada de Troll";
+                calidad="Común";
+                daño=155;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=19;
+                pcritico=100;
+                break;
+            case 12:
+                nombreArma="Cimitarra";
+                calidad="Común";
+                daño=106;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=3;
+                pcritico=100;
+                break;
+            case 13:
+                nombreArma="Estoque";
+                calidad="Común";
+                daño=96;
+                escaladof= C;
+                escaladod= A;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=3;
+                pcritico=130;
+                break;
+            case 14:
+                nombreArma="Gran Épée";
+                calidad="Común";
+                daño=124;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=7;
+                pcritico=100;
+                break;
+            case 15:
+                nombreArma="Espada Ancha";
+                calidad="Común";
+                daño=117;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=4;
+                pcritico=100;
+                break;
+            case 16:
+                nombreArma="Claymore";
+                calidad="Común";
+                daño=138;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=9;
+                pcritico=100;
+                break;
+            case 17:
+                nombreArma="Desmontadora";
+                calidad="Común";
+                daño=138;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=10;
+                pcritico=100;
+                break;
+            case 18:
+                nombreArma="Colmillo Ponzoñoso";
+                calidad="Común";
+                daño=92;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=3;
+                pcritico=100;
+                break;
+            case 19:
+                nombreArma="Gran Hacha";
+                calidad="Común";
+                daño=151;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=13;
+                pcritico=100;
+                break;
+            case 20:
+                nombreArma="Gran Maza";
+                calidad="Común";
+                daño=134;
+                escaladof= A;
+                escaladod= D;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=12;
+                pcritico=100;
+                break;
+            case 21:
+                nombreArma="Guadaña";
+                calidad="Común";
+                daño=125;
+                escaladof= C;
+                escaladod= A;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=8;
+                pcritico=100;
+                break;
+            case 22:
+                nombreArma="Destral Bifurcado";
+                calidad="Común";
+                daño=101;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=3;
+                pcritico=100;
+                break;
+            case 23:
+                nombreArma="Hoja Doble";
+                calidad="Común";
+                daño=119;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=7;
+                pcritico=100;
+                break;
+            case 24:
+                nombreArma="Lanza de Hierro";
+                calidad="Común";
+                daño=114;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=5;
+                pcritico=100;
+                break;
+            case 25:
+                nombreArma="Lanza de Justas";
+                calidad="Común";
+                daño=123;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=9;
+                pcritico=100;
+                break;
+            case 26:
+                nombreArma="Latigo con Espinas";
+                calidad="Común";
+                daño=102;
+                escaladof= C;
+                escaladod= A;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=3;
+                pcritico=100;
+                break;
+            case 27:
+                nombreArma="Garrote";
+                calidad="Común";
+                daño=103;
+                escaladof= A;
+                escaladod= D;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=4;
+                pcritico=100;
+                break;
+            case 28:
+                nombreArma="Mayal de Cadenas";
+                calidad="Común";
+                daño=109;
+                escaladof= A;
+                escaladod= C;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=3;
+                pcritico=100;
+                break;
+            case 29:
+                nombreArma="Cestus con Pinchos";
+                calidad="Común";
+                daño=91;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= D;
+                escaladoint= D;
+                ergonomía=2;
+                pcritico=100;
+                break;
             default:
-                System.out.println("????");
 
 
 
@@ -146,27 +404,27 @@ public class Armas {
         this.escaladoint = escaladoint;
     }
 
-    public int getDaño() {
+    public float getDaño() {
         return daño;
     }
 
-    public void setDaño(int daño) {
+    public void setDaño(float daño) {
         this.daño = daño;
     }
 
-    public int getErgonomía() {
+    public float getErgonomía() {
         return ergonomía;
     }
 
-    public void setErgonomía(int ergonomía) {
+    public void setErgonomía(float ergonomía) {
         this.ergonomía = ergonomía;
     }
 
-    public int getPcritico() {
+    public float getPcritico() {
         return pcritico;
     }
 
-    public void setPcritico(int pcritico) {
+    public void setPcritico(float pcritico) {
         this.pcritico = pcritico;
     }
 
@@ -181,219 +439,18 @@ public class Armas {
     @Override
     public String toString() {
         return
-                " nombreArma=" + nombreArma +
-                        " escaladof=" + escaladof+
-        " escaladod=" + escaladod+
-        " escaladofe=" + escaladofe+
-        " escaladoint=" + escaladoint+
-        " daño=" + daño+
-        " ergonomía=" + ergonomía+
-        " pcritico=" + pcritico+
-        " calidad=" + calidad
+        " Nombre= " + nombreArma +"\n"+
+        " Escalado de fuerza= " + escaladof+"\n"+
+        " Escalado de destreza= " + escaladod+"\n"+
+        " Escalado de fe= " + escaladofe+"\n"+
+        " Escalado de Inteligencia= " + escaladoint+"\n"+
+        " Daño= " + daño+"\n"+
+        " Peso= " + ergonomía+"\n"+
+        " Critico= " + pcritico+"\n"+
+        " Calidad= " + calidad
         ;
     }
 
 
-/*
-    public void Alabarda(){
-        nombreArma="Alabarda";
-        calidad="Común";
-        daño=125;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=8;
-        pcritico=100;
-    }
-    public void ArcoLargo(){
-        nombreArma="Arco Largo";
-        calidad="Común";
-        daño=80;
-        escaladof= C;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=4;
-        pcritico=100;
-    }
-    public void BastonAlbi(){
-        nombreArma="Bastón Albináurico";
-        calidad="Común";
-        daño=200;
-        escaladof= C;
-        escaladod= D;
-        escaladofe= D;
-        escaladoint= B;
-        ergonomía=3;
-        pcritico=100;
-    }
-    public void Daga(){
-        nombreArma="Daga";
-        calidad="Común";
-        daño=75;
-        escaladof= C;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=2;
-        pcritico=130;
-    }
-    public void Antorcha(){
-        nombreArma="Antorcha de Acero";
-        calidad="Común";
-        daño=109;
-        escaladof= C;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=3;
-        pcritico=100;
-    }
-    public void ArcoGrande(){
-        nombreArma="Arco Largo";
-        calidad="Común";
-        daño=125;
-        escaladof= C;
-        escaladod= C;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=10;
-        pcritico=100;
-    }
-    public void Aplastagigantes(){
-        nombreArma="Aplastagigantes";
-        calidad="Común";
-        daño=155;
-        escaladof= C;
-        escaladod= D;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=27;
-        pcritico=100;
-    }
-    public void BalistaMano(){
-        nombreArma="Balista de Mano";
-        calidad="Común";
-        daño=135;
-        escaladof= D;
-        escaladod= D;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=10;
-        pcritico=100;
-    }
-    public void BallestaSoldado(){
-        nombreArma="Ballesta de Soldado";
-        calidad="Común";
-        daño=54;
-        escaladof= D;
-        escaladod= D;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=4;
-        pcritico=100;
-    }
-    public void Uchigatana(){
-        nombreArma="Uchigatana";
-        calidad="Común";
-        daño=115;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=6;
-        pcritico=100;
-    }
-    public void EspadaTroll(){
-        nombreArma="Espada Dorada de Troll";
-        calidad="Común";
-        daño=155;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=19;
-        pcritico=100;
-    }
-    public void Cimitarra(){
-        nombreArma="Cimitarra";
-        calidad="Común";
-        daño=106;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=3;
-        pcritico=100;
-    }
-    public void Estoque(){
-        nombreArma="Arco Largo";
-        calidad="Común";
-        daño=96;
-        escaladof= C;
-        escaladod= A;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=3;
-        pcritico=130;
-    }
-    public void GranEpee(){
-        nombreArma="Gran Épée";
-        calidad="Común";
-        daño=124;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=7;
-        pcritico=100;
-    }
-    public void EspadaAncha(){
-        nombreArma="Espada Ancha";
-        calidad="Común";
-        daño=117;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=4;
-        pcritico=100;
-    }
-    public void Claymore(){
-        nombreArma="Arco Largo";
-        calidad="Común";
-        daño=138;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=9;
-        pcritico=100;
-    }
-    public void Desmontadora(){
-        nombreArma="Desmontadora";
-        calidad="Común";
-        daño=138;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=10;
-        pcritico=100;
-    }
-    public void ColmilloPonzoñoso(){
-        nombreArma="Colmillo Ponzoñoso";
-        calidad="Común";
-        daño=92;
-        escaladof= B;
-        escaladod= B;
-        escaladofe= D;
-        escaladoint= D;
-        ergonomía=3;
-        pcritico=100;
-    }
-
-    */
 
 }
