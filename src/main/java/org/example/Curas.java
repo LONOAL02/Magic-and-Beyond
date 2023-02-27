@@ -39,17 +39,47 @@ public class Curas {
         this.curas200 = curas200;
     }
 
-    public float curacion50(float vidaPj){
-        curas50--;
-        return vidaPj+50;
-    }
-    public float curacion100(float vidaPj){
-        curas100--;
-        return vidaPj+50;
+    public float curacion50(float vidaPj, float vidaMax){
+        if (curas50>0){
+            if (50+vidaPj>vidaMax){
+                curas50--;
+                return vidaMax;
+            }else
+                curas50--;
+                return vidaPj+50;
+        }else{
+            System.out.println("Ya no te quedan viales de 50");
+            return vidaPj;
+        }
 
-    }public float curacion200(float vidaPj){
-        curas200--;
-        return vidaPj+50;
     }
+    public float curacion100(float vidaPj, float vidaMax){
+        if (curas100>0){
+            if (100+vidaPj>vidaMax){
+                curas100--;
+                return vidaMax;
+            }else
+                curas100--;
+            return vidaPj+100;
+        }else{
+            System.out.println("Ya no te quedan viales de 100");
+            return vidaPj;
+        }
 
+    }
+    public float curacion200(float vidaPj, float vidaMax){
+        if (curas200>0){
+            if (200+vidaPj>vidaMax){
+                curas200--;
+                return vidaMax;
+            }else
+                curas200--;
+                return vidaPj+200;
+        }else{
+            System.out.println("Ya no te quedan viales de 200");
+            return vidaPj;
+        }
+
+    }
 }
+

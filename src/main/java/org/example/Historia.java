@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Historia {
     //Nombre del personaje principal.
     String nombrePJ;
+    float vidaMax;
     //Creo los objetos de las distintas clases.
     PPrincipal pj = new PPrincipal();
     Scanner scr = new Scanner(System.in);
@@ -17,6 +18,7 @@ public class Historia {
     public void inicioJuego(){
         System.out.println("Introduce el nombre de tu personaje:");
         nombrePJ=scr.next();
+        pj.setNombre(nombrePJ);
     }
 
     //Sistema de eleccion de clases (vida, fuerza, destreza, inteligencia y fe)
@@ -32,6 +34,7 @@ public class Historia {
             eleccion = scr.nextInt();
             if (eleccion == 1) {
                 pj.setVida(1000);
+                vidaMax=1000;
                 pj.setFuerza(16);
                 pj.setDestreza(9);
                 pj.setInteligencia(7);
@@ -39,6 +42,7 @@ public class Historia {
             }
             if (eleccion == 2) {
                 pj.setVida(850);
+                vidaMax=850;
                 pj.setFuerza(10);
                 pj.setDestreza(16);
                 pj.setInteligencia(10);
@@ -46,6 +50,7 @@ public class Historia {
             }
             if (eleccion == 3) {
                 pj.setVida(700);
+                vidaMax=700;
                 pj.setFuerza(8);
                 pj.setDestreza(12);
                 pj.setInteligencia(16);
@@ -53,6 +58,7 @@ public class Historia {
             }
             if (eleccion == 4) {
                 pj.setVida(700);
+                vidaMax=700;
                 pj.setFuerza(11);
                 pj.setDestreza(10);
                 pj.setInteligencia(7);
@@ -93,38 +99,52 @@ public class Historia {
         int enemigo= (int) (Math.random()*1+1);
         enemy.enemigoBasico(enemigo);
         System.out.println("Te encuentras con un enemigo: ");
-        System.out.println(enemy.toString());
+        FramePrincipal myFrame = new FramePrincipal();
+        myFrame.mostrarTextoEnemy(enemy.toString());
+        myFrame.mostrarTextoPJ(pj.toString());
         do{
             int eleccion;
-            System.out.println("Que vas a hacer: "+"\n"+"1. Atacar"+"\n"+"2. Curar");
+            myFrame.mostrarTextoNarrador("Que vas a hacer: ");
             do {
-                eleccion = scr.nextInt();
+                do {
+                    eleccion=myFrame.getBotonCombate();
+                }while(eleccion<1|eleccion>2);
                 if (eleccion == 1) {
-                    System.out.println("A donde quieres apuntar: " + "\n" + "1. Cuerpo (90% Daño x1)" + "\n" + "2. Piernas (70% Daño x2)" + "\n" + "3. Cabeza (50% Daño x3)");
-                    int apuntado = scr.nextInt();
+                    int apuntado;
+                    myFrame.mostrarTextoNarrador("A donde quieres apuntar: " + "\n" + "1. Cuerpo (90% Daño x1)" + "\n" + "2. Piernas (70% Daño x2)" + "\n" + "3. Cabeza (50% Daño x3)");
+                    do {
+                        apuntado=myFrame.getBotonCombate();
+                    }while(apuntado<1|apuntado>3);
                     enemy.setVida(combate.atacar(apuntado, enemy.getVida(), pj.calcularAtaque(), arma.getDaño()));
+                    myFrame.setBotonCombate(0);
                     if (enemy.getVida() <= 0) {
                         System.out.println("Enemigo derrotado.");
                         System.out.println("Vida restante: " + Math.round(pj.getVida()));
                         break;
-                    }
+                    }else if (pj.getVida() <= 0){
+                        break;
+                    }else
                     pj.setVida(combate.recibirAtaque(pj.getVida(), enemy.getAtaque()));
+                    System.out.println("Tu vida: "+Math.round(pj.getVida()));
+                    System.out.println("Vida del enemigo: "+Math.round(enemy.getVida()));
                 }
                 if (eleccion == 2) {
                     System.out.println("Tienes: \n" + "1. " + curas.getCuras50() + " viales de 50." + "\n" + "2. " + curas.getCuras100() + " viales de 100." + "\n" + "3. " + curas.getCuras200() + " viales de 200." + "\n Que vial quieres usar: ");
                     int elecCuras = scr.nextInt();
                     switch (elecCuras) {
-                        case 1 -> pj.setVida(curas.curacion50(pj.getVida()));
-                        case 2 -> pj.setVida(curas.curacion100(pj.getVida()));
-                        case 3 -> pj.setVida(curas.curacion200(pj.getVida()));
+                        case 1 -> pj.setVida(curas.curacion50(pj.getVida(),vidaMax));
+                        case 2 -> pj.setVida(curas.curacion100(pj.getVida(),vidaMax));
+                        case 3 -> pj.setVida(curas.curacion200(pj.getVida(),vidaMax));
                         default -> {
                         }
                     }
-                }
+                    System.out.println("Tu vida: "+Math.round(pj.getVida()));
+                }myFrame.setBotonCombate(0);
             }while (eleccion<1|eleccion>2);
-            System.out.println("Tu vida: "+Math.round(pj.getVida()));
-            System.out.println("Vida del enemigo: "+Math.round(enemy.getVida()));
+
         }while (enemy.getVida()>0&&pj.getVida()>0);
+
+
     }
 
 

@@ -1,6 +1,8 @@
 package org.example;
 
 public class PPrincipal extends Personajes{
+
+    String nombre;
     float numarma;
     float fuerza;
     float destreza;
@@ -30,6 +32,14 @@ public class PPrincipal extends Personajes{
         }
     }
      return aux;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public float getFuerza() {
@@ -70,5 +80,17 @@ public class PPrincipal extends Personajes{
 
     public void setNumarma(float numarma) {
         this.numarma = numarma;
+    }
+
+    @Override
+    public String toString() {
+        return
+        "Nombre: "+ nombre+"\n"+
+        "Fuerza: " + fuerza+"\n"+
+        "Destreza: " + destreza+"\n"+
+        "Inteligencia: " + inteligencia+"\n"+
+        "Fe: " + fe+"\n"+
+        "Nivel: " + nivel
+        ;
     }
 }
