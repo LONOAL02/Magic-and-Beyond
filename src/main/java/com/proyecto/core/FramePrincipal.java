@@ -11,6 +11,7 @@ public class FramePrincipal extends JFrame implements ActionListener {
     static Historia h = new Historia();
     DecimalFormat format1 = new DecimalFormat("#");
 
+
     private JLabel playerLabel;
     private JLabel enemyLabel;
     private JLabel playerHealthLabel;
@@ -24,8 +25,10 @@ public class FramePrincipal extends JFrame implements ActionListener {
     private JComboBox<String> inventoryComboBox;
     private JTextArea logTextArea;
 
+
     private float playerHealth= h.pj.getVida();
     private float enemyHealth= h.pj.getVida();
+
 
 
     public static Historia save(Historia h1){
@@ -39,15 +42,30 @@ public class FramePrincipal extends JFrame implements ActionListener {
     }
 
 
+    private static class JTextAreaWithBackground extends JTextArea {
 
+        private Image background;
+
+        public JTextAreaWithBackground() {
+            background = new ImageIcon("fondo.jpg").getImage();
+            setOpaque(false); // make the JTextArea transparent
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+            super.paintComponent(g);
+        }
+    }
 
     public FramePrincipal() {
         super("Magic and Beyond");
-        //Línea 1
-        this.setSize(new Dimension(800, 600));
 
-        //Línea 2
-        this.setMinimumSize(new Dimension(600, 400));
+        // Tamaño de la ventana
+        this.setSize(new Dimension(1280, 720));
+
+        // Tamaño minimo de la ventana
+        this.setMinimumSize(new Dimension(800, 600));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -100,11 +118,16 @@ public class FramePrincipal extends JFrame implements ActionListener {
 
 
         // Crear el área de registro de ataques
-        logTextArea = new JTextArea();
+        Font font = new Font("Segoe Script", Font.BOLD, 15);
+        logTextArea = new JTextAreaWithBackground();
         logTextArea.setEditable(false);
+        logTextArea.setFont(font);
         JScrollPane scrollPane = new JScrollPane(logTextArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane, BorderLayout.CENTER);
+
+        // Agregar el panel de fondo al JFrame
+        //add(backgroundPanel);
 
         // Añadir todo al JFrame
         pack();
@@ -113,6 +136,8 @@ public class FramePrincipal extends JFrame implements ActionListener {
 
         logTextArea.append("Te encuentras con "+h.enemy.nombre+"\n");
         logTextArea.append("Te quedan: \n" + h.curas.curas50.getCantidad() + " viales de 50"+"\n"+h.curas.curas100.getCantidad() + " viales de 100"+"\n"+h.curas.curas200.getCantidad() + " viales de 200"+"\n");
+
+
 
     }
     public void actionPerformed(ActionEvent e) {

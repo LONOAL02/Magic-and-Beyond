@@ -444,7 +444,6 @@ public class Armas {
     @Override
     public String toString() {
         return
-        " Nombre: " + nombreArma +"\n"+
         " Escalado de fuerza: " + escaladof+"\n"+
         " Escalado de destreza: " + escaladod+"\n"+
         " Escalado de fe: " + escaladofe+"\n"+
