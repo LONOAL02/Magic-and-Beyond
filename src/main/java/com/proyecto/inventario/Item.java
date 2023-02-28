@@ -1,14 +1,18 @@
-package org.example;
+package com.proyecto.inventario;
 
 public class Item {
-    private String nombre;
-    private String descripcion;
-    private int cantidad;
+    public String nombre;
+    public String descripcion;
+    public int cantidad;
 
     public Item(String nombre, String descripcion, int cantidad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
+    }
+
+    public Item(){
+
     }
 
     // getters y setters

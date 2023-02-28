@@ -1,4 +1,6 @@
-package org.example;
+package com.proyecto.features;
+
+import com.proyecto.inventario.Item;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -26,6 +28,10 @@ public class Inventario {
 
     public void eliminarItem(Item item) {
         listaItems.remove(item);
+    }
+
+    public void vaciarInventario(){
+        listaItems.clear();
     }
 
     public void actualizarCantidad(Item item, int cantidad) {
@@ -58,5 +64,22 @@ public class Inventario {
         } catch (IOException e) {
             System.err.println("Error al cargar el inventario: " + e.getMessage());
         }
+    }
+
+    public String[] obtenerNombresComoArray() {
+        String[] nombres = new String[listaItems.size()];
+        for (int i = 0; i < listaItems.size(); i++) {
+            nombres[i] = listaItems.get(i).getNombre();
+        }
+        return nombres;
+    }
+
+    public String mostrarValores(String nombreBuscado) {
+        for (Item item : listaItems) {
+            if (item.getNombre().equals(nombreBuscado)) {
+                return "\nNombre: "+item.getNombre()+"\nDescripción: \n"+item.getDescripcion()+"\nCantidad: "+item.getCantidad();
+            }
+        }
+        return "item no encontrado";
     }
 }

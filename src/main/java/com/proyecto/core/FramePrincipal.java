@@ -1,4 +1,4 @@
-package org.example;
+package com.proyecto.core;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,8 +17,11 @@ public class FramePrincipal extends JFrame implements ActionListener {
     private JLabel enemyHealthLabel;
     private JButton attackButton;
     private JButton healthButton;
+    private JButton seeButton;
+    private JButton useButton;
     private JComboBox<String> attacksComboBox;
     private JComboBox<String> healthComboBox;
+    private JComboBox<String> inventoryComboBox;
     private JTextArea logTextArea;
 
     private float playerHealth= h.pj.getVida();
@@ -81,6 +84,20 @@ public class FramePrincipal extends JFrame implements ActionListener {
         healthPanel.add(healthButton, BorderLayout.EAST);
         attackPanel.add(healthPanel, BorderLayout.SOUTH);
 
+        // Crear el panel de inventario
+        JPanel inventoryPanel = new JPanel(new BorderLayout());
+        inventoryComboBox = new JComboBox<>(h.inventary.obtenerNombresComoArray());
+        inventoryPanel.add(inventoryComboBox, BorderLayout.CENTER);
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        seeButton = new JButton("Ver");
+        useButton = new JButton("usar");
+        seeButton.addActionListener(this);
+        useButton.addActionListener(this);
+        panelBotones.add(seeButton);
+        panelBotones.add(useButton);
+        inventoryPanel.add(panelBotones,BorderLayout.EAST);
+        healthPanel.add(inventoryPanel, BorderLayout.SOUTH);
+
 
         // Crear el área de registro de ataques
         logTextArea = new JTextArea();
@@ -109,6 +126,7 @@ public class FramePrincipal extends JFrame implements ActionListener {
                 enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
                 logTextArea.append("Enemigo derrotado!\n");
                 attackButton.setEnabled(false);
+                healthButton.setEnabled(false);
             } else {
                 enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
                 if (daño == 0) {
@@ -120,19 +138,25 @@ public class FramePrincipal extends JFrame implements ActionListener {
                 opponentAttack();
             }
         }
-        if (e.getSource()== healthButton){
-            if (e.getSource() == healthButton) {
-                String health = (String) healthComboBox.getSelectedItem();
-                int elecCuras = calculateHealth(health);
-                switch (elecCuras) {
-                    case 1 -> playerHealth=(h.curas.curacion50(playerHealth, h.vidaMax));
-                    case 2 -> playerHealth=(h.curas.curacion100(playerHealth, h.vidaMax));
-                    case 3 -> playerHealth=(h.curas.curacion200(playerHealth, h.vidaMax));
-                }
-                playerHealthLabel.setText("HP: " + format1.format(playerHealth));
-                logTextArea.append("Te quedan: \n" + h.curas.curas50.getCantidad() + " viales de 50"+"\n"+h.curas.curas100.getCantidad() + " viales de 100"+"\n"+h.curas.curas200.getCantidad() + " viales de 200"+"\n");
+        if (e.getSource() == healthButton) {
+            String health = (String) healthComboBox.getSelectedItem();
+            int elecCuras = calculateHealth(health);
+            switch (elecCuras) {
+                case 1 -> playerHealth=(h.curas.curacion50(playerHealth, h.vidaMax));
+                case 2 -> playerHealth=(h.curas.curacion100(playerHealth, h.vidaMax));
+                case 3 -> playerHealth=(h.curas.curacion200(playerHealth, h.vidaMax));
             }
+            playerHealthLabel.setText("HP: " + format1.format(playerHealth));
+            logTextArea.append("Te quedan: \n" + h.curas.curas50.getCantidad() + " viales de 50"+"\n"+h.curas.curas100.getCantidad() + " viales de 100"+"\n"+h.curas.curas200.getCantidad() + " viales de 200"+"\n");
         }
+        if (e.getSource() == seeButton) {
+        String item = (String) inventoryComboBox.getSelectedItem();
+        logTextArea.append(h.inventary.mostrarValores(item));
+        }
+        if (e.getSource() == useButton) {
+
+        }
+
     }
 
 

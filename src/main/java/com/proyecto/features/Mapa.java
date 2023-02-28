@@ -1,4 +1,4 @@
-package org.example;
+package com.proyecto.features;
 
 public class Mapa {
     int x=0;

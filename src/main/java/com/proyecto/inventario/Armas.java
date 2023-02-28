@@ -1,23 +1,26 @@
-package org.example;
+package com.proyecto.inventario;
 
 public class Armas {
-    String nombreArma;
+
+    public Item arma = new Item();
+    public String nombreArma;
     //Escalado de las armas
-    float escaladof;
-    float escaladod;
-    float escaladofe;
-    float escaladoint;
-    final float S = 2f;
-    final float A = 1.75f;
-    final float B = 1.50f;
-    final float C = 1.25f;
-    final float D = 1f;
+    public float escaladof;
+    public float escaladod;
+    public float escaladofe;
+    public float escaladoint;
+    public final float S = 2f;
+    public final float A = 1.75f;
+    public final float B = 1.50f;
+    public final float C = 1.25f;
+    public final float D = 1f;
 
     //Stats base de las armas
-    float daño;
-    float ergonomía;
-    float pcritico;
-    String calidad;
+    public float daño;
+    public float ergonomía;
+    public float pcritico;
+    public String calidad;
+
 
     public Armas() {
     }
@@ -358,11 +361,12 @@ public class Armas {
                 pcritico=100;
                 break;
             default:
-
-
-
         }
+        arma.setNombre(nombreArma);
+        arma.setDescripcion(toString());
+        arma.setCantidad(1);
     }
+
 
     public String getNombreArma() {
         return nombreArma;
@@ -436,18 +440,19 @@ public class Armas {
         this.calidad = calidad;
     }
 
+
     @Override
     public String toString() {
         return
-        " Nombre= " + nombreArma +"\n"+
-        " Escalado de fuerza= " + escaladof+"\n"+
-        " Escalado de destreza= " + escaladod+"\n"+
-        " Escalado de fe= " + escaladofe+"\n"+
-        " Escalado de Inteligencia= " + escaladoint+"\n"+
-        " Daño= " + daño+"\n"+
-        " Peso= " + ergonomía+"\n"+
-        " Critico= " + pcritico+"\n"+
-        " Calidad= " + calidad
+        " Nombre: " + nombreArma +"\n"+
+        " Escalado de fuerza: " + escaladof+"\n"+
+        " Escalado de destreza: " + escaladod+"\n"+
+        " Escalado de fe: " + escaladofe+"\n"+
+        " Escalado de Inteligencia: " + escaladoint+"\n"+
+        " Daño: " + daño+"\n"+
+        " Peso: " + ergonomía+"\n"+
+        " Critico: " + pcritico+"\n"+
+        " Calidad: " + calidad
         ;
     }
 

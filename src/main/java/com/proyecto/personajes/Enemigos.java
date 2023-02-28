@@ -1,7 +1,7 @@
-package org.example;
+package com.proyecto.personajes;
 
 public class Enemigos extends Personajes{
-    String nombre;
+    public String nombre;
 
     public Enemigos(float vida, float ataque, float velAtaque, float mana, float nivel, String nombre) {
         super(vida, ataque, velAtaque, mana, nivel);

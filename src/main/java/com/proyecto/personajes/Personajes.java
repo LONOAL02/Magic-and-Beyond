@@ -1,11 +1,11 @@
-package org.example;
+package com.proyecto.personajes;
 
 public class Personajes {
-    float vida;
-    float ataque;
-    float velAtaque;
-    float mana;
-    float nivel;
+    public float vida;
+    public float ataque;
+    public float velAtaque;
+    public float mana;
+    public float nivel;
 
     public Personajes(float vida, float ataque, float velAtaque, float mana, float nivel) {
         this.vida = vida;

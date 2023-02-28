@@ -1,13 +1,13 @@
-package org.example;
+package com.proyecto.personajes;
 
 public class PPrincipal extends Personajes{
 
-    String nombre;
-    float numarma;
-    float fuerza;
-    float destreza;
-    float inteligencia;
-    float fe;
+    public String nombre;
+    public float numarma;
+    public float fuerza;
+    public float destreza;
+    public float inteligencia;
+    public float fe;
 
 
     public PPrincipal(float vida, float ataque, float velAtaque, float mana, float nivel, float numarma, float fuerza, float destreza, float inteligencia, float fe) {

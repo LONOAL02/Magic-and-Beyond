@@ -1,6 +1,12 @@
-package org.example;
+package com.proyecto.core;
 
-import java.util.ArrayList;
+import com.proyecto.features.Combate;
+import com.proyecto.features.Inventario;
+import com.proyecto.personajes.Enemigos;
+import com.proyecto.inventario.Armas;
+import com.proyecto.inventario.Curas;
+import com.proyecto.personajes.PPrincipal;
+
 import java.util.Scanner;
 
 public class Historia {
@@ -110,6 +116,15 @@ public class Historia {
         inventary.agregarItem(curas.curas50);
         inventary.agregarItem(curas.curas100);
         inventary.agregarItem(curas.curas200);
+    }
+
+    public void addArma(){
+        inventary.agregarItem(arma.arma);
+    }
+
+    public void vaciarInventario(){
+        inventary.vaciarInventario();
+        inventary.guardarInventario();
     }
 
 }
