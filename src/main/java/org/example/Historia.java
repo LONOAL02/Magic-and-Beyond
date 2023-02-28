@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Historia {
@@ -103,62 +104,6 @@ public class Historia {
         enemy.enemigoBasico(enemigo);
         new FramePrincipal();
     }
-
-
-         /*
-        int enemigo= (int) (Math.random()*1+1);
-        enemy.enemigoBasico(enemigo);
-        System.out.println("Te encuentras con un enemigo: ");
-        FramePrincipal myFrame = new FramePrincipal();
-        myFrame.mostrarTextoEnemy(enemy.toString());
-        myFrame.mostrarTextoPJ(pj.toString());
-        do{
-            int eleccion;
-            myFrame.mostrarTextoNarrador("Que vas a hacer: ");
-            do {
-                do {
-                    eleccion=myFrame.getBotonCombate();
-                }while(eleccion<1|eleccion>2);
-                if (eleccion == 1) {
-                    int apuntado;
-                    myFrame.mostrarTextoNarrador("A donde quieres apuntar: " + "\n" + "1. Cuerpo (90% Daño x1)" + "\n" + "2. Piernas (70% Daño x2)" + "\n" + "3. Cabeza (50% Daño x3)");
-                    do {
-                        apuntado=myFrame.getBotonCombate();
-                    }while(apuntado<1|apuntado>3);
-                    enemy.setVida(combate.atacar(apuntado, enemy.getVida(), pj.calcularAtaque(), arma.getDaño()));
-                    myFrame.setBotonCombate(0);
-                    if (enemy.getVida() <= 0) {
-                        System.out.println("Enemigo derrotado.");
-                        System.out.println("Vida restante: " + Math.round(pj.getVida()));
-                        break;
-                    }else if (pj.getVida() <= 0){
-                        break;
-                    }else
-                    pj.setVida(combate.recibirAtaque(pj.getVida(), enemy.getAtaque()));
-                    System.out.println("Tu vida: "+Math.round(pj.getVida()));
-                    System.out.println("Vida del enemigo: "+Math.round(enemy.getVida()));
-                }
-                if (eleccion == 2) {
-                    System.out.println("Tienes: \n" + "1. " + curas.getCuras50() + " viales de 50." + "\n" + "2. " + curas.getCuras100() + " viales de 100." + "\n" + "3. " + curas.getCuras200() + " viales de 200." + "\n Que vial quieres usar: ");
-                    int elecCuras = scr.nextInt();
-                    switch (elecCuras) {
-                        case 1 -> pj.setVida(curas.curacion50(pj.getVida(),vidaMax));
-                        case 2 -> pj.setVida(curas.curacion100(pj.getVida(),vidaMax));
-                        case 3 -> pj.setVida(curas.curacion200(pj.getVida(),vidaMax));
-                        default -> {
-                        }
-                    }
-                    System.out.println("Tu vida: "+Math.round(pj.getVida()));
-                }myFrame.setBotonCombate(0);
-            }while (eleccion<1|eleccion>2);
-
-        }while (enemy.getVida()>0&&pj.getVida()>0);
-
-
-    }
-*/
-
-
 
 
 }

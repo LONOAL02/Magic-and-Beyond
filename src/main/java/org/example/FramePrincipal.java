@@ -17,10 +17,8 @@ public class FramePrincipal extends JFrame implements ActionListener {
     private JLabel enemyHealthLabel;
     private JButton attackButton;
     private JButton healthButton;
-    private JButton inventoryButton;
     private JComboBox<String> attacksComboBox;
     private JComboBox<String> healthComboBox;
-    private JComboBox<String> inventoryComboBox;
     private JTextArea logTextArea;
 
     private float playerHealth= h.pj.getVida();
@@ -42,6 +40,11 @@ public class FramePrincipal extends JFrame implements ActionListener {
 
     public FramePrincipal() {
         super("Magic and Beyond");
+        //Línea 1
+        this.setSize(new Dimension(800, 600));
+
+        //Línea 2
+        this.setMinimumSize(new Dimension(600, 400));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -78,16 +81,6 @@ public class FramePrincipal extends JFrame implements ActionListener {
         healthPanel.add(healthButton, BorderLayout.EAST);
         attackPanel.add(healthPanel, BorderLayout.SOUTH);
 
-        // Crear el panel de inventario
-        /*
-        JPanel inventoryPanel = new JPanel(new BorderLayout());
-        inventoryComboBox = new JComboBox<>(new String[]{"Añadir ArrayList inventario aquí"});
-        inventoryPanel.add(inventoryComboBox, BorderLayout.CENTER);
-        inventoryButton = new JButton("Inventario");
-        inventoryButton.addActionListener(this);
-        inventoryPanel.add(inventoryButton, BorderLayout.EAST);
-        attackPanel.add(inventoryPanel, BorderLayout.SOUTH);
-        */
 
         // Crear el área de registro de ataques
         logTextArea = new JTextArea();
@@ -137,7 +130,7 @@ public class FramePrincipal extends JFrame implements ActionListener {
                     case 3 -> playerHealth=(h.curas.curacion200(playerHealth, h.vidaMax));
                 }
                 playerHealthLabel.setText("HP: " + format1.format(playerHealth));
-                healthComboBox.repaint();
+                logTextArea.append("Te quedan: \n" + h.curas.getCuras50() + " viales de 50"+"\n"+h.curas.getCuras100() + " viales de 100"+"\n"+h.curas.getCuras200() + " viales de 200"+"\n");
             }
         }
     }
