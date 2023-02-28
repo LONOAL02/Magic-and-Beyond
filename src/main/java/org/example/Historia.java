@@ -15,6 +15,7 @@ public class Historia {
     Combate combate = new Combate();
     Enemigos enemy = new Enemigos();
     Curas curas = new Curas();
+    Inventario inventary = new Inventario();
 
     //Inicio del juego, pide el nombre del pj.
     public void inicioJuego(){
@@ -105,5 +106,10 @@ public class Historia {
         new FramePrincipal();
     }
 
+    public void addCuras(){
+        inventary.agregarItem(curas.curas50);
+        inventary.agregarItem(curas.curas100);
+        inventary.agregarItem(curas.curas200);
+    }
 
 }

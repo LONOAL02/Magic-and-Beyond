@@ -95,7 +95,7 @@ public class FramePrincipal extends JFrame implements ActionListener {
         setVisible(true);
 
         logTextArea.append("Te encuentras con "+h.enemy.nombre+"\n");
-        logTextArea.append("Te quedan: \n" + h.curas.getCuras50() + " viales de 50"+"\n"+h.curas.getCuras100() + " viales de 100"+"\n"+h.curas.getCuras200() + " viales de 200"+"\n");
+        logTextArea.append("Te quedan: \n" + h.curas.curas50.getCantidad() + " viales de 50"+"\n"+h.curas.curas100.getCantidad() + " viales de 100"+"\n"+h.curas.curas200.getCantidad() + " viales de 200"+"\n");
 
     }
     public void actionPerformed(ActionEvent e) {
@@ -130,7 +130,7 @@ public class FramePrincipal extends JFrame implements ActionListener {
                     case 3 -> playerHealth=(h.curas.curacion200(playerHealth, h.vidaMax));
                 }
                 playerHealthLabel.setText("HP: " + format1.format(playerHealth));
-                logTextArea.append("Te quedan: \n" + h.curas.getCuras50() + " viales de 50"+"\n"+h.curas.getCuras100() + " viales de 100"+"\n"+h.curas.getCuras200() + " viales de 200"+"\n");
+                logTextArea.append("Te quedan: \n" + h.curas.curas50.getCantidad() + " viales de 50"+"\n"+h.curas.curas100.getCantidad() + " viales de 100"+"\n"+h.curas.curas200.getCantidad() + " viales de 200"+"\n");
             }
         }
     }

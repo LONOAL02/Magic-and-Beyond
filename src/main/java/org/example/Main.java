@@ -6,6 +6,7 @@ public class Main {
     h.inicioJuego();
     h.eleccionClase();
     h.eleccionArma();
+    h.addCuras();
     FramePrincipal.save(h);
     h.empezarCombate();
     FramePrincipal.update(h);
