@@ -3,6 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 public class Historia {
+
     //Nombre del personaje principal.
     String nombrePJ;
     float vidaMax;
@@ -95,7 +96,16 @@ public class Historia {
             }
         } while (eleccion < 1 | eleccion > 3);
     }
-    public void empezarCombate(){
+
+
+    public void empezarCombate() {
+        int enemigo= (int) (Math.random()*1+1);
+        enemy.enemigoBasico(enemigo);
+        new FramePrincipal();
+    }
+
+
+         /*
         int enemigo= (int) (Math.random()*1+1);
         enemy.enemigoBasico(enemigo);
         System.out.println("Te encuentras con un enemigo: ");
@@ -146,7 +156,7 @@ public class Historia {
 
 
     }
-
+*/
 
 
 

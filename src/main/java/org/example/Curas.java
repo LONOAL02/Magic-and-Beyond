@@ -48,7 +48,6 @@ public class Curas {
                 curas50--;
                 return vidaPj+50;
         }else{
-            System.out.println("Ya no te quedan viales de 50");
             return vidaPj;
         }
 
@@ -62,7 +61,6 @@ public class Curas {
                 curas100--;
             return vidaPj+100;
         }else{
-            System.out.println("Ya no te quedan viales de 100");
             return vidaPj;
         }
 
@@ -76,7 +74,6 @@ public class Curas {
                 curas200--;
                 return vidaPj+200;
         }else{
-            System.out.println("Ya no te quedan viales de 200");
             return vidaPj;
         }
 
