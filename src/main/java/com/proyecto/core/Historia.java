@@ -83,11 +83,11 @@ public class Historia {
         int num2 = (int) (Math.random() * 29 + 1);
         int num3 = (int) (Math.random() * 29 + 1);
         arma.armaComun(num1);
-        System.out.println("Arma 1:\n" + arma.toString());
+        System.out.println("Arma 1:\n" + arma.nombreArma+"\n"+arma.toString());
         arma.armaComun(num2);
-        System.out.println("Arma 2:\n" + arma.toString());
+        System.out.println("Arma 2:\n" + arma.nombreArma+"\n"+arma.toString());
         arma.armaComun(num3);
-        System.out.println("Arma 3:\n" + arma.toString());
+        System.out.println("Arma 3:\n" + arma.nombreArma+"\n"+arma.toString());
         //Escoge una.
         System.out.println("Que arma quieres (1, 2, o 3): ");
         do {
@@ -109,7 +109,7 @@ public class Historia {
     public void empezarCombate() {
         int enemigo= (int) (Math.random()*1+1);
         enemy.enemigoBasico(enemigo);
-        new FramePrincipal();
+        new FrameCombate();
     }
 
     public void addCuras(){

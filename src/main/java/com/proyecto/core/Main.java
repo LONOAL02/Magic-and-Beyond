@@ -10,9 +10,9 @@ public class Main {
     h.addArma();
     h.addCuras();
     h.inventary.guardarInventario();
-    FramePrincipal.save(h);
+    FrameCombate.save(h);
     h.empezarCombate();
-    FramePrincipal.update(h);
+    FrameCombate.update(h);
 
     }
 }

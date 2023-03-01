@@ -4,9 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class FramePrincipal extends JFrame implements ActionListener {
+public class FrameCombate extends JFrame implements ActionListener {
 
     static Historia h = new Historia();
     DecimalFormat format1 = new DecimalFormat("#");
@@ -16,10 +18,15 @@ public class FramePrincipal extends JFrame implements ActionListener {
     private JLabel enemyLabel;
     private JLabel playerHealthLabel;
     private JLabel enemyHealthLabel;
+    private JTextArea playerDescription;
+    private JTextArea enemyDescription;
+    private JTextArea textoMenu;
     private JButton attackButton;
     private JButton healthButton;
     private JButton seeButton;
     private JButton useButton;
+    private JButton exitButton;
+    private JButton continueButton;
     private JComboBox<String> attacksComboBox;
     private JComboBox<String> healthComboBox;
     private JComboBox<String> inventoryComboBox;
@@ -27,7 +34,7 @@ public class FramePrincipal extends JFrame implements ActionListener {
 
 
     private float playerHealth= h.pj.getVida();
-    private float enemyHealth= h.pj.getVida();
+    private float enemyHealth= h.enemy.getVida();
 
 
 
@@ -47,8 +54,41 @@ public class FramePrincipal extends JFrame implements ActionListener {
         private Image background;
 
         public JTextAreaWithBackground() {
-            background = new ImageIcon("fondo.jpg").getImage();
+            background = new ImageIcon("src//main//java/com/proyecto/imagenes/fondo.jpg").getImage();
             setOpaque(false); // make the JTextArea transparent
+        }
+
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+            super.paintComponent(g);
+        }
+    }
+    private static class JTextAreaWithBackground2 extends JTextArea {
+
+        private Image background;
+
+        public JTextAreaWithBackground2() {
+            background = new ImageIcon("src//main//java/com/proyecto/imagenes/fondo2.jpg").getImage();
+            setOpaque(false); // make the JTextArea transparent
+        }
+
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+            super.paintComponent(g);
+        }
+    }
+
+    private static class JPanelWithBackground extends JPanel {
+
+        private Image background;
+
+        public JPanelWithBackground() {
+            background = new ImageIcon("src//main//java/com/proyecto/imagenes/fondo2.jpg").getImage();
+            setOpaque(false);
         }
 
         @Override
@@ -58,34 +98,51 @@ public class FramePrincipal extends JFrame implements ActionListener {
         }
     }
 
-    public FramePrincipal() {
+    public FrameCombate() {
         super("Magic and Beyond");
+
+        this.setUndecorated(true);
+        this.setLocationRelativeTo(null);
 
         // Tamaño de la ventana
         this.setSize(new Dimension(1280, 720));
 
         // Tamaño minimo de la ventana
-        this.setMinimumSize(new Dimension(800, 600));
+        this.setMinimumSize(new Dimension(1280, 720));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         // Crear los paneles de los PJs
-        JPanel playerPanel = new JPanel(new BorderLayout());
+        JPanel playerPanel = new JPanelWithBackground();
+        playerPanel.setPreferredSize(new Dimension(280,540));
+        playerPanel.setLayout(new BorderLayout());
         playerLabel = new JLabel(h.pj.nombre, JLabel.CENTER);
         playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth), JLabel.CENTER);
-        playerPanel.add(playerLabel, BorderLayout.CENTER);
+        playerDescription = new JTextArea();
+        playerDescription.setOpaque(false);
+        playerDescription.setText(h.pj.toString());
+        playerPanel.add(playerDescription,BorderLayout.CENTER);
+        playerPanel.add(playerLabel, BorderLayout.NORTH);
         playerPanel.add(playerHealthLabel, BorderLayout.SOUTH);
         add(playerPanel, BorderLayout.WEST);
 
-        JPanel opponentPanel = new JPanel(new BorderLayout());
+        // Crear los paneles de los Enemigos
+        JPanel opponentPanel = new JPanelWithBackground();
+        opponentPanel.setPreferredSize(new Dimension(280,540));
+        opponentPanel.setLayout(new BorderLayout());
         enemyLabel = new JLabel(h.enemy.nombre, JLabel.CENTER);
         enemyHealthLabel = new JLabel("HP: " + format1.format(enemyHealth), JLabel.CENTER);
-        opponentPanel.add(enemyLabel, BorderLayout.CENTER);
+        enemyDescription = new JTextArea();
+        enemyDescription.setOpaque(false);
+        enemyDescription.setText(h.enemy.toString());
+        opponentPanel.add(enemyDescription,BorderLayout.CENTER);
+        opponentPanel.add(enemyLabel, BorderLayout.NORTH);
         opponentPanel.add(enemyHealthLabel, BorderLayout.SOUTH);
         add(opponentPanel, BorderLayout.EAST);
 
         // Crear el panel de ataque
-        JPanel attackPanel = new JPanel(new BorderLayout());
+        JPanel attackPanel = new JPanelWithBackground();
+        attackPanel.setOpaque(false);
         attacksComboBox = new JComboBox<>(new String[]{"Cuerpo (90% Daño x1)", "Piernas (70% Daño x2)", "Cabeza (50% Daño x3)"});
         attackPanel.add(attacksComboBox, BorderLayout.CENTER);
         attackButton = new JButton("Atacar");
@@ -94,40 +151,80 @@ public class FramePrincipal extends JFrame implements ActionListener {
         add(attackPanel, BorderLayout.SOUTH);
 
         // Crear el panel de vida
-        JPanel healthPanel = new JPanel(new BorderLayout());
+        JPanel healthPanel = new JPanel();
+        healthPanel.setOpaque(false);
         healthComboBox = new JComboBox<>(new String[]{"Viales de 50.","Viales de 100.","Viales de 200."});
-        healthPanel.add(healthComboBox, BorderLayout.CENTER);
+        healthPanel.add(healthComboBox);
         healthButton = new JButton("Curar");
         healthButton.addActionListener(this);
-        healthPanel.add(healthButton, BorderLayout.EAST);
-        attackPanel.add(healthPanel, BorderLayout.SOUTH);
+        healthPanel.add(healthButton);
+        attackPanel.add(healthPanel);
 
         // Crear el panel de inventario
-        JPanel inventoryPanel = new JPanel(new BorderLayout());
+        JPanel inventoryPanel = new JPanel();
+        inventoryPanel.setOpaque(false);
         inventoryComboBox = new JComboBox<>(h.inventary.obtenerNombresComoArray());
-        inventoryPanel.add(inventoryComboBox, BorderLayout.CENTER);
+        inventoryPanel.add(inventoryComboBox);
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        panelBotones.setOpaque(false);
         seeButton = new JButton("Ver");
         useButton = new JButton("usar");
         seeButton.addActionListener(this);
         useButton.addActionListener(this);
         panelBotones.add(seeButton);
         panelBotones.add(useButton);
-        inventoryPanel.add(panelBotones,BorderLayout.EAST);
-        healthPanel.add(inventoryPanel, BorderLayout.SOUTH);
+        inventoryPanel.add(panelBotones);
+        healthPanel.add(inventoryPanel);
 
+        //Crear el panel de menú
+        JPanel menuPanel = new JPanel(new BorderLayout());
+        JPanel textPanel = new JPanel();
+        menuPanel.setOpaque(false);
+        textPanel.setOpaque(false);
+        textoMenu = new JTextArea("Forefathers One And All! Bear Witness!");
+        textoMenu.setOpaque(false);
+        textoMenu.setEditable(false);
+        textoMenu.setAlignmentX(CENTER_ALIGNMENT);
+        textoMenu.setAlignmentY(CENTER_ALIGNMENT);
+        textPanel.add(textoMenu,BorderLayout.CENTER);
+        exitButton = new JButton("Salir");
+        continueButton = new JButton("Continuar");
+        exitButton.addActionListener(this);
+        continueButton.addActionListener(this);
+        menuPanel.add(exitButton,BorderLayout.EAST);
+        menuPanel.add(textPanel,BorderLayout.WEST);
+        menuPanel.add(continueButton,BorderLayout.CENTER);
+        inventoryPanel.add(menuPanel, BorderLayout.SOUTH);
 
-        // Crear el área de registro de ataques
-        Font font = new Font("Segoe Script", Font.BOLD, 15);
-        logTextArea = new JTextAreaWithBackground();
-        logTextArea.setEditable(false);
-        logTextArea.setFont(font);
-        JScrollPane scrollPane = new JScrollPane(logTextArea);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        add(scrollPane, BorderLayout.CENTER);
+        try {
+            // Cargar la fuente desde el archivo OTF
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/java/com/proyecto/fonts/Mantinia Regular.otf")).deriveFont(12f);
 
-        // Agregar el panel de fondo al JFrame
-        //add(backgroundPanel);
+            // Registrar la fuente personalizada en el entorno de gráficos
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(customFont);
+
+            // Obtener el nombre de la fuente cargada
+            String fontName = customFont.getFamily();
+
+            // Crear el área de registro de ataques
+            logTextArea = new JTextAreaWithBackground();
+            logTextArea.setEditable(false);
+            textoMenu.setFont(new Font(fontName, Font.ITALIC, 20));
+            logTextArea.setFont(new Font(fontName, Font.PLAIN, 20));
+            playerLabel.setFont(new Font(fontName, Font.PLAIN, 20));
+            enemyLabel.setFont(new Font(fontName, Font.PLAIN, 20));
+            playerDescription.setFont(new Font(fontName, Font.PLAIN, 20));
+            enemyDescription.setFont(new Font(fontName, Font.PLAIN, 20));
+            enemyHealthLabel.setFont(new Font(fontName, Font.PLAIN, 20));
+            playerHealthLabel.setFont(new Font(fontName, Font.PLAIN, 20));
+            JScrollPane scrollPane = new JScrollPane(logTextArea);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            add(scrollPane, BorderLayout.CENTER);
+        }catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+
 
         // Añadir todo al JFrame
         pack();
@@ -151,7 +248,6 @@ public class FramePrincipal extends JFrame implements ActionListener {
                 enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
                 logTextArea.append("Enemigo derrotado!\n");
                 attackButton.setEnabled(false);
-                healthButton.setEnabled(false);
             } else {
                 enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
                 if (daño == 0) {
@@ -179,6 +275,12 @@ public class FramePrincipal extends JFrame implements ActionListener {
         logTextArea.append(h.inventary.mostrarValores(item));
         }
         if (e.getSource() == useButton) {
+
+        }
+        if (e.getSource() == exitButton) {
+        this.dispose();
+        }
+        if (e.getSource() == continueButton) {
 
         }
 

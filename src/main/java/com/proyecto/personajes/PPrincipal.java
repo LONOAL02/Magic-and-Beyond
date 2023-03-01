@@ -85,7 +85,6 @@ public class PPrincipal extends Personajes{
     @Override
     public String toString() {
         return
-        "Nombre: "+ nombre+"\n"+
         "Fuerza: " + fuerza+"\n"+
         "Destreza: " + destreza+"\n"+
         "Inteligencia: " + inteligencia+"\n"+

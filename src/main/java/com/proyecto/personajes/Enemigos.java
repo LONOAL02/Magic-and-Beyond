@@ -30,11 +30,11 @@ public class Enemigos extends Personajes{
     @Override
     public String toString() {
         return
-        " Nombre= " + nombre +"\n"+
-        " Vida= " + getVida()+"\n"+
-        " Ataque= " + getAtaque()+"\n"+
-        " Velocidad de ataque= " + getVelAtaque()+"\n"+
-        " Nivel= " + getNivel()
+        " Nombre: " + nombre +"\n"+
+        " Vida: " + getVida()+"\n"+
+        " Ataque: " + getAtaque()+"\n"+
+        " Velocidad de ataque: " + getVelAtaque()+"\n"+
+        " Nivel: " + getNivel()
         ;
     }
 }
