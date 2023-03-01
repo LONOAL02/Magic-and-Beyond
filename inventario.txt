@@ -1,0 +1,11 @@
+Mayal de Cadenas, Escalado de fuerza: 1.75
+ Escalado de destreza: 1.25
+ Escalado de fe: 1.0
+ Escalado de Inteligencia: 1.0
+ Daño: 109.0
+ Peso: 3.0
+ Critico: 100.0
+ Calidad: Común,1
+Estus pequeño,El Frasco de Estus es el objeto restaurativo básico, cura 50 PV,3
+Estus mediano,Mejora de el Frasco de Estus básico, cura 100 PV,0
+Estus grande,Mejora de el Frasco de Estus mediano, cura 200 PV,0
