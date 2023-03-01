@@ -1,8 +1,8 @@
-Mayal de Cadenas, Escalado de fuerza: 1.75
- Escalado de destreza: 1.25
+Cimitarra, Escalado de fuerza: 1.5
+ Escalado de destreza: 1.5
  Escalado de fe: 1.0
  Escalado de Inteligencia: 1.0
- Daño: 109.0
+ Daño: 106.0
  Peso: 3.0
  Critico: 100.0
  Calidad: Común,1
