@@ -8,6 +8,6 @@ public class Main {
     FrameCombate.save(h);
     h.empezarCombate();
     h=FrameCombate.update(h);
-
+        System.out.println("prueba");
     }
 }
