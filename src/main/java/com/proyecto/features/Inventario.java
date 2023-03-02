@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventario {
-    private List<Item> listaItems;
+    public List<Item> listaItems;
 
     public Inventario() {
         listaItems = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Inventario {
     public void guardarInventario() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventario.txt"))) {
             for (Item item : listaItems) {
-                writer.write(item.getNombre() + "," + item.getDescripcion() + "," + item.getCantidad());
+                writer.write(item.getNombre() + ";" + item.getDescripcion().replace("\n", "\\n") + ";" + item.getCantidad()+";"+item.getUso());
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -54,11 +54,12 @@ public class Inventario {
         try (BufferedReader reader = new BufferedReader(new FileReader("inventario.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] campos = line.split(",");
+                String[] campos = line.split(";");
                 String nombre = campos[0];
-                String descripcion = campos[1];
+                String descripcion = campos[1].replaceAll("\\\\n", "\n");
                 int cantidad = Integer.parseInt(campos[2]);
-                Item item = new Item(nombre, descripcion, cantidad);
+                int uso = Integer.parseInt(campos[3]);
+                Item item = new Item(nombre, descripcion, cantidad,uso);
                 listaItems.add(item);
             }
         } catch (IOException e) {

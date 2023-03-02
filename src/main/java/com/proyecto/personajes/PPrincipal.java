@@ -1,6 +1,8 @@
 package com.proyecto.personajes;
 
-public class PPrincipal extends Personajes{
+import java.io.Serializable;
+
+public class PPrincipal extends Personajes implements Serializable {
 
     public String nombre;
     public float numarma;
@@ -10,8 +12,9 @@ public class PPrincipal extends Personajes{
     public float fe;
 
 
-    public PPrincipal(float vida, float ataque, float velAtaque, float mana, float nivel, float numarma, float fuerza, float destreza, float inteligencia, float fe) {
+    public PPrincipal(String nombre, float vida, float ataque, float velAtaque, float mana, float nivel, float numarma, float fuerza, float destreza, float inteligencia, float fe) {
         super(vida, ataque, velAtaque, mana, nivel);
+        this.nombre=nombre;
         this.numarma = numarma;
         this.fuerza = fuerza;
         this.destreza = destreza;

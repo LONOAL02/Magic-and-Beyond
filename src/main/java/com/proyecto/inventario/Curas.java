@@ -2,9 +2,11 @@ package com.proyecto.inventario;
 
 public class Curas {
 
-    public Item curas50 = new Item("Estus pequeño", "El Frasco de Estus es el objeto restaurativo básico, cura 50 PV", 3);
-    public Item curas100 = new Item("Estus mediano", "Mejora de el Frasco de Estus básico, cura 100 PV", 0);
-    public Item curas200 = new Item("Estus grande", "Mejora de el Frasco de Estus mediano, cura 200 PV", 0);
+    public Item curas50 = new Item("Estus pequeño", "El Frasco de Estus es el objeto restaurativo básico, cura 50 PV", 3, Item.CURACION);
+    public Item curas100 = new Item("Estus mediano", "Mejora de el Frasco de Estus básico, cura 100 PV", 0, Item.CURACION);
+    public Item curas200 = new Item("Estus grande", "Mejora de el Frasco de Estus mediano, cura 200 PV", 0, Item.CURACION);
+
+
 
     public Curas(Item curas50, Item curas100, Item curas200) {
         this.curas50 = curas50;

@@ -1,5 +1,7 @@
 package com.proyecto.core;
 
+import com.proyecto.features.Inventario;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -33,8 +35,8 @@ public class FrameCombate extends JFrame implements ActionListener {
     private JTextArea logTextArea;
 
 
-    private float playerHealth= h.pj.getVida();
-    private float enemyHealth= h.enemy.getVida();
+    private float playerHealth;
+    private float enemyHealth;
 
 
 
@@ -117,7 +119,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         playerPanel.setPreferredSize(new Dimension(280,540));
         playerPanel.setLayout(new BorderLayout());
         playerLabel = new JLabel(h.pj.nombre, JLabel.CENTER);
-        playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth), JLabel.CENTER);
+        playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth= h.pj.getVida()), JLabel.CENTER);
         playerDescription = new JTextArea();
         playerDescription.setOpaque(false);
         playerDescription.setText(h.pj.toString());
@@ -131,7 +133,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         opponentPanel.setPreferredSize(new Dimension(280,540));
         opponentPanel.setLayout(new BorderLayout());
         enemyLabel = new JLabel(h.enemy.nombre, JLabel.CENTER);
-        enemyHealthLabel = new JLabel("HP: " + format1.format(enemyHealth), JLabel.CENTER);
+        enemyHealthLabel = new JLabel("HP: " + format1.format(enemyHealth=h.enemy.getVida()), JLabel.CENTER);
         enemyDescription = new JTextArea();
         enemyDescription.setOpaque(false);
         enemyDescription.setText(h.enemy.toString());
@@ -189,6 +191,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         textPanel.add(textoMenu,BorderLayout.CENTER);
         exitButton = new JButton("Salir");
         continueButton = new JButton("Continuar");
+        continueButton.setEnabled(false);
         exitButton.addActionListener(this);
         continueButton.addActionListener(this);
         menuPanel.add(exitButton,BorderLayout.EAST);
@@ -248,12 +251,13 @@ public class FrameCombate extends JFrame implements ActionListener {
                 enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
                 logTextArea.append("Enemigo derrotado!\n");
                 attackButton.setEnabled(false);
+                continueButton.setEnabled(true);
             } else {
                 enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
                 if (daño == 0) {
-                    logTextArea.append("Fallaste" + "!\n");
+                    logTextArea.append("\nFallaste" + "!\n");
                 } else {
-                    logTextArea.append("Ataque realizado" + "!\n");
+                    logTextArea.append("\nAtaque realizado" + "!\n");
                     logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                 }
                 opponentAttack();
@@ -279,9 +283,10 @@ public class FrameCombate extends JFrame implements ActionListener {
         }
         if (e.getSource() == exitButton) {
         this.dispose();
+        new FrameSalir();
         }
         if (e.getSource() == continueButton) {
-
+        this.dispose();
         }
 
     }

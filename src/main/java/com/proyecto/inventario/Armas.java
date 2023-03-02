@@ -365,6 +365,7 @@ public class Armas {
         arma.setNombre(nombreArma);
         arma.setDescripcion(toString());
         arma.setCantidad(1);
+        arma.setUso(Item.ARMA);
     }
 
 
