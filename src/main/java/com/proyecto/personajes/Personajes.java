@@ -1,6 +1,8 @@
 package com.proyecto.personajes;
 
-public class Personajes {
+import java.io.Serializable;
+
+public class Personajes implements Serializable {
     public float vida;
     public float ataque;
     public float velAtaque;

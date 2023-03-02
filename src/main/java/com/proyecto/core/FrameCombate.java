@@ -119,7 +119,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         playerPanel.setPreferredSize(new Dimension(280,540));
         playerPanel.setLayout(new BorderLayout());
         playerLabel = new JLabel(h.pj.nombre, JLabel.CENTER);
-        playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth= h.pj.getVida()), JLabel.CENTER);
+        playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth= h.pj.vida), JLabel.CENTER);
         playerDescription = new JTextArea();
         playerDescription.setOpaque(false);
         playerDescription.setText(h.pj.toString());
