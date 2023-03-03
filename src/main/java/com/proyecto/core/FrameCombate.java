@@ -35,8 +35,8 @@ public class FrameCombate extends JFrame implements ActionListener {
     private JTextArea logTextArea;
 
 
-    private float playerHealth;
-    private float enemyHealth;
+    private float playerHealth=h.pj.getVida();
+    private float enemyHealth=h.enemy.getVida();
 
 
 
@@ -119,7 +119,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         playerPanel.setPreferredSize(new Dimension(280,540));
         playerPanel.setLayout(new BorderLayout());
         playerLabel = new JLabel(h.pj.nombre, JLabel.CENTER);
-        playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth= h.pj.vida), JLabel.CENTER);
+        playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth), JLabel.CENTER);
         playerDescription = new JTextArea();
         playerDescription.setOpaque(false);
         playerDescription.setText(h.pj.toString());
@@ -133,7 +133,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         opponentPanel.setPreferredSize(new Dimension(280,540));
         opponentPanel.setLayout(new BorderLayout());
         enemyLabel = new JLabel(h.enemy.nombre, JLabel.CENTER);
-        enemyHealthLabel = new JLabel("HP: " + format1.format(enemyHealth=h.enemy.getVida()), JLabel.CENTER);
+        enemyHealthLabel = new JLabel("HP: " + format1.format(enemyHealth), JLabel.CENTER);
         enemyDescription = new JTextArea();
         enemyDescription.setOpaque(false);
         enemyDescription.setText(h.enemy.toString());
