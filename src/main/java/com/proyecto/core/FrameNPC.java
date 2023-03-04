@@ -3,8 +3,10 @@ package com.proyecto.core;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.EventObject;
 
-public class FrameNPC extends JFrame {
+public class FrameNPC extends JFrame implements ActionListener {
     private String nombre;
     private String profesion;
     private String dialogo1="Hola soy un NPC";
@@ -16,6 +18,12 @@ public class FrameNPC extends JFrame {
     private JButton op1Button;
     private JButton op2Button;
     private JButton op3Button;
+
+   // @Override
+    //public void actionPerformed(ActionEvent e) {
+
+
+
     private static class JPanelWithBackground extends JPanel {
 
         private Image background;
@@ -31,9 +39,16 @@ public class FrameNPC extends JFrame {
             super.paintComponent(g);
         }
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() ==op1Button) {
+            NpcDialog.append("Hola soy alex");
+        }
+    }
 
 
     public FrameNPC() {
+
         super("Magic and Beyond");
 
         this.setUndecorated(true);
@@ -49,30 +64,31 @@ public class FrameNPC extends JFrame {
         setLayout(new BorderLayout());
         NpcPanel= new JPanel();
         op1Button=new JButton("Presentarse");
+        op1Button.addActionListener(this);
         textYButtonsPanel =new JPanel();
-        NpcPanel.setPreferredSize(new Dimension(500,720));
+        NpcPanel.setPreferredSize(new Dimension(1000,700));
         NpcPanel.setLayout(new BorderLayout());
     imagenPj = new JPanelWithBackground();
-    imagenPj.setSize(500,600);
+    imagenPj.setSize(563,676);
     NpcDialog = new JTextArea();
         NpcDialog.setOpaque(false);
         NpcDialog.setText(dialogo1);
-        textYButtonsPanel.add(NpcDialog,BorderLayout.CENTER);
+        textYButtonsPanel.add(NpcDialog,BorderLayout.EAST);
         NpcPanel.add(imagenPj, BorderLayout.WEST);
         NpcPanel.add(textYButtonsPanel,BorderLayout.CENTER);
+        textYButtonsPanel.add(op1Button,BorderLayout.SOUTH);
+        add(NpcPanel, BorderLayout.CENTER);
 
 
-    add(NpcPanel, BorderLayout.WEST);
 
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
 
 
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource() ==op1Button) {
-                System.out.println("Hola soy alex");
-            }
         }
+
+
+
 }
-}
+
