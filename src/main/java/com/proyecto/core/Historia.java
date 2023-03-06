@@ -14,17 +14,17 @@ import java.util.Scanner;
 public class Historia {
 
     //Nombre del personaje principal.
-    String nombrePJ;
-    float vidaMax;
+    public String nombrePJ;
+    public float vidaMax;
     //Creo los objetos de las distintas clases.
-    PPrincipal pj = new PPrincipal();
-    PPrincipal pjSave;
-    Scanner scr = new Scanner(System.in);
-    Armas arma = new Armas();
-    Combate combate = new Combate();
-    Enemigos enemy = new Enemigos();
-    Curas curas = new Curas();
-    Inventario inventary = new Inventario();
+    public PPrincipal pj = new PPrincipal();
+    public PPrincipal pjSave;
+    public Scanner scr = new Scanner(System.in);
+    public Armas arma = new Armas();
+    public Combate combate = new Combate();
+    public Enemigos enemy = new Enemigos();
+    public Curas curas = new Curas();
+    public Inventario inventary = new Inventario();
 
     //Inicio del juego, pide el nombre del pj.
     public void inicioJuego() {

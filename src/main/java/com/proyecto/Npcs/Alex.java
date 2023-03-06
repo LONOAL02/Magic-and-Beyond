@@ -1,64 +1,42 @@
 package com.proyecto.Npcs;
 
-public class Alex {
-    public String nombreAl;
-    public String profesionAl;
-    public String dialogoAl;
+public class Alex extends NPCs{
 
-    public void Metodo1Alex() {
-        NPCs.setNombre("Alex");
-        nombreAl = NPCs.getNombre();
-        NPCs.setProfesion("Clérigo");
-        profesionAl = NPCs.getProfesion();
+
+    public static String metodo1Alex() {
+        nombre="Alex";
+        profesion="Clérigo";
         int opcionDialog = (int) (Math.random() * 3 + 1);
         switch (opcionDialog) {
             case 1:
-                NPCs.setDialogo(" Te encuentras con un hombre joven con una túnica azul. \n" +
+                dialogo=(" Te encuentras con un hombre joven con una túnica azul. \n" +
                         " El joven te dice: \n" +
-                        " Hola, soy Alex el clérigo de la ciudad, en que puedo ayudarte? ");
-                break;
+                        " Hola, soy Alex el clérigo de la ciudad, en que puedo ayudarte?\n");
+                return dialogo;
             case 2:
-                NPCs.setDialogo(" Observas ante ti un joven. \n" +
-                        "El joven, con una voz bastante aguda te comenta: " +
-                        " Buenas viajero, soy Alex un devoto clérigo de la zona, necesitas algo?");
-                break;
+                dialogo=(" Observas ante ti un joven. \n" +
+                        " El joven, con una voz bastante aguda te comenta: \n" +
+                        " Buenas viajero, soy Alex un devoto clérigo de la zona, necesitas algo?\n");
+                return dialogo;
             case 3:
-                NPCs.setDialogo(" Un joven clérigo aparece ante ti. \n" +
-                        "El clérigo te cuenta :\n" +
-                        " Buenas forastero, soy Alex el clérigo, es raro encontrarse con alguien por aquí, precisas algo?");
-                break;
+                dialogo=(" Un joven clérigo aparece ante ti. \n" +
+                        " El clérigo te cuenta :\n" +
+                        " Buenas forastero, soy Alex el clérigo, es raro encontrarse con alguien por aquí, precisas algo?\n");
+                return dialogo;
 
         }
-        dialogoAl = NPCs.getDialogo();
+        return "error";
     }
 
-    public void Metodo2Alex() {
+    public static void metodo2Alex() {
         int opcion1Button = (int) (Math.random() * 2 + 1);
         switch (opcion1Button) {
             case 1:
-                //te cura un 20% de vida
+                h.pj.setVida(h.curas.curarCantidad(h.pj.getVida(),h.vidaMax,(h.vidaMax*0.2f)));
                 break;
             case 2:
-               // te da un estus mediano
+                h.inventary.actualizarCantidad(h.curas.getCuras100(), h.curas.getCuras100().getCantidad()+1);
                 break;
-
         }
-        int opcion2Button = (int) (Math.random() * 2 + 1);
-        switch (opcion1Button) {
-            case 1:
-                //te cura un 20% de vida
-                break;
-            case 2:
-                // te da un estus mediano
-                break;
-
-        }
-    }
-
-    public String getNombreAl() {
-        return nombreAl;
-    }
-    public String getProfesionAl() {
-        return profesionAl;
     }
 }

@@ -1,31 +1,46 @@
 package com.proyecto.Npcs;
 
-public class NPCs {
-    private static String nombre;
-    private static String profesion;
-    private static String dialogo;
+import com.proyecto.core.Historia;
 
-    public static String getNombre() {
+public class NPCs {
+
+    public static Historia h = new Historia();
+    public static String nombre;
+    public static String profesion;
+    public static String dialogo;
+
+
+    public static Historia save(Historia h1){
+        h = h1;
+        return h;
+    }
+
+    public static Historia update(Historia h1){
+        h1 = h;
+        return h1;
+    }
+
+    public String getNombre() {
         return nombre;
     }
 
-    public static void setNombre(String nombre) {
-        NPCs.nombre = nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public static String getProfesion() {
+    public String getProfesion() {
         return profesion;
     }
 
-    public static void setProfesion(String profesion) {
-        NPCs.profesion = profesion;
+    public void setProfesion(String profesion) {
+        this.profesion = profesion;
     }
 
-    public static String getDialogo() {
+    public String getDialogo() {
         return dialogo;
     }
 
-    public static void setDialogo(String dialogo) {
-        NPCs.dialogo = dialogo;
+    public void setDialogo(String dialogo) {
+        this.dialogo = dialogo;
     }
 }

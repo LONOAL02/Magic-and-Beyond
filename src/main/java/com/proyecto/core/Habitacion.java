@@ -9,7 +9,10 @@ public class Habitacion extends JPanel {
     private boolean esPared;
     private boolean casillaOcupada;
     private boolean esMeta;
+    private boolean esDescubierta;
+    private boolean esCercana;
     private Color color;
+    private Image interrogacion= new ImageIcon("src/main/java/com/proyecto/imagenes/interrogacion3.png").getImage();
 
 
     public Habitacion(String id, boolean esPared) {
@@ -22,6 +25,7 @@ public class Habitacion extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -30,10 +34,27 @@ public class Habitacion extends JPanel {
             g.fillRect(0, 0, getWidth(), getHeight());
         }
         if (casillaOcupada) {
-            g.setColor(Color.RED);
-            g.fillOval(getWidth() / 4, getHeight() / 4, getWidth() / 2, getHeight() / 2);
+            g.drawImage(new ImageIcon("src/main/java/com/proyecto/imagenes/pjPrincipal.png").getImage(),68,5,null);
+        }
+        if (!casillaOcupada&&!esPared&&esDescubierta){
+            g.setColor(Color.WHITE);
+            g.fillRect(0,0,getWidth(),getHeight());
+        }
+        if (!esDescubierta && !esPared && !esCercana) {
+            g.setColor(Color.BLACK);
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }
+        if (!esDescubierta&&!esPared&&esCercana){
+            g.setColor(Color.GRAY);
+            g.fillRect(0,0,getWidth(),getHeight());
+            g.drawImage(interrogacion,68,5,null);
+        }
+        if (esMeta&&!esDescubierta&&esCercana) {
+            g.setColor(Color.GREEN);
+            g.fillRect(0, 0, getWidth(), getHeight());
         }
     }
+
 
 
     public String getId() {
@@ -88,5 +109,21 @@ public class Habitacion extends JPanel {
     public void setColor(Color color) {
         this.color = color;
         setBackground(color);
+    }
+
+    public boolean esDescubierta() {
+        return esDescubierta;
+    }
+
+    public void setEsDescubierta(boolean esDescubierta) {
+        this.esDescubierta = esDescubierta;
+    }
+
+    public boolean essCercana() {
+        return esCercana;
+    }
+
+    public void setEsCercana(boolean esCercana) {
+        this.esCercana = esCercana;
     }
 }

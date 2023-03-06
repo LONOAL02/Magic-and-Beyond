@@ -78,7 +78,13 @@ public class Curas {
         }else{
             return vidaPj;
         }
-
     }
+
+    public float curarCantidad(float vidaPj, float vidaMax, float cantidad){
+            if (cantidad+vidaPj>vidaMax){
+                return vidaMax;
+            }else
+                return vidaPj+cantidad;
+        }
 }
 

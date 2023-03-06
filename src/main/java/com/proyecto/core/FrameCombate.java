@@ -1,5 +1,6 @@
 package com.proyecto.core;
 
+import com.proyecto.Npcs.NPCs;
 import com.proyecto.features.Inventario;
 
 import javax.swing.*;
