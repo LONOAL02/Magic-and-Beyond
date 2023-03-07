@@ -1,5 +1,7 @@
 package com.proyecto.Npcs;
 
+import com.proyecto.inventario.Curas;
+
 public class Alex extends NPCs{
 
 
@@ -32,7 +34,7 @@ public class Alex extends NPCs{
         int opcion1Button = (int) (Math.random() * 2 + 1);
         switch (opcion1Button) {
             case 1:
-                h.pj.setVida(h.curas.curarCantidad(h.pj.getVida(),h.vidaMax,(h.vidaMax*0.2f)));
+                h.pj.setVida(Curas.curarCantidad(h.pj.getVida(),h.vidaMax,(h.vidaMax*0.2f)));
                 break;
             case 2:
                 h.inventary.actualizarCantidad(h.curas.getCuras100(), h.curas.getCuras100().getCantidad()+1);

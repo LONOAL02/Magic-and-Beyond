@@ -14,8 +14,9 @@ public class FrameNPC extends JFrame implements ActionListener {
     private JButton op1Button;
     private JButton op2Button;
     private JButton op3Button;
+    private JButton button1;
 
-   // @Override
+    // @Override
     //public void actionPerformed(ActionEvent e) {
 
 
@@ -46,6 +47,8 @@ public class FrameNPC extends JFrame implements ActionListener {
     public FrameNPC() {
 
         super("Magic and Beyond");
+
+        this.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
 
         this.setUndecorated(true);
         this.setLocationRelativeTo(null);
