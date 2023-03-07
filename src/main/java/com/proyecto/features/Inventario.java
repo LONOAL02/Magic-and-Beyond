@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventario {
-    public List<Item> listaItems;
+    public  List<Item> listaItems;
 
     public Inventario() {
         listaItems = new ArrayList<>();
@@ -82,5 +82,14 @@ public class Inventario {
             }
         }
         return "item no encontrado";
+    }
+
+    public int obtenerUso(String nombreBuscado) {
+        for (Item item : listaItems) {
+            if (item.getNombre().equals(nombreBuscado)) {
+                return item.getUso();
+            }
+        }
+        return 0;
     }
 }

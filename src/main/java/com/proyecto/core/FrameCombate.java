@@ -2,6 +2,7 @@ package com.proyecto.core;
 
 import com.proyecto.Npcs.NPCs;
 import com.proyecto.features.Inventario;
+import com.proyecto.inventario.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.text.DecimalFormat;
 
 public class FrameCombate extends JFrame implements ActionListener {
 
-    static Historia h = new Historia();
+    public static Historia h = new Historia();
     DecimalFormat format1 = new DecimalFormat("#");
 
 
@@ -198,7 +199,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         menuPanel.add(exitButton,BorderLayout.EAST);
         menuPanel.add(textPanel,BorderLayout.WEST);
         menuPanel.add(continueButton,BorderLayout.CENTER);
-        inventoryPanel.add(menuPanel, BorderLayout.SOUTH);
+        inventoryPanel.add(menuPanel);
 
         try {
             // Cargar la fuente desde el archivo OTF
@@ -236,7 +237,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         setVisible(true);
 
         logTextArea.append("Te encuentras con "+h.enemy.nombre+"\n");
-        logTextArea.append("Te quedan: \n" + h.curas.curas50.getCantidad() + " viales de 50"+"\n"+h.curas.curas100.getCantidad() + " viales de 100"+"\n"+h.curas.curas200.getCantidad() + " viales de 200"+"\n");
+        logTextArea.append("Te quedan: \n" + Curas.curas50.getCantidad() + " viales de 50"+"\n"+ Curas.curas100.getCantidad() + " viales de 100"+"\n"+ Curas.curas200.getCantidad() + " viales de 200"+"\n");
 
 
 
@@ -273,21 +274,40 @@ public class FrameCombate extends JFrame implements ActionListener {
                 case 3 -> playerHealth=(h.curas.curacion200(playerHealth, h.vidaMax));
             }
             playerHealthLabel.setText("HP: " + format1.format(playerHealth));
-            logTextArea.append("Te quedan: \n" + h.curas.curas50.getCantidad() + " viales de 50"+"\n"+h.curas.curas100.getCantidad() + " viales de 100"+"\n"+h.curas.curas200.getCantidad() + " viales de 200"+"\n");
+            logTextArea.append("Te quedan: \n" + Curas.curas50.getCantidad() + " viales de 50"+"\n"+ Curas.curas100.getCantidad() + " viales de 100"+"\n"+ Curas.curas200.getCantidad() + " viales de 200"+"\n");
         }
         if (e.getSource() == seeButton) {
-        String item = (String) inventoryComboBox.getSelectedItem();
-        logTextArea.append(h.inventary.mostrarValores(item));
+            String item = (String) inventoryComboBox.getSelectedItem();
+            logTextArea.append(h.inventary.mostrarValores(item));
         }
         if (e.getSource() == useButton) {
+            String item = (String) inventoryComboBox.getSelectedItem();
+            int uso=h.inventary.obtenerUso(item);
+            switch (uso){
+                case 0:
 
+                case 1:
+                    h.arma.armaComun(h.arma.getNumArma(item));
+                    h.pj.setNumarma(h.arma.getNumArma(item));
+                case 2:
+                    Hechizos.usarHechizo(item);
+                case 3:
+                    DmgItems.hacerDaño(item,0);
+                case 4:
+
+                case 5:
+                    h.arma.armaComun(h.arma.getNumArma(item));
+                    h.pj.setNumarma(h.arma.getNumArma(item));
+                case 6:
+                   playerHealth=Curas.curarCantidad(h.pj.getVida(),h.vidaMax,Curas.getCantidad(item));
+            }
         }
         if (e.getSource() == exitButton) {
-        this.dispose();
-        new FrameSalir();
+            this.dispose();
+            new FrameSalir();
         }
         if (e.getSource() == continueButton) {
-        this.dispose();
+            this.dispose();
         }
 
     }

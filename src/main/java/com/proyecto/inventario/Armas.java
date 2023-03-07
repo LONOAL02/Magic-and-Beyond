@@ -1,8 +1,10 @@
 package com.proyecto.inventario;
 
+import com.proyecto.core.FrameCombate;
+
 public class Armas {
 
-    public Item arma = new Item();
+    public static Item arma = new Item();
     public String nombreArma;
     //Escalado de las armas
     public float escaladof;
@@ -366,6 +368,71 @@ public class Armas {
         arma.setDescripcion(toString());
         arma.setCantidad(1);
         arma.setUso(Item.ARMA);
+    }
+
+    public int getNumArma(String nombre){
+        switch (nombre){
+            case ("Alabarda"):
+                return 1;
+            case ("Arco Largo"):
+                return 2;
+            case ("Bastón Albináurico"):
+                return 3;
+            case ("Daga"):
+                return 4;
+            case ("Antorcha de Acero"):
+                return 5;
+            case ("Arco Grande"):
+                return 6;
+            case ("Aplastagigantes"):
+                return 7;
+            case ("Balista de Mano"):
+                return 8;
+            case ("Ballesta de Soldado"):
+                return 9;
+            case ("Uchigatana"):
+                return 10;
+            case ("Espada Dorada de Troll"):
+                return 11;
+            case ("Cimitarra"):
+                return 12;
+            case ("Estoque"):
+                return 13;
+            case ("Gran Épée"):
+                return 14;
+            case ("Espada Ancha"):
+                return 15;
+            case ("Claymore"):
+                return 16;
+            case ("Desmontadora"):
+                return 17;
+            case ("Colmillo Ponzoñoso"):
+                return 18;
+            case ("Gran Hacha"):
+                return 19;
+            case ("Gran Maza"):
+                return 20;
+            case ("Guadaña"):
+                return 21;
+            case ("Destral Bifurcado"):
+                return 22;
+            case ("Hoja Doble"):
+                return 23;
+            case ("Lanza de Hierro"):
+                return 24;
+            case ("Lanza de Justas"):
+                return 25;
+            case ("Latigo con Espinas"):
+                return 26;
+            case ("Garrote"):
+                return 27;
+            case ("Mayal de Cadenas"):
+                return 28;
+            case ("Cestus con Pinchos"):
+                return 29;
+            default:
+                return (int) FrameCombate.h.pj.getNumarma();
+        }
     }
 
 

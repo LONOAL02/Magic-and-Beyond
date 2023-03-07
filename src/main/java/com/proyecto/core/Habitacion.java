@@ -1,7 +1,11 @@
 package com.proyecto.core;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Habitacion extends JPanel {
     private String id;
@@ -19,6 +23,7 @@ public class Habitacion extends JPanel {
         this.id = id;
         this.esPared = esPared;
         this.casillaOcupada = false;
+        this.esMeta= esMeta();
 
         // Configurar el tamaño y el borde de la casilla
         setPreferredSize(new Dimension(256, 144));
@@ -33,12 +38,8 @@ public class Habitacion extends JPanel {
             g.setColor(Color.BLACK);
             g.fillRect(0, 0, getWidth(), getHeight());
         }
-        if (casillaOcupada) {
-            g.drawImage(new ImageIcon("src/main/java/com/proyecto/imagenes/pjPrincipal.png").getImage(),68,5,null);
-        }
         if (!casillaOcupada&&!esPared&&esDescubierta){
-            g.setColor(Color.WHITE);
-            g.fillRect(0,0,getWidth(),getHeight());
+            g.drawImage(new ImageIcon("src/main/java/com/proyecto/imagenes/sueloAdoquin.jpg").getImage(),0,0,null);
         }
         if (!esDescubierta && !esPared && !esCercana) {
             g.setColor(Color.BLACK);
@@ -52,6 +53,37 @@ public class Habitacion extends JPanel {
         if (esMeta&&!esDescubierta&&esCercana) {
             g.setColor(Color.GREEN);
             g.fillRect(0, 0, getWidth(), getHeight());
+        }
+        if (casillaOcupada&&!esMeta) {
+            crearImagen();
+            g.drawImage(new ImageIcon("src/main/java/com/proyecto/imagenes/combined.png").getImage(),0,0,null);
+
+        }
+    }
+
+    public void crearImagen() {
+        try {
+            // cargar el background y la imagen
+            File backgroundFile = new File("src/main/java/com/proyecto/imagenes/sueloAdoquin.jpg");
+            File imageFile = new File("src/main/java/com/proyecto/imagenes/pjPrincipal.png");
+            BufferedImage backgroundImage = ImageIO.read(backgroundFile);
+            BufferedImage image = ImageIO.read(imageFile);
+
+            // crear una nueva imagen con el mismo tamaño que el background
+            BufferedImage combined = new BufferedImage(174, 98, BufferedImage.TYPE_INT_ARGB);
+
+            // dibujar el background en la nueva imagen
+            Graphics2D g = (Graphics2D) combined.getGraphics();
+            g.drawImage(backgroundImage, 0, 0, null);
+
+            // dibujar la imagen encima del background
+            g.drawImage(image, 68, 5, null);
+
+            // guardar la imagen combinada en un archivo
+            File outputFile = new File("src/main/java/com/proyecto/imagenes/combined.png");
+            ImageIO.write(combined, "png", outputFile);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
         }
     }
 

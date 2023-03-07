@@ -175,8 +175,8 @@ public class FrameMapa {
 
     private void moverPersonaje(KeyEvent e) {
         String[] subcadena = habitacionActual.getId().split(",");
-        int filaActual=Integer.parseInt(subcadena[0]);
-        int columnaActual=Integer.parseInt(subcadena[1]);
+        int filaActual = Integer.parseInt(subcadena[0]);
+        int columnaActual = Integer.parseInt(subcadena[1]);
         Habitacion nuevaCasilla = null;
 
         System.out.println(habitacionActual.getId());
@@ -211,44 +211,48 @@ public class FrameMapa {
                     }
                     break;
             }
-        }catch (IndexOutOfBoundsException exc) {
+        } catch (IndexOutOfBoundsException exc) {
             System.out.println(exc.getMessage());
         }
 
         // Si se encontró una nueva casilla válida, mover al personaje
-        if (nuevaCasilla != null && !nuevaCasilla.esPared() && !nuevaCasilla.esCasillaOcupada()) {
-            habitacionActual.setCasillaOcupada(false);
-            nuevaCasilla.setCasillaOcupada(true);
-            nuevaCasilla.setEsDescubierta(true);
-            habitacionActual.repaint();
-            habitacionActual = nuevaCasilla;
-            habitacionActual.repaint();
-            int x = columnaActual;
-            int y = filaActual;
-            String[] subcadenaNueva = nuevaCasilla.getId().split(",");
-            int filaNueva=Integer.parseInt(subcadenaNueva[0]);
-            int columnaNueva=Integer.parseInt(subcadenaNueva[1]);
-            if(filaNueva+1<=10){
-                mapa[filaNueva+1][columnaNueva].setEsCercana(true);
-                mapa[filaNueva+1][columnaNueva].repaint();
+        try {
+            if (nuevaCasilla != null && !nuevaCasilla.esPared() && !nuevaCasilla.esCasillaOcupada()) {
+                habitacionActual.setCasillaOcupada(false);
+                nuevaCasilla.setCasillaOcupada(true);
+                nuevaCasilla.setEsDescubierta(true);
+                habitacionActual.repaint();
+                habitacionActual = nuevaCasilla;
+                habitacionActual.repaint();
+                int x = columnaActual;
+                int y = filaActual;
+                String[] subcadenaNueva = nuevaCasilla.getId().split(",");
+                int filaNueva = Integer.parseInt(subcadenaNueva[0]);
+                int columnaNueva = Integer.parseInt(subcadenaNueva[1]);
+                if (filaNueva + 1 <= 10) {
+                    mapa[filaNueva + 1][columnaNueva].setEsCercana(true);
+                    mapa[filaNueva + 1][columnaNueva].repaint();
+                }
+                if (filaNueva - 1 >= 0) {
+                    mapa[filaNueva - 1][columnaNueva].setEsCercana(true);
+                    mapa[filaNueva - 1][columnaNueva].repaint();
+                }
+                if (columnaActual + 1 <= 10) {
+                    mapa[filaNueva][columnaNueva + 1].setEsCercana(true);
+                    mapa[filaNueva][columnaNueva + 1].repaint();
+                }
+                if (columnaActual - 1 >= 0) {
+                    mapa[filaNueva][columnaNueva - 1].setEsCercana(true);
+                    mapa[filaNueva][columnaNueva - 1].repaint();
+                }
+                // Si el personaje llegó a la meta, mostrar un mensaje de felicitación y cerrar el juego
+                if (habitacionActual.esMeta()) {
+                    JOptionPane.showMessageDialog(ventana, "¡Felicidades, has llegado a la meta!");
+                    ventana.dispose();
+                }
             }
-            if (filaNueva-1>=0){
-                mapa[filaNueva-1][columnaNueva].setEsCercana(true);
-                mapa[filaNueva-1][columnaNueva].repaint();
-            }
-            if (columnaActual+1<=10){
-                mapa[filaNueva][columnaNueva+1].setEsCercana(true);
-                mapa[filaNueva][columnaNueva+1].repaint();
-            }
-            if (columnaActual-1>=0){
-                mapa[filaNueva][columnaNueva-1].setEsCercana(true);
-                mapa[filaNueva][columnaNueva-1].repaint();
-            }
-            // Si el personaje llegó a la meta, mostrar un mensaje de felicitación y cerrar el juego
-            if (habitacionActual.esMeta()) {
-                JOptionPane.showMessageDialog(ventana, "¡Felicidades, has llegado a la meta!");
-                ventana.dispose();
-            }
+        }catch (IndexOutOfBoundsException exc) {
+            System.out.println(exc.getMessage());
         }
     }
     private void generarParedes() {

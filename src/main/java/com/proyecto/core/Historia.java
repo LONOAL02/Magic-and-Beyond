@@ -129,13 +129,13 @@ public class Historia {
     }
 
     public void addCuras(){
-        inventary.agregarItem(curas.curas50);
-        inventary.agregarItem(curas.curas100);
-        inventary.agregarItem(curas.curas200);
+        inventary.agregarItem(Curas.curas50);
+        inventary.agregarItem(Curas.curas100);
+        inventary.agregarItem(Curas.curas200);
     }
 
     public void addArma(){
-        inventary.agregarItem(arma.arma);
+        inventary.agregarItem(Armas.arma);
     }
 
     public void vaciarInventario(){
