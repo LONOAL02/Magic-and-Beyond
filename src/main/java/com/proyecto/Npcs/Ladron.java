@@ -12,14 +12,14 @@ public class Ladron extends NPCs{
                         " Ey tú, si tú, dame todo lo que tengas, no te resistas.\n");
 
             case 2:
-                dialogo = (" Observas ante ti un señor con una curiosa vestimenta. \n" +
-                        " El señor, con una voz rasgada te comenta: \n" +
-                        " Buenas viajero, soy Archibald Reinhard, mercader mundialmente conocido, requieres algo?\n");
+                dialogo = (" Observas ante ti un amenazante hombre con una máscara blanca. \n" +
+                        " El hombre, con una voz distorsionada te comenta: \n" +
+                        " Viajero, si no quieres que aquí acabe tu viaje, no opongas resistencia.\n");
 
             case 3:
-                dialogo = (" Un mercader mayor aparece ante ti. \n" +
-                        " El mercader te cuenta :\n" +
-                        " Buenas forastero, soy Archibald Reinhard, seguro que has oido hablar de mí, mis productos son de la mejor calidad, quieres comerciar algo?\n");
+                dialogo = (" Un desconocido con un cuchillo se aproxima a ti lentamente. \n" +
+                        " El desconocido te cuenta :\n" +
+                        " Forastero, entrégame todo o tendrás una muerte horrible.\n");
 
 
         }
@@ -30,29 +30,30 @@ public class Ladron extends NPCs{
         int opcion1ButtonL = (int) (Math.random() * 2 + 1);
         switch (opcion1ButtonL) {
             case 1:
-                //comprar Estus mediano 100 de oro
+                //Peleas contra él y si ganas consigues una reliquia exclusiva(Puedes intentar huir con un 50% de probabilidades)
 
 
                 break;
             case 2:
-                // comprar una reliquia que te da 75 de vida máxima por 150 de oro.
+                /*Intentas huir del ladrón con un 50% de probabilidades si fallas
+                 te comes un ataque de 100 de vida y entras en combate contra él sin ninguna recompensa */
         }
         int opcion2ButtonL = (int) (Math.random() * 2 + 1);
         switch (opcion2ButtonL) {
             case 1:
-                //le das una gran runa y te da una reliquia exclusiva que te da ganar +20% de oro en general.
+                //le das una reliquia aleatoria de tu inventario
                 break;
             case 2:
-                //te vende una reliquia aleatoria por 150 de oro.
+                //le das un arma aleatoria de tu inventario
                 break;
         }
         int opcion3ButtonL = (int) (Math.random() * 2 + 1);
         switch (opcion3ButtonL) {
             case 1:
-                //vendes una de tus reliquias aleatoriamente   por 100 de oro.
+                //le das todos tus estus
                 break;
             case 2:
-                //vendes una de tus armas aleatoriamente por 200 de oro.
+                /*le das todo tu oro */
                 break;
         }
 

@@ -43,8 +43,7 @@ public class Archibald extends NPCs {
                 //le das una gran runa y te da una reliquia exclusiva que te da ganar +20% de oro en general.
                 break;
             case 2:
-                //te vende una reliquia aleatoria por 150 de oro.
-                break;
+                //te vende una reliquia aleatoria por 150 de oro.               break;
         }
         int opcion3ButtonA = (int) (Math.random() * 2 + 1);
         switch (opcion3ButtonA) {
