@@ -1,9 +1,5 @@
 package com.proyecto.core;
 
-import com.proyecto.Npcs.NPCs;
-import com.proyecto.features.Inventario;
-import com.proyecto.inventario.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -124,7 +120,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth), JLabel.CENTER);
         playerDescription = new JTextArea();
         playerDescription.setOpaque(false);
-        playerDescription.setText(h.pj.toString());
+        playerDescription.setText(h.pj.toString()+"\nMana: "+h.pj.getMana());
         playerPanel.add(playerDescription,BorderLayout.CENTER);
         playerPanel.add(playerLabel, BorderLayout.NORTH);
         playerPanel.add(playerHealthLabel, BorderLayout.SOUTH);
@@ -237,8 +233,6 @@ public class FrameCombate extends JFrame implements ActionListener {
         setVisible(true);
 
         logTextArea.append("Te encuentras con "+h.enemy.nombre+"\n");
-        logTextArea.append("Te quedan: \n" + Curas.curas50.getCantidad() + " viales de 50"+"\n"+ Curas.curas100.getCantidad() + " viales de 100"+"\n"+ Curas.curas200.getCantidad() + " viales de 200"+"\n");
-
 
 
     }
@@ -269,12 +263,14 @@ public class FrameCombate extends JFrame implements ActionListener {
             String health = (String) healthComboBox.getSelectedItem();
             int elecCuras = calculateHealth(health);
             switch (elecCuras) {
-                case 1 -> playerHealth=(h.curas.curacion50(playerHealth, h.vidaMax));
-                case 2 -> playerHealth=(h.curas.curacion100(playerHealth, h.vidaMax));
-                case 3 -> playerHealth=(h.curas.curacion200(playerHealth, h.vidaMax));
+                case 1:
+                    playerHealth=(h.curas.curacion50(playerHealth, h.vidaMax));
+                case 2:
+                    playerHealth=(h.curas.curacion100(playerHealth, h.vidaMax));
+                case 3:
+                    playerHealth=(h.curas.curacion200(playerHealth, h.vidaMax));
             }
             playerHealthLabel.setText("HP: " + format1.format(playerHealth));
-            logTextArea.append("Te quedan: \n" + Curas.curas50.getCantidad() + " viales de 50"+"\n"+ Curas.curas100.getCantidad() + " viales de 100"+"\n"+ Curas.curas200.getCantidad() + " viales de 200"+"\n");
         }
         if (e.getSource() == seeButton) {
             String item = (String) inventoryComboBox.getSelectedItem();
@@ -282,24 +278,36 @@ public class FrameCombate extends JFrame implements ActionListener {
         }
         if (e.getSource() == useButton) {
             String item = (String) inventoryComboBox.getSelectedItem();
-            int uso=h.inventary.obtenerUso(item);
-            switch (uso){
-                case 0:
+            if (h.inventary.getCantidad(item)==0){
+                logTextArea.append("\nYa no te quedan\n");
+            }else {
+                int uso = h.inventary.getUso(item);
+                switch (uso) {
+                    case 0:
+                        break;
+                    case 1:
+                        h.arma.armaComun(h.arma.getNumArma(item));
+                        h.pj.setNumarma(h.arma.getNumArma(item));
+                        break;
+                    case 2:
+                        enemyHealth=h.hechizos.usarHechizo(item,enemyHealth);
+                        playerDescription.setText(h.pj.toString()+"\nMana: "+h.pj.getMana());
+                        logTextArea.append("\nUsas " + item + "\n");
+                        enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
 
-                case 1:
-                    h.arma.armaComun(h.arma.getNumArma(item));
-                    h.pj.setNumarma(h.arma.getNumArma(item));
-                case 2:
-                    Hechizos.usarHechizo(item);
-                case 3:
-                    DmgItems.hacerDaño(item,0);
-                case 4:
-
-                case 5:
-                    h.arma.armaComun(h.arma.getNumArma(item));
-                    h.pj.setNumarma(h.arma.getNumArma(item));
-                case 6:
-                   playerHealth=Curas.curarCantidad(h.pj.getVida(),h.vidaMax,Curas.getCantidad(item));
+                        break;
+                    case 3:
+                        enemyHealth=h.dmgI.hacerDaño(item, 0,enemyHealth);
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        playerHealth = h.curas.curarCantidad(playerHealth, h.vidaMax, h.curas.getCantidad(item));
+                        logTextArea.append("\nUsas " + item + " para curar " + h.curas.getCantidad(item) + " puntos de vida.\n");
+                        playerHealthLabel.setText("HP: " + format1.format(playerHealth));
+                        h.inventary.actualizarCantidad(h.curas.getCura(item), h.inventary.getCantidad(item)-1);
+                        break;
+                }
             }
         }
         if (e.getSource() == exitButton) {
@@ -357,6 +365,5 @@ public class FrameCombate extends JFrame implements ActionListener {
             }
         }
     }
-
 
 }

@@ -84,12 +84,28 @@ public class Inventario {
         return "item no encontrado";
     }
 
-    public int obtenerUso(String nombreBuscado) {
+    public int getUso(String nombreBuscado) {
         for (Item item : listaItems) {
             if (item.getNombre().equals(nombreBuscado)) {
                 return item.getUso();
             }
         }
         return 0;
+    }
+
+    public int getCantidad(String nombreBuscado) {
+        for (Item item : listaItems) {
+            if (item.getNombre().equals(nombreBuscado)) {
+                return item.getCantidad();
+            }
+        }
+        return 0;
+    }
+    public void limpiarInventario() {
+        for (Item item : listaItems) {
+            if (item.getCantidad() == 0) {
+                eliminarItem(item);
+            }
+        }
     }
 }

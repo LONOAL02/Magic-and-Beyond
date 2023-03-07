@@ -1,5 +1,6 @@
 package com.proyecto.Npcs;
 
+import com.proyecto.core.FrameCombate;
 import com.proyecto.inventario.Curas;
 
 public class Alex extends NPCs{
@@ -34,10 +35,10 @@ public class Alex extends NPCs{
         int opcion1Button = (int) (Math.random() * 2 + 1);
         switch (opcion1Button) {
             case 1:
-                h.pj.setVida(Curas.curarCantidad(h.pj.getVida(),h.vidaMax,(h.vidaMax*0.2f)));
+                FrameCombate.h.pj.setVida(FrameCombate.h.curas.curarCantidad(FrameCombate.h.pj.getVida(),FrameCombate.h.vidaMax,(FrameCombate.h.vidaMax*0.2f)));
                 break;
             case 2:
-                h.inventary.actualizarCantidad(h.curas.getCuras100(), h.curas.getCuras100().getCantidad()+1);
+                FrameCombate.h.inventary.actualizarCantidad(FrameCombate.h.curas.getCuras100(), FrameCombate.h.curas.getCuras100().getCantidad()+1);
                 break;
         }
     }

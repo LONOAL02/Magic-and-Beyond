@@ -4,7 +4,6 @@ import com.proyecto.core.FrameCombate;
 
 public class Armas {
 
-    public static Item arma = new Item();
     public String nombreArma;
     //Escalado de las armas
     public float escaladof;
@@ -39,7 +38,7 @@ public class Armas {
         this.calidad = calidad;
     }
 
-    public void armaComun(int num){
+    public Item armaComun(int num){
         int narma=num;
 
         switch (narma){
@@ -364,10 +363,12 @@ public class Armas {
                 break;
             default:
         }
+        Item arma = new Item();
         arma.setNombre(nombreArma);
         arma.setDescripcion(toString());
         arma.setCantidad(1);
         arma.setUso(Item.ARMA);
+        return arma;
     }
 
     public int getNumArma(String nombre){
