@@ -32,27 +32,36 @@ public class Vigilante extends NPCs{
             case 1:
                 //te regala una de sus armas, un arma exclusiva
 
-
                 break;
             case 2:
-                /*te da un hechizo, Ataúd negro: Cargas un poderoso rayo de la noche que hace un daño masivo a un solo enemigo  */
+                //te da un hechizo, Ataúd negro: Cargas un poderoso rayo de la noche que hace un daño masivo a un solo enemigo
+
         }
         int opcion2ButtonV = (int) (Math.random() * 2 + 1);
         switch (opcion2ButtonV) {
             case 1:
                 //le das una gran runa y te da una reliquia exclusiva que aumenta un 15% tu probabilidad de golpe crítico
+
                 break;
             case 2:
                 //te da una reliquia aleatoria
+
                 break;
         }
         int opcion3ButtonV = (int) (Math.random() * 2 + 1);
         switch (opcion3ButtonV) {
             case 1:
                 //entrenas con él y ganas 3 puntos de destreza
+                FrameNPC.h.pj.setDestreza(FrameNPC.h.pj.getDestreza()+3);
                 break;
             case 2:
-                /*Haces un duelo contra él y ganas 3 de experiencia y pierdes 75 de vida  */
+                //Haces un duelo contra él y ganas 3 de experiencia y pierdes 75 de vida
+                if (FrameNPC.h.pj.getVida()<=75){
+                    FrameNPC.op3Button.setEnabled(false);
+                }else {
+                    FrameNPC.h.pj.setXp(FrameNPC.h.pj.getXp()+3);
+                    FrameNPC.h.pj.setVida(FrameNPC.h.pj.getVida()-75);
+                }
                 break;
         }
 

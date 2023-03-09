@@ -15,6 +15,7 @@ public class Historia {
     //Nombre del personaje principal.
     public String nombrePJ;
     public float vidaMax;
+    public float manaMax;
     //Creo los objetos de las distintas clases.
     public PPrincipal pj = new PPrincipal();
     public PPrincipal pjSave;
@@ -52,8 +53,10 @@ public class Historia {
             do {
                 eleccion = scr.nextInt();
                 if (eleccion == 1) {
+                    pj.setNivel(1);
                     pj.setVida(1000);
                     pj.setMana(100);
+                    manaMax=100;
                     vidaMax = 1000;
                     pj.setFuerza(16);
                     pj.setDestreza(9);
@@ -61,8 +64,10 @@ public class Historia {
                     pj.setFe(8);
                 }
                 if (eleccion == 2) {
+                    pj.setNivel(1);
                     pj.setVida(850);
                     pj.setMana(150);
+                    manaMax=150;
                     vidaMax = 850;
                     pj.setFuerza(10);
                     pj.setDestreza(16);
@@ -70,8 +75,10 @@ public class Historia {
                     pj.setFe(8);
                 }
                 if (eleccion == 3) {
+                    pj.setNivel(1);
                     pj.setVida(700);
                     pj.setMana(300);
+                    manaMax=300;
                     vidaMax = 700;
                     pj.setFuerza(8);
                     pj.setDestreza(12);
@@ -79,8 +86,10 @@ public class Historia {
                     pj.setFe(7);
                 }
                 if (eleccion == 4) {
+                    pj.setNivel(1);
                     pj.setVida(700);
                     pj.setMana(300);
+                    manaMax=300;
                     vidaMax = 700;
                     pj.setFuerza(11);
                     pj.setDestreza(10);

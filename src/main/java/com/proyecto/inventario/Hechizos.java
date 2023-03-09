@@ -13,30 +13,59 @@ public class Hechizos {
     public Item lunaRanni = new Item("La luna oscura de Ranni.","Invocas una luna oscura y luego la arrojas a los enemigos.\n Coste: 110.\n Daño base: 300.",1,Item.HECHIZO);
 
     public float usarHechizo(String nombre, float vidaEnemy){
-        switch (nombre){
-            case ("El grito de Greyol."):
-                FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana()-30);
-                return FrameCombate.h.dmgI.hacerDaño(nombre,((FrameCombate.h.pj.getInteligencia()/100+1))*100,vidaEnemy);
-            case ("Llama del Dios Cruel."):
-                FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana()-35);
-                return FrameCombate.h.dmgI.hacerDaño(nombre,((FrameCombate.h.pj.getInteligencia()/100+1))*120,vidaEnemy);
-            case ("Cometa azur."):
-                FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana()-70);
-                return FrameCombate.h.dmgI.hacerDaño(nombre,((FrameCombate.h.pj.getInteligencia()/100+1))*200,vidaEnemy);
-            case ("Estrellas de perdición."):
-                FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana()-20);
-                return FrameCombate.h.dmgI.hacerDaño(nombre,((FrameCombate.h.pj.getInteligencia()/100+1))*80,vidaEnemy);
-            case ("Estrellas de Elden."):
-                FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana()-90);
-                return FrameCombate.h.dmgI.hacerDaño(nombre,((FrameCombate.h.pj.getInteligencia()/100+1))*290,vidaEnemy);
-            case ("Lluvia de estrellas primigenias."):
-                FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana()-55);
-                return FrameCombate.h.dmgI.hacerDaño(nombre,((FrameCombate.h.pj.getInteligencia()/100+1))*175,vidaEnemy);
-            case ("La luna oscura de Ranni."):
-                FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana()-110);
-                return FrameCombate.h.dmgI.hacerDaño(nombre,((FrameCombate.h.pj.getInteligencia()/100+1))*300,vidaEnemy);
-            default:
+        switch (nombre) {
+            case ("El grito de Greyol.") -> {
+                if (FrameCombate.h.pj.getMana() - 30 < 0) {
+                    return vidaEnemy;
+                } else
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 30);
+                return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 100, vidaEnemy);
+            }
+            case ("Llama del Dios Cruel.") -> {
+                if (FrameCombate.h.pj.getMana() - 35 < 0) {
+                    return vidaEnemy;
+                } else
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 35);
+                return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 120, vidaEnemy);
+            }
+            case ("Cometa azur.") -> {
+                if (FrameCombate.h.pj.getMana() - 70 < 0) {
+                    return vidaEnemy;
+                } else
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 70);
+                return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 200, vidaEnemy);
+            }
+            case ("Estrellas de perdición.") -> {
+                if (FrameCombate.h.pj.getMana() - 20 < 0) {
+                    return vidaEnemy;
+                } else
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 20);
+                return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 80, vidaEnemy);
+            }
+            case ("Estrellas de Elden.") -> {
+                if (FrameCombate.h.pj.getMana() - 90 < 0) {
+                    return vidaEnemy;
+                } else
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 90);
+                return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 290, vidaEnemy);
+            }
+            case ("Lluvia de estrellas primigenias.") -> {
+                if (FrameCombate.h.pj.getMana() - 55 < 0) {
+                    return vidaEnemy;
+                } else
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 55);
+                return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 175, vidaEnemy);
+            }
+            case ("La luna oscura de Ranni.") -> {
+                if (FrameCombate.h.pj.getMana() - 110 < 0) {
+                    return vidaEnemy;
+                } else
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 110);
+                return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 300, vidaEnemy);
+            }
+            default -> {
                 return vidaEnemy;
+            }
         }
     }
 

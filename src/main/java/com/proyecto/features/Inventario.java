@@ -93,6 +93,16 @@ public class Inventario {
         return 0;
     }
 
+    public ArrayList<Item> getListaPorUso(int uso){
+        ArrayList<Item> listaPorUso = new ArrayList<>();
+        for (Item item : listaItems){
+            if (item.getUso()==uso){
+                listaPorUso.add(item);
+            }
+        }
+        return listaPorUso;
+    }
+
     public int getCantidad(String nombreBuscado) {
         for (Item item : listaItems) {
             if (item.getNombre().equals(nombreBuscado)) {

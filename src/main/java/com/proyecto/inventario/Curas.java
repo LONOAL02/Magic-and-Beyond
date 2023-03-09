@@ -87,7 +87,7 @@ public class Curas {
                 return vidaPj+cantidad;
         }
 
-    public float getCantidad(String nombre){
+    public int getCantidad(String nombre){
         switch (nombre){
             case ("Estus pequeño"):
                 return 50;

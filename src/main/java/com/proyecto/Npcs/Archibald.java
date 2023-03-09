@@ -1,5 +1,10 @@
 package com.proyecto.Npcs;
 
+import com.proyecto.inventario.Item;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Archibald extends NPCs {
     public static String metodo1Archibald() {
         nombre = "Archibald Reinhard";
@@ -44,9 +49,9 @@ public class Archibald extends NPCs {
             case 3:
             switch (elec) {
                 case 1:
-                //vendes una de tus reliquias aleatoriamente   por 100 de oro.
+                return "Vende una de tus reliquias aleatoriamente por 200 de oro.";
                 case 2:
-                //vendes una de tus armas aleatoriamente por 200 de oro.
+                return "Vende una de tus armas aleatoriamente por 100 de oro.";
         }
             default:
                 return "Error";
@@ -55,6 +60,8 @@ public class Archibald extends NPCs {
 
 
     public static void metodo3Archibald(int elec1, int elec2, int elec3) {
+        ArrayList<Item> listaItems;
+        Random randomN = new Random();
         switch (elec1) {
             case 1:
                 //comprar Estus mediano 100 de oro
@@ -73,14 +80,29 @@ public class Archibald extends NPCs {
                 //le das una gran runa y te da una reliquia exclusiva que te da ganar +20% de oro en general.
                 break;
             case 2:
-                //te vende una reliquia aleatoria por 150 de oro.               break;
+                //te vende una reliquia aleatoria por 150 de oro.
+                break;
         }
         switch (elec3) {
             case 1:
-                //vendes una de tus reliquias aleatoriamente   por 100 de oro.
+                //vendes una de tus reliquias aleatoriamente por 200 de oro.
+                listaItems=FrameNPC.h.inventary.getListaPorUso(Item.RELIQUIA);
+                if (listaItems.isEmpty()){
+                    FrameNPC.op3Button.setEnabled(false);
+                }else {
+                    FrameNPC.h.inventary.eliminarItem(listaItems.get(randomN.nextInt(listaItems.size() - 1)));
+                    FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.oro.getOro(), FrameNPC.h.oro.getOro().getCantidad()+200);
+                }
                 break;
             case 2:
-                //vendes una de tus armas aleatoriamente por 200 de oro.
+                //vendes una de tus armas aleatoriamente por 100 de oro.
+                listaItems=FrameNPC.h.inventary.getListaPorUso(Item.ARMA);
+                if (listaItems.size()==1){
+                    FrameNPC.op3Button.setEnabled(false);
+                }else {
+                    FrameNPC.h.inventary.eliminarItem(listaItems.get(randomN.nextInt(listaItems.size() - 1)));
+                    FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.oro.getOro(), FrameNPC.h.oro.getOro().getCantidad()+100);
+                }
                 break;
         }
 

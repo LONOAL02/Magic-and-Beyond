@@ -1,7 +1,5 @@
 package com.proyecto.Npcs;
 
-import com.proyecto.core.FrameCombate;
-import com.proyecto.inventario.Curas;
 
 public class Alex extends NPCs{
 
@@ -35,10 +33,12 @@ public class Alex extends NPCs{
         int opcion1Button = (int) (Math.random() * 2 + 1);
         switch (opcion1Button) {
             case 1:
-                // Cura un 20% de la vida
+                //cura un 20% de la vida
+                FrameNPC.h.pj.setVida(FrameNPC.h.pj.getVida()+(FrameNPC.h.vidaMax*0.2f));
                 break;
             case 2:
                 //obten un estus mediano
+                FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.curas.getCuras100(), FrameNPC.h.curas.getCantidad("Estus mediano")+1);
                 break;
         }
         int opcion2Button = (int) (Math.random() * 2 + 1);
@@ -54,9 +54,11 @@ public class Alex extends NPCs{
         switch (opcion3Button) {
             case 1:
                 //rezas solo y ganas 2 puntos de experiencia
+                FrameNPC.h.pj.setXp(FrameNPC.h.pj.getXp()+2);
                 break;
             case 2:
                 //rezas con él y ganas 50 de vida maxima
+                FrameNPC.h.vidaMax=FrameNPC.h.vidaMax+50;
                 break;
         }
     }

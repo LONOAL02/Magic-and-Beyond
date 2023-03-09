@@ -30,6 +30,8 @@ public class Damian extends NPCs{
         switch (opcion1ButtonD) {
             case 1:
                 // haces un duelo contra él, te hace 100 de daño pero ganas 4 puntos de experiencia.
+                FrameNPC.h.pj.setVida(FrameNPC.h.pj.getVida()-100);
+                FrameNPC.h.pj.setXp(FrameNPC.h.pj.getXp()+4);
                 break;
             case 2:
                // te regala una de sus armas, un arma exclusiva.
@@ -47,9 +49,12 @@ public class Damian extends NPCs{
         switch (opcion3ButtonD) {
             case 1:
                 //entrenas solo y ganas +2 a repartir en tus estadisticas y 1 de experiencia.
+                FrameNPC.h.pj.setPuntosMejora(FrameNPC.h.pj.getPuntosMejora()+2);
+                FrameNPC.h.pj.setXp(FrameNPC.h.pj.getXp()+1);
                 break;
             case 2:
                 //entrenas con él y ganas +4 a repartir en tus estadisticas.
+                FrameNPC.h.pj.setPuntosMejora(FrameNPC.h.pj.getPuntosMejora()+4);
                 break;
         }
 
