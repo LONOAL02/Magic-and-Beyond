@@ -1,5 +1,7 @@
 package com.proyecto.Npcs;
 
+import java.util.Random;
+
 public class Diana extends NPCs {
     public static String metodo1Hechizera() {
         nombre = "Diana Harkness";
@@ -32,10 +34,11 @@ public class Diana extends NPCs {
             case 1:
                 //te regala un hechizo aleatorio
 
-
                 break;
             case 2:
-                /*aumenta tu mana maximo en 20  */
+                //aumenta tu mana maximo en 20
+                FrameNPC.h.manaMax=FrameNPC.h.manaMax+20;
+                break;
         }
         int opcion2ButtonD = (int) (Math.random() * 2 + 1);
         switch (opcion2ButtonD) {
@@ -53,6 +56,13 @@ public class Diana extends NPCs {
                 break;
             case 2:
                 /*Te ayuda a mejorar en tu control de tu magia, aumenta +4 tu estadistica de fé o inteligencia */
+                Random random = new Random();
+                int randomN = Math.round(random.nextFloat());
+                if (randomN==0){
+                    FrameNPC.h.pj.setInteligencia(FrameNPC.h.pj.getInteligencia()+4);
+                }else {
+                    FrameNPC.h.pj.setFe(FrameNPC.h.pj.getFe()+4);
+                }
                 break;
         }
 

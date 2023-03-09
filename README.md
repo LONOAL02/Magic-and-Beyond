@@ -11,9 +11,9 @@
 
 - [ ] Librerias
 
-- [ ] Roguelike(posibilidad de continuar)
+- [x] Roguelike(posibilidad de continuar)
 
-- [ ] Mapa
+- [x] Mapa
 
 - [ ] Eventos Aleatorios
 

@@ -3,9 +3,8 @@ package com.proyecto.core;
 import com.proyecto.features.Combate;
 import com.proyecto.features.GuardadoObj;
 import com.proyecto.features.Inventario;
+import com.proyecto.inventario.*;
 import com.proyecto.personajes.Enemigos;
-import com.proyecto.inventario.Armas;
-import com.proyecto.inventario.Curas;
 import com.proyecto.personajes.PPrincipal;
 
 import java.io.*;
@@ -16,6 +15,7 @@ public class Historia {
     //Nombre del personaje principal.
     public String nombrePJ;
     public float vidaMax;
+    public float manaMax;
     //Creo los objetos de las distintas clases.
     public PPrincipal pj = new PPrincipal();
     public PPrincipal pjSave;
@@ -24,7 +24,12 @@ public class Historia {
     public Combate combate = new Combate();
     public Enemigos enemy = new Enemigos();
     public Curas curas = new Curas();
+    public BuffItems buffI = new BuffItems();
+    public DmgItems dmgI = new DmgItems();
+    public Hechizos hechizos = new Hechizos();
+    public Reliquias reliq = new Reliquias();
     public Inventario inventary = new Inventario();
+    public Oro oro = new Oro();
 
     //Inicio del juego, pide el nombre del pj.
     public void inicioJuego() {
@@ -40,15 +45,18 @@ public class Historia {
 
             int eleccion = 0;
             System.out.println("Escoge tu clase: ");
-            System.out.println("1. Heroe: " + "\n" + "Vida: 1000" + "\n" + "Fuerza: 16" + "\n" + "Destreza: 9" + "\n" + "Inteligencia: 7" + "\n" + "Fe: 8");
-            System.out.println("2. Guerrero: " + "\n" + "Vida: 850" + "\n" + "Fuerza: 10" + "\n" + "Destreza: 16" + "\n" + "Inteligencia: 10" + "\n" + "Fe: 8");
-            System.out.println("3. Astrólogo: " + "\n" + "Vida: 700" + "\n" + "Fuerza: 8" + "\n" + "Destreza: 12" + "\n" + "Inteligencia: 16" + "\n" + "Fe: 7");
-            System.out.println("4. Profeta: " + "\n" + "Vida: 700" + "\n" + "Fuerza: 11" + "\n" + "Destreza: 10" + "\n" + "Inteligencia: 7" + "\n" + "Fe: 16");
+            System.out.println("1. Heroe: " + "\n" + "Vida: 1000" + "\n" + "Mana: 100" + "\n" + "Fuerza: 16" + "\n" + "Destreza: 9" + "\n" + "Inteligencia: 7" + "\n" + "Fe: 8");
+            System.out.println("2. Guerrero: " + "\n" + "Vida: 850" + "\n" + "Mana: 150" + "\n" + "Fuerza: 10" + "\n" + "Destreza: 16" + "\n" + "Inteligencia: 10" + "\n" + "Fe: 8");
+            System.out.println("3. Astrólogo: " + "\n" + "Vida: 700" + "\n" + "Mana: 300" + "\n" + "Fuerza: 8" + "\n" + "Destreza: 12" + "\n" + "Inteligencia: 16" + "\n" + "Fe: 7");
+            System.out.println("4. Profeta: " + "\n" + "Vida: 700" + "\n" + "Mana: 300" + "\n" + "Fuerza: 11" + "\n" + "Destreza: 10" + "\n" + "Inteligencia: 7" + "\n" + "Fe: 16");
             //Pide la eleccion de la clase a traves de un scanner.
             do {
                 eleccion = scr.nextInt();
                 if (eleccion == 1) {
+                    pj.setNivel(1);
                     pj.setVida(1000);
+                    pj.setMana(100);
+                    manaMax=100;
                     vidaMax = 1000;
                     pj.setFuerza(16);
                     pj.setDestreza(9);
@@ -56,7 +64,10 @@ public class Historia {
                     pj.setFe(8);
                 }
                 if (eleccion == 2) {
+                    pj.setNivel(1);
                     pj.setVida(850);
+                    pj.setMana(150);
+                    manaMax=150;
                     vidaMax = 850;
                     pj.setFuerza(10);
                     pj.setDestreza(16);
@@ -64,7 +75,10 @@ public class Historia {
                     pj.setFe(8);
                 }
                 if (eleccion == 3) {
+                    pj.setNivel(1);
                     pj.setVida(700);
+                    pj.setMana(300);
+                    manaMax=300;
                     vidaMax = 700;
                     pj.setFuerza(8);
                     pj.setDestreza(12);
@@ -72,7 +86,10 @@ public class Historia {
                     pj.setFe(7);
                 }
                 if (eleccion == 4) {
+                    pj.setNivel(1);
                     pj.setVida(700);
+                    pj.setMana(300);
+                    manaMax=300;
                     vidaMax = 700;
                     pj.setFuerza(11);
                     pj.setDestreza(10);
@@ -83,7 +100,6 @@ public class Historia {
             pjSave = new PPrincipal(pj.getNombre(),pj.getVida(), pj.getAtaque(), pj.getVelAtaque(), pj.getMana(),pj.getNivel(),pj.getNumarma(),pj.getFuerza(),pj.getDestreza(),pj.getInteligencia(),pj.getFe());
             GuardadoObj.guardarObjeto(pjSave);
             eleccionArma();
-            addArma();
             addCuras();
             inventary.guardarInventario();
         }else {
@@ -109,16 +125,17 @@ public class Historia {
         do {
             eleccion = scr.nextInt();
             if (eleccion == 1) {
-                arma.armaComun(num1);
+                inventary.agregarItem(arma.armaComun(num1));
                 pj.numarma = num1;
             } else if (eleccion == 2) {
-                arma.armaComun(num2);
+                inventary.agregarItem(arma.armaComun(num2));
                 pj.numarma = num2;
             } else if (eleccion == 3) {
-                arma.armaComun(num3);
+                inventary.agregarItem(arma.armaComun(num3));
                 pj.numarma = num2;
             }
         } while (eleccion < 1 | eleccion > 3);
+        inventary.guardarInventario();
     }
 
 
@@ -129,14 +146,11 @@ public class Historia {
     }
 
     public void addCuras(){
-        inventary.agregarItem(Curas.curas50);
-        inventary.agregarItem(Curas.curas100);
-        inventary.agregarItem(Curas.curas200);
+        inventary.agregarItem(curas.curas50);
+        inventary.agregarItem(curas.curas100);
+        inventary.agregarItem(curas.curas200);
     }
 
-    public void addArma(){
-        inventary.agregarItem(Armas.arma);
-    }
 
     public void vaciarInventario(){
         inventary.vaciarInventario();

@@ -10,6 +10,8 @@ public class PPrincipal extends Personajes implements Serializable {
     public float destreza;
     public float inteligencia;
     public float fe;
+    public int xp;
+    public int puntosMejora;
 
 
     public PPrincipal(String nombre, float vida, float ataque, float velAtaque, float mana, float nivel, float numarma, float fuerza, float destreza, float inteligencia, float fe) {
@@ -83,6 +85,22 @@ public class PPrincipal extends Personajes implements Serializable {
 
     public void setNumarma(float numarma) {
         this.numarma = numarma;
+    }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
+    public int getPuntosMejora() {
+        return puntosMejora;
+    }
+
+    public void setPuntosMejora(int puntosMejora) {
+        this.puntosMejora = puntosMejora;
     }
 
     @Override
