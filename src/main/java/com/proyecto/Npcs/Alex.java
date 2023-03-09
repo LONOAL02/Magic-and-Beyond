@@ -35,10 +35,28 @@ public class Alex extends NPCs{
         int opcion1Button = (int) (Math.random() * 2 + 1);
         switch (opcion1Button) {
             case 1:
-                FrameNPC.h.pj.setVida(FrameNPC.h.curas.curarCantidad(FrameNPC.h.pj.getVida(),FrameNPC.h.vidaMax,(FrameNPC.h.vidaMax*0.2f)));
+                // Cura un 20% de la vida
                 break;
             case 2:
-                FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.curas.getCuras100(), FrameNPC.h.curas.getCuras100().getCantidad()+1);
+                //obten un estus mediano
+                break;
+        }
+        int opcion2Button = (int) (Math.random() * 2 + 1);
+        switch (opcion2Button) {
+            case 1:
+                //le das una gran runa y te da una reliquia exclusiva que te cura un 10% de vida por turno
+                break;
+            case 2:
+                //te da una reliquia aleatoria
+                break;
+        }
+        int opcion3Button = (int) (Math.random() * 2 + 1);
+        switch (opcion3Button) {
+            case 1:
+                //rezas solo y ganas 2 puntos de experiencia
+                break;
+            case 2:
+                //rezas con él y ganas 50 de vida maxima
                 break;
         }
     }
