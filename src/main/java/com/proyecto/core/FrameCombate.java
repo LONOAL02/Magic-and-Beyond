@@ -279,15 +279,17 @@ public class FrameCombate extends JFrame implements ActionListener {
         if (e.getSource() == useButton) {
             String item = (String) inventoryComboBox.getSelectedItem();
             if (h.inventary.getCantidad(item)==0){
-                logTextArea.append("\nYa no te quedan\n");
+                logTextArea.append("\nYa no te quedan.\n");
             }else {
                 int uso = h.inventary.getUso(item);
                 switch (uso) {
                     case 0:
+                        logTextArea.append("\nEse item no se puede usar.\n");
                         break;
                     case 1:
                         h.arma.armaComun(h.arma.getNumArma(item));
                         h.pj.setNumarma(h.arma.getNumArma(item));
+                        logTextArea.append("Ahora estas usando: "+item+".");
                         break;
                     case 2:
                         enemyHealth=h.hechizos.usarHechizo(item,enemyHealth);
@@ -297,7 +299,11 @@ public class FrameCombate extends JFrame implements ActionListener {
 
                         break;
                     case 3:
+                        float vidaAntes= enemyHealth;
                         enemyHealth=h.dmgI.hacerDaño(item, 0,enemyHealth);
+                        logTextArea.append("\nUsas " + item + " para hacer " + (vidaAntes-enemyHealth) + " de daño.\n");
+                        enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
+                        h.inventary.actualizarCantidad(h.dmgI.getDmgI(item), h.inventary.getCantidad(item)-1);
                         break;
                     case 4:
                         break;
@@ -306,6 +312,9 @@ public class FrameCombate extends JFrame implements ActionListener {
                         logTextArea.append("\nUsas " + item + " para curar " + h.curas.getCantidad(item) + " puntos de vida.\n");
                         playerHealthLabel.setText("HP: " + format1.format(playerHealth));
                         h.inventary.actualizarCantidad(h.curas.getCura(item), h.inventary.getCantidad(item)-1);
+                        break;
+                    case 6:
+                        logTextArea.append("\nNo parece hacer nada.\n");
                         break;
                 }
             }

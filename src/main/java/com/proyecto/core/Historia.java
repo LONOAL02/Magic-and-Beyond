@@ -28,6 +28,7 @@ public class Historia {
     public Hechizos hechizos = new Hechizos();
     public Reliquias reliq = new Reliquias();
     public Inventario inventary = new Inventario();
+    public Oro oro = new Oro();
 
     //Inicio del juego, pide el nombre del pj.
     public void inicioJuego() {

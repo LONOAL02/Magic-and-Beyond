@@ -35,10 +35,10 @@ public class Alex extends NPCs{
         int opcion1Button = (int) (Math.random() * 2 + 1);
         switch (opcion1Button) {
             case 1:
-                FrameCombate.h.pj.setVida(FrameCombate.h.curas.curarCantidad(FrameCombate.h.pj.getVida(),FrameCombate.h.vidaMax,(FrameCombate.h.vidaMax*0.2f)));
+                FrameNPC.h.pj.setVida(FrameNPC.h.curas.curarCantidad(FrameNPC.h.pj.getVida(),FrameNPC.h.vidaMax,(FrameNPC.h.vidaMax*0.2f)));
                 break;
             case 2:
-                FrameCombate.h.inventary.actualizarCantidad(FrameCombate.h.curas.getCuras100(), FrameCombate.h.curas.getCuras100().getCantidad()+1);
+                FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.curas.getCuras100(), FrameNPC.h.curas.getCuras100().getCantidad()+1);
                 break;
         }
     }

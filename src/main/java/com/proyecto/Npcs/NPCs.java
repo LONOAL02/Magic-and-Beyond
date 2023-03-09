@@ -4,6 +4,7 @@ import com.proyecto.core.Historia;
 
 public class NPCs {
 
+
     public static String nombre;
     public static String profesion;
     public static String dialogo;

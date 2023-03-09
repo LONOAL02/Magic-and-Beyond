@@ -1,5 +1,7 @@
 package com.proyecto.Npcs;
 
+import com.proyecto.core.Historia;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,18 +9,27 @@ import java.awt.event.ActionListener;
 import java.util.EventObject;
 
 public class FrameNPC extends JFrame implements ActionListener {
+
+    public static Historia h = new Historia();
     private JPanel imagenPj;
     private JPanel textYButtonsPanel;
     private JPanel NpcPanel;
     private JTextArea NpcDialog;
-    private JButton op1Button;
-    private JButton op2Button;
-    private JButton op3Button;
-    private JButton button1;
+    public static JButton op1Button;
+    public static JButton op2Button;
+    public static JButton op3Button;
 
-    // @Override
-    //public void actionPerformed(ActionEvent e) {
 
+
+    public static Historia save(Historia h1){
+        h = h1;
+        return h;
+    }
+
+    public static Historia update(Historia h1){
+        h1 = h;
+        return h1;
+    }
 
 
     private static class JPanelWithBackground extends JPanel {
