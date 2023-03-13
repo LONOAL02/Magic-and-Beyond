@@ -39,29 +39,46 @@ public class FrameNPC extends JFrame implements ActionListener {
         public String NpcAleatorio(){
 
             int numNpc;
+            int numOp1 = (int) (Math.random() * 2 + 1);
+            int numOp2 = (int) (Math.random() * 2 + 1);
+            int numOp3 = (int) (Math.random() * 2 + 1);
             numNpc=(int) (Math.random() * 6 + 1);
             switch (numNpc) {
                 case 1:
                     npc="Alex";
-
+                    op1Button.setText(Alex.metodo2Alex(1,numOp1));
+                    op2Button.setText(Alex.metodo2Alex(2,numOp2));
+                    op3Button.setText(Alex.metodo2Alex(3,numOp3));
                     break;
                 case 2:
                     npc="Archibald";
+                    op1Button.setText(Archibald.metodo2Archibald(1,numOp1));
+                    op2Button.setText(Archibald.metodo2Archibald(2,numOp2));
+                    op3Button.setText(Archibald.metodo2Archibald(3,numOp3));
                     break;
                 case 3:
                     npc="Damian";
+                    op1Button.setText(Damian.metodo2Damian(1,numOp1));
+                    op2Button.setText(Damian.metodo2Damian(2,numOp2));
+                    op3Button.setText(Damian.metodo2Damian(3,numOp3));
                     break;
                 case 4:
                     npc="Diana";
-
+                    op1Button.setText(Diana.metodo2Hechizera(1,numOp1));
+                    op2Button.setText(Diana.metodo2Hechizera(2,numOp2));
+                    op3Button.setText(Diana.metodo2Hechizera(3,numOp3));
                     break;
                 case 5:
                     npc="Ladrón";
-
+                    op1Button.setText(Ladron.metodo2Ladron(1,numOp1));
+                    op2Button.setText(Ladron.metodo2Ladron(2,numOp2));
+                    op3Button.setText(Ladron.metodo2Ladron(3,numOp3));
                     break;
                 case 6:
                     npc="Vigilante";
-
+                    op1Button.setText(Vigilante.metodo2Vigilante(1,numOp1));
+                    op2Button.setText(Vigilante.metodo2Vigilante(2,numOp2));
+                    op3Button.setText(Vigilante.metodo2Vigilante(3,numOp3));
                     break;
             }
             return npc;
@@ -104,8 +121,12 @@ public class FrameNPC extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         NpcPanel= new JPanel();
-        op1Button=new JButton("Presentarse");
+        op1Button=new JButton();
+        op2Button=new JButton();
+        op3Button=new JButton();
         op1Button.addActionListener(this);
+        op2Button.addActionListener(this);
+        op3Button.addActionListener(this);
         textYButtonsPanel =new JPanel();
         textYButtonsPanel.setLayout(new BorderLayout());
         textYButtonsPanel.setPreferredSize(new Dimension(717,720));
