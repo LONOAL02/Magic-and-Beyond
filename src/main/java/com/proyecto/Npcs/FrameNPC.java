@@ -1,6 +1,7 @@
 package com.proyecto.Npcs;
 
 import com.proyecto.core.Historia;
+import com.proyecto.inventario.Item;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,7 @@ import java.util.EventObject;
 public class FrameNPC extends JFrame implements ActionListener {
 
     public static Historia h = new Historia();
+
     private JPanel imagenPj;
     private JPanel textYButtonsPanel;
     private JPanel NpcPanel;
@@ -33,6 +35,37 @@ public class FrameNPC extends JFrame implements ActionListener {
 
 
     private static class JPanelWithBackground extends JPanel {
+        String npc;
+        public String NpcAleatorio(){
+
+            int numNpc;
+            numNpc=(int) (Math.random() * 6 + 1);
+            switch (numNpc) {
+                case 1:
+                    npc="Alex";
+
+                    break;
+                case 2:
+                    npc="Archibald";
+                    break;
+                case 3:
+                    npc="Damian";
+                    break;
+                case 4:
+                    npc="Diana";
+
+                    break;
+                case 5:
+                    npc="Ladrón";
+
+                    break;
+                case 6:
+                    npc="Vigilante";
+
+                    break;
+            }
+            return npc;
+        }
 
         private Image background;
 

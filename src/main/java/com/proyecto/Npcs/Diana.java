@@ -27,8 +27,35 @@ public class Diana extends NPCs {
         }
         return dialogo;
     }
+    public static String metodo2Hechizera(int boton, int elec) {
+        switch (boton){
+            case 1:
+                switch (elec) {
+                    case 1:
+                        return "Te regala un hechizo aleatorio.";
+                    case 2:
+                        return " Aumenta tu mana maximo en 20.";
+                }
+            case 2:
+                switch (elec) {
+                    case 1:
+                        return "Le das una gran runa y te da una reliquia exclusiva que reduce a la mitad el coste de mana de tus hechizos.";
+                    case 2:
+                        return "Te da una reliquia aleatoria.";
+                }
+            case 3:
+                switch (elec) {
+                    case 1:
+                        return "Te da un hechizo poderoso.";
+                    case 2:
+                        return "Te ayuda a mejorar en tu control de tu magia, aumenta +4 tu estadística de fé o inteligencia.";
+                }
+            default:
+                return "Error";
+        }
+    }
 
-    public static void metodo2Hechizera() {
+    public static void metodo3Hechizera() {
         int opcion1ButtonD = (int) (Math.random() * 2 + 1);
         switch (opcion1ButtonD) {
             case 1:

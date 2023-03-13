@@ -28,8 +28,35 @@ public class Alex extends NPCs{
         }
         return "error";
     }
+    public static String metodo2Alex(int boton, int elec) {
+        switch (boton){
+            case 1:
+                switch (elec) {
+                    case 1:
+                        return "Te cura un 20% de la vida.";
+                    case 2:
+                        return " Obtén un estus mediano.";
+                }
+            case 2:
+                switch (elec) {
+                    case 1:
+                        return "Le das una gran runa y te da una reliquia exclusiva que te cura un 10% de vida por turno).";
+                    case 2:
+                        return "Te da una reliquia aleatoria.";
+                }
+            case 3:
+                switch (elec) {
+                    case 1:
+                        return "Rezas solo y ganas 2 puntos de experiencia";
+                    case 2:
+                        return "Rezas con él y ganas 50 de vida maxima.";
+                }
+            default:
+                return "Error";
+        }
+    }
 
-    public static void metodo2Alex() {
+    public static void metodo3Alex() {
         int opcion1Button = (int) (Math.random() * 2 + 1);
         switch (opcion1Button) {
             case 1:

@@ -25,7 +25,34 @@ public class Damian extends NPCs{
         }
         return dialogo;
     }
-    public static void metodo2Damian() {
+    public static String metodo2Damian(int boton, int elec) {
+        switch (boton){
+            case 1:
+                switch (elec) {
+                    case 1:
+                        return "Haces un duelo contra él, te hace 100 de daño pero ganas 4 puntos de experiencia.";
+                    case 2:
+                        return " Te regala una de sus armas, un arma exclusiva.";
+                }
+            case 2:
+                switch (elec) {
+                    case 1:
+                        return "Le das una gran runa y te da una reliquia exclusiva que te da golpe doble(puedes atacar dos veces por turno).";
+                    case 2:
+                        return "Te da una reliquia aleatoria.";
+                }
+            case 3:
+                switch (elec) {
+                    case 1:
+                        return "Entrenas solo y ganas +2 a repartir en tus estadisticas y 1 de experiencia.";
+                    case 2:
+                        return "Entrenas con él y ganas +4 a repartir en tus estadísticas.";
+                }
+            default:
+                return "Error";
+        }
+    }
+    public static void metodo3Damian() {
         int opcion1ButtonD = (int) (Math.random() * 2 + 1);
         switch (opcion1ButtonD) {
             case 1:

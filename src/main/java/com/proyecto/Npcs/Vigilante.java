@@ -25,8 +25,34 @@ public class Vigilante extends NPCs{
         }
         return dialogo;
     }
-
-    public static void metodo2Vigilante() {
+    public static String metodo2Vigilante(int boton, int elec) {
+        switch (boton){
+            case 1:
+                switch (elec) {
+                    case 1:
+                        return "Te regala una de sus armas, un arma exclusiva.";
+                    case 2:
+                        return " Te da un hechizo, Ataúd negro: Cargas un poderoso rayo de la noche que hace un daño masivo a un solo enemigo.";
+                }
+            case 2:
+                switch (elec) {
+                    case 1:
+                        return "Le das una gran runa y te da una reliquia exclusiva que aumenta un 15% tu probabilidad de golpe crítico.";
+                    case 2:
+                        return "Te da una reliquia aleatoria.";
+                }
+            case 3:
+                switch (elec) {
+                    case 1:
+                        return "Entrenas con él y ganas 3 puntos de destreza.";
+                    case 2:
+                        return "Haces un duelo contra él y ganas 3 de experiencia y pierdes 75 de vida.";
+                }
+            default:
+                return "Error";
+        }
+    }
+    public static void metodo3Vigilante() {
         int opcion1ButtonV = (int) (Math.random() * 2 + 1);
         switch (opcion1ButtonV) {
             case 1:
