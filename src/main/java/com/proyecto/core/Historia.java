@@ -30,6 +30,7 @@ public class Historia {
     public Reliquias reliq = new Reliquias();
     public Inventario inventary = new Inventario();
     public Oro oro = new Oro();
+    public GrandesRunas granRuna = new GrandesRunas();
 
     //Inicio del juego, pide el nombre del pj.
     public void inicioJuego() {

@@ -60,29 +60,45 @@ public class Diana extends NPCs {
         switch (opcion1ButtonD) {
             case 1:
                 //te regala un hechizo aleatorio
-
+                int numHechizo= (int) (Math.random() * 4 + 1);;
+                FrameNPC.h.inventary.agregarItem(FrameNPC.h.hechizos.getHechizoBase(numHechizo));
+                FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.hechizos.getHechizoBase(numHechizo), 1);
                 break;
             case 2:
                 //aumenta tu mana maximo en 20
-                FrameNPC.h.manaMax=FrameNPC.h.manaMax+20;
+                FrameNPC.h.manaMax = FrameNPC.h.manaMax + 20;
                 break;
         }
         int opcion2ButtonD = (int) (Math.random() * 2 + 1);
         switch (opcion2ButtonD) {
             case 1:
                 //le das una gran runa y te da una reliquia exclusiva que reduce a la mitad el coste de mana de tus hechizos
+                if (FrameNPC.h.granRuna.getGranRuna().cantidad==0){
+                    FrameNPC.op2Button.setEnabled(false);
+                }else {
+                    FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.granRuna.getGranRuna(), FrameNPC.h.granRuna.getGranRuna().cantidad - 1);
+                    FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.bendicionDeLaDiosa);
+                }
                 break;
             case 2:
                 //te da una reliquia aleatoria
+                int numReliq;
+                do {
+                    numReliq = (int) (Math.random() * 6 + 1);
+                } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
+                FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
                 break;
         }
         int opcion3ButtonD = (int) (Math.random() * 2 + 1);
         switch (opcion3ButtonD) {
             case 1:
                 //te da un hechizo poderoso
+                int numHechizo= (int) (Math.random() * 3 + 1);;
+                FrameNPC.h.inventary.agregarItem(FrameNPC.h.hechizos.getHechizoPoderoso(numHechizo));
+                FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.hechizos.getHechizoPoderoso(numHechizo), 1);
                 break;
             case 2:
-                /*Te ayuda a mejorar en tu control de tu magia, aumenta +4 tu estadistica de fé o inteligencia */
+                //Te ayuda a mejorar en tu control de tu magia, aumenta +4 tu estadistica de fé o inteligencia
                 Random random = new Random();
                 int randomN = Math.round(random.nextFloat());
                 if (randomN==0){
@@ -92,6 +108,5 @@ public class Diana extends NPCs {
                 }
                 break;
         }
-
     }
     }

@@ -73,14 +73,36 @@ public class Archibald extends NPCs {
                 }
                 break;
             case 2:
-                // comprar una reliquia que te da 75 de vida máxima por 150 de oro.
+                //comprar una reliquia que te da 75 de vida máxima por 150 de oro.
+                if (FrameNPC.h.oro.getOro().getCantidad()<150){
+                    FrameNPC.op2Button.setEnabled(false);
+                }else{
+                    FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.oro.getOro(),FrameNPC.h.oro.getOro().getCantidad()-150);
+                    FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.corazónDorado);
+                }
         }
         switch (elec2) {
             case 1:
                 //le das una gran runa y te da una reliquia exclusiva que te da ganar +20% de oro en general.
+                if (FrameNPC.h.granRuna.getGranRuna().cantidad==0){
+                    FrameNPC.op2Button.setEnabled(false);
+                }else {
+                    FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.granRuna.getGranRuna(), FrameNPC.h.granRuna.getGranRuna().cantidad - 1);
+                    FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.monedaAntigua);
+                }
                 break;
             case 2:
                 //te vende una reliquia aleatoria por 150 de oro.
+                if (FrameNPC.h.oro.getOro().getCantidad()<150){
+                    FrameNPC.op2Button.setEnabled(false);
+                }else{
+                    FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.oro.getOro(),FrameNPC.h.oro.getOro().getCantidad()-150);
+                    int numReliq;
+                    do {
+                        numReliq = (int) (Math.random() * 6 + 1);
+                    } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
+                    FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
+                }
                 break;
         }
         switch (elec3) {

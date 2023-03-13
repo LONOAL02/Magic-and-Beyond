@@ -57,8 +57,12 @@ public class Damian extends NPCs{
         switch (opcion1ButtonD) {
             case 1:
                 // haces un duelo contra él, te hace 100 de daño pero ganas 4 puntos de experiencia.
-                FrameNPC.h.pj.setVida(FrameNPC.h.pj.getVida()-100);
-                FrameNPC.h.pj.setXp(FrameNPC.h.pj.getXp()+4);
+                if (FrameNPC.h.pj.getVida()<=100){
+                    FrameNPC.op1Button.setEnabled(false);
+                }else{
+                    FrameNPC.h.pj.setVida(FrameNPC.h.pj.getVida()-100);
+                    FrameNPC.h.pj.setXp(FrameNPC.h.pj.getXp()+4);
+                }
                 break;
             case 2:
                // te regala una de sus armas, un arma exclusiva.
@@ -67,9 +71,20 @@ public class Damian extends NPCs{
         switch (opcion2ButtonD) {
             case 1:
                 //le das una gran runa y te da una reliquia exclusiva que te da golpe doble(puedes atacar dos veces por turno)
+                if (FrameNPC.h.granRuna.getGranRuna().cantidad==0){
+                    FrameNPC.op2Button.setEnabled(false);
+                }else {
+                    FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.granRuna.getGranRuna(), FrameNPC.h.granRuna.getGranRuna().cantidad - 1);
+                    FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.espírituIndomable);
+                }
                 break;
             case 2:
                 //te da una reliquia aleatoria
+                int numReliq;
+                do {
+                    numReliq = (int) (Math.random() * 6 + 1);
+                } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
+                FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
                 break;
         }
         int opcion3ButtonD = (int) (Math.random() * 2 + 1);

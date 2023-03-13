@@ -11,10 +11,9 @@ public class FrameMapa {
     JLayeredPane capas;
     private JFrame ventana;
     private JPanel panelMapa;
-    //JLabel personajeLabel = new JLabel(new ImageIcon("src/main/java/com/proyecto/imagenes/pjPrincipal.png"));
     private Habitacion[][] mapa;
     private Habitacion habitacionActual;
-    private int tamañoTablero = 110; // Tamaño del tablero en casillas
+    private int tamañoTablero = 122; // Tamaño del tablero en casillas
     private int tamañoCasillaH = 174;
     private int tamañoCasillaV= 98;
 

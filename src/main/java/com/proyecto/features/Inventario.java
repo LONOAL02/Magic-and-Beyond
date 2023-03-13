@@ -118,4 +118,12 @@ public class Inventario {
             }
         }
     }
+
+    public boolean comprobarInventario(Item buscado) {
+        for (Item item : listaItems) {
+            if (item==buscado) {
+                return true;
+            }
+        }return false;
+    }
 }

@@ -72,9 +72,20 @@ public class Alex extends NPCs{
         switch (opcion2Button) {
             case 1:
                 //le das una gran runa y te da una reliquia exclusiva que te cura un 10% de vida por turno
+                if (FrameNPC.h.granRuna.getGranRuna().cantidad == 0) {
+                    FrameNPC.op2Button.setEnabled(false);
+                } else {
+                    FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.granRuna.getGranRuna(), FrameNPC.h.granRuna.getGranRuna().cantidad - 1);
+                    FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.aguaBendita);
+                }
                 break;
             case 2:
                 //te da una reliquia aleatoria
+                int numReliq;
+                do {
+                    numReliq = (int) (Math.random() * 6 + 1);
+                } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
+                FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
                 break;
         }
         int opcion3Button = (int) (Math.random() * 2 + 1);
