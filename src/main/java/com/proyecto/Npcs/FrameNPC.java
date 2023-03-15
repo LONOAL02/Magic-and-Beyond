@@ -27,7 +27,7 @@ public class FrameNPC extends JFrame implements ActionListener {
     int numNpc = (int) (Math.random() * 6 + 1);
 
 
-    private JPanel imagenNPC;
+    public static JPanel imagenNPC;
     private JPanel textYButtonsPanel;
     private JPanel NpcPanel;
     private JTextArea NpcDialog;
