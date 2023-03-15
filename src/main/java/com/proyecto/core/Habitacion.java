@@ -39,7 +39,7 @@ public class Habitacion extends JPanel {
             g.fillRect(0, 0, getWidth(), getHeight());
         }
         if (!casillaOcupada&&!esPared&&esDescubierta){
-            g.drawImage(new ImageIcon("src/main/java/com/proyecto/imagenes/sueloAdoquin.jpg").getImage(),0,0,null);
+            g.drawImage(new ImageIcon("src/main/java/com/proyecto/imagenes/sueloPiedraGris2.jpg").getImage(),0,0,null);
         }
         if (!esDescubierta && !esPared && !esCercana) {
             g.setColor(Color.BLACK);
@@ -64,7 +64,7 @@ public class Habitacion extends JPanel {
     public void crearImagen() {
         try {
             // cargar el background y la imagen
-            File backgroundFile = new File("src/main/java/com/proyecto/imagenes/sueloAdoquin.jpg");
+            File backgroundFile = new File("src/main/java/com/proyecto/imagenes/sueloPiedraGris2.jpg");
             File imageFile = new File("src/main/java/com/proyecto/imagenes/pjPrincipal.png");
             BufferedImage backgroundImage = ImageIO.read(backgroundFile);
             BufferedImage image = ImageIO.read(imageFile);

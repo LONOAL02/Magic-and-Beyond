@@ -223,6 +223,7 @@ public class FrameMapa {
         try {
             if (nuevaCasilla != null && !nuevaCasilla.esPared() && !nuevaCasilla.esCasillaOcupada()) {
                 habitacionActual.setCasillaOcupada(false);
+                boolean estabaDescubierta = nuevaCasilla.esDescubierta();
                 nuevaCasilla.setCasillaOcupada(true);
                 nuevaCasilla.setEsDescubierta(true);
                 habitacionActual.repaint();
@@ -253,23 +254,20 @@ public class FrameMapa {
                 if (habitacionActual.esMeta()) {
                     JOptionPane.showMessageDialog(ventana, "¡Felicidades, has llegado a la meta!");
                     ventana.dispose();
-                }else{
+                }
+                else if (!estabaDescubierta) {
                     int random = (int) (Math.random()*10+1);
-                    if (random < 3) {
+                    if (random < 9) {
                         // Minimiza el primer JFrame
                         FrameCombate.save(Main.h);
                         Main.h.empezarCombate();
                         ventana.setExtendedState(JFrame.ICONIFIED);
                         // Crea una instancia del segundo JFrame
-                        FrameCombate segundoFrame = new FrameCombate(FrameMapa.this);
-                        // Hace visible el segundo JFrame
-                        segundoFrame.setVisible(true);
+                        new FrameCombate(FrameMapa.this);
                     }else {
                         FrameNPC.save(Main.h);
                         ventana.setExtendedState(JFrame.ICONIFIED);
-                        FrameNPC segundoFrame = new FrameNPC(FrameMapa.this);
-                        // Hace visible el segundo JFrame
-                        segundoFrame.setVisible(true);
+                        new FrameNPC(FrameMapa.this);
                     }
                 }
             }

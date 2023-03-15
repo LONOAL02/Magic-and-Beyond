@@ -50,19 +50,6 @@ public class FrameNPC extends JFrame implements ActionListener {
     }
 
 
-    private static class JPanelWithBackground extends JPanel {
-
-        public JPanelWithBackground() {
-            setOpaque(false);
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            g.drawImage(new ImageIcon(bgPath).getImage(), 0, 0, getWidth(), getHeight(), this);
-            super.paintComponent(g);
-        }
-    }
-
     private static class JPanelWithBackground2 extends JPanel {
 
         private Image background;
@@ -79,35 +66,6 @@ public class FrameNPC extends JFrame implements ActionListener {
         }
     }
 
-
-
-
-
-    public void crearImagen(String path) {
-        try {
-            // cargar el background y la imagen
-            File backgroundFile = new File("src/main/java/com/proyecto/imagenes/fondoNPC2.png");
-            File imageFile = new File(path);
-            BufferedImage backgroundImage = ImageIO.read(backgroundFile);
-            BufferedImage image = ImageIO.read(imageFile);
-
-            // crear una nueva imagen con el mismo tamaño que el background
-            BufferedImage combined = new BufferedImage(543, 720, BufferedImage.TYPE_INT_ARGB);
-
-            // dibujar el background en la nueva imagen
-            Graphics2D g = (Graphics2D) combined.getGraphics();
-            g.drawImage(backgroundImage, 0, 0, null);
-
-            // dibujar la imagen encima del background
-            g.drawImage(image, 68, 150, null);
-
-            // guardar la imagen combinada en un archivo
-            File outputFile = new File("src/main/java/com/proyecto/imagenes/bgNPC.png");
-            ImageIO.write(combined, "png", outputFile);
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
-    }
 
     public String NpcAleatorio() {
         switch (numNpc) {
@@ -160,34 +118,22 @@ public class FrameNPC extends JFrame implements ActionListener {
     public void setPaths() {
         switch (numNpc) {
             case 1:
-                npcImage= "src/main/java/com/proyecto/imagenes/Alex.png";
-                bgPath="src/main/java/com/proyecto/imagenes/bgNPC.png";
-
+                bgPath="src/main/java/com/proyecto/imagenes/bgNPC1.png";
                 break;
             case 2:
-                npcImage= "src/main/java/com/proyecto/imagenes/Archibald.png";
-                bgPath="src/main/java/com/proyecto/imagenes/bgNPC.png";
-
+                bgPath="src/main/java/com/proyecto/imagenes/bgNPC2.png";
                 break;
             case 3:
-                npcImage= "src/main/java/com/proyecto/imagenes/Damian.png";
-                bgPath="src/main/java/com/proyecto/imagenes/bgNPC.png";
-
+                bgPath="src/main/java/com/proyecto/imagenes/bgNPC3.png";
                 break;
             case 4:
-                npcImage= "src/main/java/com/proyecto/imagenes/Diana.png";
-                bgPath="src/main/java/com/proyecto/imagenes/bgNPC.png";
-
+                bgPath="src/main/java/com/proyecto/imagenes/bgNPC4.png";
                 break;
             case 5:
-                npcImage= "src/main/java/com/proyecto/imagenes/Ladron.png";
-                bgPath="src/main/java/com/proyecto/imagenes/bgNPC.png";
-
+                bgPath="src/main/java/com/proyecto/imagenes/bgNPC5.png";
                 break;
             case 6:
-                npcImage= "src/main/java/com/proyecto/imagenes/Vigilante.png";
-                bgPath="src/main/java/com/proyecto/imagenes/bgNPC.png";
-
+                bgPath="src/main/java/com/proyecto/imagenes/bgNPC6.png";
                 break;
         }
     }
@@ -305,7 +251,6 @@ public class FrameNPC extends JFrame implements ActionListener {
         this.setPreferredSize(new Dimension(1280, 720));
 
         setPaths();
-        crearImagen(npcImage);
 
         // Ventana de Npc
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -334,8 +279,12 @@ public class FrameNPC extends JFrame implements ActionListener {
         textYButtonsPanel.setPreferredSize(new Dimension(717, 720));
         NpcPanel.setPreferredSize(new Dimension(1280, 720));
         NpcPanel.setLayout(new BorderLayout());
-        imagenNPC = new JPanelWithBackground();
-        imagenNPC.setPreferredSize(new Dimension(566, 720));
+        imagenNPC = new JPanel();
+        imagenNPC.setLayout(new BorderLayout());
+        JLabel imagen = new JLabel(new ImageIcon(bgPath));
+        imagen.setPreferredSize(new Dimension(543, 720));
+        imagenNPC.add(imagen, BorderLayout.CENTER);
+        imagenNPC.setPreferredSize(new Dimension(543, 720));
         NpcDialog = new JTextArea();
         NpcDialog.setEditable(false);
         NpcDialog.setLineWrap(true);
