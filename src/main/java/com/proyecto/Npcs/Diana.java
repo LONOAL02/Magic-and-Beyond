@@ -40,16 +40,16 @@ public class Diana extends NPCs {
             case 2:
                 switch (elec) {
                     case 1:
-                        return "Le das una gran runa y te da una reliquia exclusiva que reduce a la mitad el coste de mana de tus hechizos.";
+                        return "Entregar gran runa a cambio de 'Bendicion de la Diosa'.";
                     case 2:
-                        return "Te da una reliquia aleatoria.";
+                        return "Obten una reliquia aleatoria.";
                 }
             case 3:
                 switch (elec) {
                     case 1:
                         return "Te da un hechizo poderoso.";
                     case 2:
-                        return "Te ayuda a mejorar en tu control de tu magia, aumenta +4 tu estadística de fé o inteligencia.";
+                        return "Mejora el control de tu magia.";
                 }
             default:
                 return "Error";

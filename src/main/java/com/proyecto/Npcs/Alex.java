@@ -33,23 +33,23 @@ public class Alex extends NPCs{
             case 1:
                 switch (elec) {
                     case 1:
-                        return "Te cura un 20% de la vida.";
+                        return "Cura 20% de la vida.";
                     case 2:
-                        return " Obtén un estus mediano.";
+                        return "Obtén un estus mediano.";
                 }
             case 2:
                 switch (elec) {
                     case 1:
-                        return "Le das una gran runa y te da una reliquia exclusiva que te cura un 10% de vida por turno).";
+                        return "Entregar gran runa por 'Agua Bendita'.";
                     case 2:
-                        return "Te da una reliquia aleatoria.";
+                        return "Recibe una reliquia aleatoria.";
                 }
             case 3:
                 switch (elec) {
                     case 1:
-                        return "Rezas solo y ganas 2 puntos de experiencia";
+                        return "Rezar solo.";
                     case 2:
-                        return "Rezas con él y ganas 50 de vida maxima.";
+                        return "Rezar con él.";
                 }
             default:
                 return "Error";

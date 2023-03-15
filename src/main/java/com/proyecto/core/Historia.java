@@ -143,7 +143,6 @@ public class Historia {
     public void empezarCombate() {
         int enemigo= (int) (Math.random()*1+1);
         enemy.enemigoBasico(enemigo);
-        new FrameCombate();
     }
 
     public void addCuras(){

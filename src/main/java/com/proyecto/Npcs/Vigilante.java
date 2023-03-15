@@ -31,23 +31,23 @@ public class Vigilante extends NPCs{
             case 1:
                 switch (elec) {
                     case 1:
-                        return "Te regala una de sus armas, un arma exclusiva.";
+                        return "Recibir una de sus armas, un arma exclusiva.";
                     case 2:
-                        return " Te da un hechizo, Ataúd negro: Cargas un poderoso rayo de la noche que hace un daño masivo a un solo enemigo.";
+                        return "Recibir 'Ataúd negro'.";
                 }
             case 2:
                 switch (elec) {
                     case 1:
-                        return "Le das una gran runa y te da una reliquia exclusiva que aumenta un 15% tu probabilidad de golpe crítico.";
+                        return "Entrega una gran runa para recibir 'Daga Ensangrentada'.";
                     case 2:
-                        return "Te da una reliquia aleatoria.";
+                        return "Obtén una reliquia aleatoria.";
                 }
             case 3:
                 switch (elec) {
                     case 1:
-                        return "Entrenas con él y ganas 3 puntos de destreza.";
+                        return "Entrena con él.";
                     case 2:
-                        return "Haces un duelo contra él y ganas 3 de experiencia y pierdes 75 de vida.";
+                        return "Batirse a duelo con el.";
                 }
             default:
                 return "Error";

@@ -1,4 +1,6 @@
 package com.proyecto.core;
+import com.proyecto.Npcs.FrameNPC;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -9,7 +11,7 @@ import java.util.Random;
 public class FrameMapa {
 
     JLayeredPane capas;
-    private JFrame ventana;
+    public static JFrame ventana;
     private JPanel panelMapa;
     private Habitacion[][] mapa;
     private Habitacion habitacionActual;
@@ -46,6 +48,8 @@ public class FrameMapa {
         mapa[posX][posY].setEsPared(false);
         agregarListenerTeclado(); // Agregar el listener de teclado
         ventana.setVisible(true);
+
+
     }
 
 
@@ -66,6 +70,7 @@ public class FrameMapa {
 
         ventana.pack();
         ventana.setVisible(true);
+
     }
 
     private void crearPanelMapa() {
@@ -248,6 +253,24 @@ public class FrameMapa {
                 if (habitacionActual.esMeta()) {
                     JOptionPane.showMessageDialog(ventana, "¡Felicidades, has llegado a la meta!");
                     ventana.dispose();
+                }else{
+                    int random = (int) (Math.random()*10+1);
+                    if (random < 3) {
+                        // Minimiza el primer JFrame
+                        FrameCombate.save(Main.h);
+                        Main.h.empezarCombate();
+                        ventana.setExtendedState(JFrame.ICONIFIED);
+                        // Crea una instancia del segundo JFrame
+                        FrameCombate segundoFrame = new FrameCombate(FrameMapa.this);
+                        // Hace visible el segundo JFrame
+                        segundoFrame.setVisible(true);
+                    }else {
+                        FrameNPC.save(Main.h);
+                        ventana.setExtendedState(JFrame.ICONIFIED);
+                        FrameNPC segundoFrame = new FrameNPC(FrameMapa.this);
+                        // Hace visible el segundo JFrame
+                        segundoFrame.setVisible(true);
+                    }
                 }
             }
         }catch (IndexOutOfBoundsException exc) {

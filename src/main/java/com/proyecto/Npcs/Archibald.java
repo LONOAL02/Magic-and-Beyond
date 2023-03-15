@@ -39,12 +39,12 @@ public class Archibald extends NPCs {
                 case 1:
                     return "Comprar Estus mediano por 100 de oro.";
                 case 2:
-                    return "Comprar 'Corazón dorado' (obtén 75 de vida máxima) por 150 de oro.";
+                    return "Comprar 'Corazón dorado' por 150 de oro.";
         }
             case 2:
             switch (elec) {
                 case 1:
-                    return "Entregar gran runa a cambio de 'Moneda antigua' (obten +20% de oro cada vez que ganas oro).";
+                    return "Entregar gran runa a cambio de 'Moneda antigua'.";
                 case 2:
                     return "Obten una reliquia aleatoria a cambio de 150 de oro.";
         }

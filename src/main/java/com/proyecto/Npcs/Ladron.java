@@ -36,23 +36,23 @@ public class Ladron extends NPCs{
             case 1:
                 switch (elec) {
                     case 1:
-                        return "Peleas contra él y si ganas consigues una reliquia exclusiva(Puedes intentar huir con un 50% de probabilidades.";
+                        return "Peleas contra él.";
                     case 2:
-                        return "Intentas huir del ladrón con un 50% de probabilidades si fallas te comes un ataque de 100 de vida y entras en combate contra él sin ninguna recompensa.";
+                        return "Intenta huir.";
                 }
             case 2:
                 switch (elec) {
                     case 1:
-                        return "Le das una reliquia aleatoria de tu inventario).";
+                        return "Entregar reliquia aleatoria de tu inventario.";
                     case 2:
-                        return "Le das un arma aleatoria de tu inventario.";
+                        return "Entregar un arma aleatoria de tu inventario.";
                 }
             case 3:
                 switch (elec) {
                     case 1:
-                        return "Le das todos tus estus";
+                        return "Entregar todos tus estus";
                     case 2:
-                        return "Le das todo tu oro.";
+                        return "Entregar todo tu oro.";
                 }
             default:
                 return "Error";

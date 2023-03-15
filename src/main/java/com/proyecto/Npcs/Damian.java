@@ -32,23 +32,23 @@ public class Damian extends NPCs{
             case 1:
                 switch (elec) {
                     case 1:
-                        return "Haces un duelo contra él, te hace 100 de daño pero ganas 4 puntos de experiencia.";
+                        return "Haces un duelo contra él.";
                     case 2:
-                        return " Te regala una de sus armas, un arma exclusiva.";
+                        return "Recibir regalo.";
                 }
             case 2:
                 switch (elec) {
                     case 1:
-                        return "Le das una gran runa y te da una reliquia exclusiva que te da golpe doble(puedes atacar dos veces por turno).";
+                        return "Dar gran runa a cambio de 'Espiritu indomable'.";
                     case 2:
-                        return "Te da una reliquia aleatoria.";
+                        return "Recibe una reliquia aleatoria.";
                 }
             case 3:
                 switch (elec) {
                     case 1:
-                        return "Entrenas solo y ganas +2 a repartir en tus estadisticas y 1 de experiencia.";
+                        return "Entrenar solo.";
                     case 2:
-                        return "Entrenas con él y ganas +4 a repartir en tus estadísticas.";
+                        return "Entrenas con él.";
                 }
             default:
                 return "Error";

@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -11,6 +13,8 @@ import java.text.DecimalFormat;
 public class FrameCombate extends JFrame implements ActionListener {
 
     public static Historia h = new Historia();
+
+    private FrameMapa frameMapa;
     DecimalFormat format1 = new DecimalFormat("#");
 
 
@@ -98,8 +102,10 @@ public class FrameCombate extends JFrame implements ActionListener {
         }
     }
 
-    public FrameCombate() {
-        super("Magic and Beyond");
+    public FrameCombate(FrameMapa frameMapa) {
+        this.frameMapa = frameMapa;
+
+        this.setTitle("Magic and beyond");
 
         this.setUndecorated(true);
         this.setLocationRelativeTo(null);
@@ -119,6 +125,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         playerLabel = new JLabel(h.pj.nombre, JLabel.CENTER);
         playerHealthLabel = new JLabel("HP: " + format1.format(playerHealth), JLabel.CENTER);
         playerDescription = new JTextArea();
+        playerDescription.setEditable(false);
         playerDescription.setOpaque(false);
         playerDescription.setText(h.pj.toString()+"\nMana: "+h.pj.getMana());
         playerPanel.add(playerDescription,BorderLayout.CENTER);
@@ -133,6 +140,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         enemyLabel = new JLabel(h.enemy.nombre, JLabel.CENTER);
         enemyHealthLabel = new JLabel("HP: " + format1.format(enemyHealth), JLabel.CENTER);
         enemyDescription = new JTextArea();
+        enemyDescription.setEditable(false);
         enemyDescription.setOpaque(false);
         enemyDescription.setText(h.enemy.toString());
         opponentPanel.add(enemyDescription,BorderLayout.CENTER);
@@ -324,10 +332,15 @@ public class FrameCombate extends JFrame implements ActionListener {
             new FrameSalir();
         }
         if (e.getSource() == continueButton) {
+            FrameCombate.h.pj.setVida(playerHealth);
+            Main.h=FrameCombate.update(Main.h);
+            FrameMapa.ventana.setExtendedState(JFrame.NORMAL);
             this.dispose();
         }
 
     }
+
+
 
 
     private int calculateDamage(String attack) {
