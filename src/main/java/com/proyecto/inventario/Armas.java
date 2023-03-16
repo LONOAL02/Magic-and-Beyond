@@ -435,7 +435,129 @@ public class Armas {
                 return (int) FrameCombate.h.pj.getNumarma();
         }
     }
+    public Item armaExclusiva(int num){
+        int narmaex=num;
 
+        switch (narmaex){
+            case 34:
+                nombreArma="Libro de Vishanti";
+                calidad="Especial";
+                daño=225;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= A;
+                escaladoint= S;
+                ergonomía=6;
+                pcritico=100;
+                break;
+            case 30:
+                nombreArma=" Katana Rios de Sangre";
+                calidad="Especial";
+                daño=250;
+                escaladof= A;
+                escaladod= S;
+                escaladofe= B;
+                escaladoint= B;
+                ergonomía=4;
+                pcritico=120;
+                break;
+            case 31:
+                nombreArma="Espada de la Noche y la Llama";
+                calidad="Especial";
+                daño=240;
+                escaladof= S;
+                escaladod= A;
+                escaladofe= B;
+                escaladoint= B;
+                ergonomía=3;
+                pcritico=110;
+                break;
+            case 32:
+                nombreArma="Rompetormentas";
+                calidad="Especial";
+                daño=260;
+                escaladof= S;
+                escaladod= B;
+                escaladofe= B;
+                escaladoint= B;
+                ergonomía=7;
+                pcritico=130;
+                break;
+            case 33:
+                nombreArma="Espadón Ancestral";
+                calidad="Especial";
+                daño=255;
+                escaladof= A;
+                escaladod= S;
+                escaladofe= B;
+                escaladoint= B;
+                ergonomía=9;
+                pcritico=110;
+                break;
+            case 35:
+                nombreArma="Bastón Arcano";
+                calidad="Especial";
+                daño=230;
+                escaladof= B;
+                escaladod= B;
+                escaladofe= S;
+                escaladoint= A;
+                ergonomía=4;
+                pcritico=100;
+                break;
+            case 36:
+                nombreArma="Cañón de la Media Luna";
+                calidad="Especial";
+                daño=240;
+                escaladof= B;
+                escaladod= S;
+                escaladofe= B;
+                escaladoint= A;
+                ergonomía=8;
+                pcritico=125;
+                break;
+            case 37:
+                nombreArma="Hoja del Rey Arruinado";
+                calidad="Especial";
+                daño=250;
+                escaladof= S;
+                escaladod= A;
+                escaladofe= B;
+                escaladoint= B;
+                ergonomía=6;
+                pcritico=140;
+                break;
+
+        }
+        Item arma = new Item();
+        arma.setNombre(nombreArma);
+        arma.setDescripcion(toString());
+        arma.setCantidad(1);
+        arma.setUso(Item.ARMA);
+        return arma;
+    }
+    public int getNumArmaEx(String nombre){
+        switch (nombre){
+            case ("Libro de Vishanti"):
+                return 34;
+            case ("Katana Rios de Sangre "):
+                return 30;
+            case ("Espada de la Noche y la Llama"):
+                return 31;
+            case ("Rompetormentas"):
+                return 32;
+            case ("Espadón Ancestral"):
+                return 33;
+            case ("Bastón Arcano"):
+                return 35;
+            case ("Cañón de la Media Luna"):
+                return 36;
+            case ("Hoja del Rey Arruinado"):
+                return 37;
+            default:
+                return (int) FrameCombate.h.pj.getNumarma();
+        }
+    }
 
     public String getNombreArma() {
         return nombreArma;
