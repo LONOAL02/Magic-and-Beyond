@@ -1,6 +1,8 @@
 package com.proyecto.Npcs;
 
 
+import com.proyecto.core.FrameCombate;
+
 public class Alex extends NPCs{
 
 
@@ -62,11 +64,7 @@ public class Alex extends NPCs{
                 switch (elec) {
                     case 1:
                         //cura un 20% de la vida
-                        if (FrameNPC.h.pj.getVida() + (FrameNPC.h.vidaMax * 0.2f)>FrameNPC.h.vidaMax){
-                            FrameNPC.h.pj.setVida(FrameNPC.h.vidaMax);
-                        }else {
-                            FrameNPC.h.pj.setVida(FrameNPC.h.pj.getVida() + (FrameNPC.h.vidaMax * 0.2f));
-                        }
+                        FrameNPC.h.pj.setVida(FrameNPC.h.curas.curarCantidad(FrameNPC.h.pj.getVida(),FrameNPC.h.vidaMax,FrameNPC.h.vidaMax*0.2f));
                         break;
                     case 2:
                         //obten un estus mediano

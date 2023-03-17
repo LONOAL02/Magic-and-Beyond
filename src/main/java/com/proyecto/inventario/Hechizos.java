@@ -4,6 +4,8 @@ import com.proyecto.core.FrameCombate;
 
 public class Hechizos {
 
+    public int coste;
+
     public Item gritoGreyol = new Item("El grito de Greyol.","Produce el grito de Greyoll, Anciano de los Dragones. Inflige mucho daño a todos los enemigos que te rodean.\n Coste: 30.\n Daño base: 100.",1,Item.HECHIZO);
     public Item llamaCruel = new Item("Llama del Dios Cruel.","Invoca una bola de fuego devastadora, que explota e incendia el área circundante.\n Coste: 35.\n Daño base: 120.",1,Item.HECHIZO);
     public Item cometaAzur = new Item("Cometa azur.","Dispara un temible cometa al corazón de una oleada estelar. Con el equipo adecuado, este hechizo puede matar a los jefes directamente.\n Coste: 70.\n Daño base: 200.",1,Item.HECHIZO);
@@ -16,59 +18,91 @@ public class Hechizos {
     public float usarHechizo(String nombre, float vidaEnemy){
         switch (nombre) {
             case ("El grito de Greyol.") -> {
-                if (FrameCombate.h.pj.getMana() - 30 < 0) {
+                coste=30;
+                if(FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.bendicionDeLaDiosa)){
+                    coste=coste/2;
+                }
+                if (FrameCombate.h.pj.getMana() - coste < 0) {
                     return vidaEnemy;
                 } else
-                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 30);
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - coste);
                 return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 100, vidaEnemy);
             }
             case ("Llama del Dios Cruel.") -> {
-                if (FrameCombate.h.pj.getMana() - 35 < 0) {
+                coste=35;
+                if(FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.bendicionDeLaDiosa)){
+                    coste=coste/2;
+                }
+                if (FrameCombate.h.pj.getMana() - coste < 0) {
                     return vidaEnemy;
                 } else
-                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 35);
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - coste);
                 return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 120, vidaEnemy);
             }
             case ("Cometa azur.") -> {
-                if (FrameCombate.h.pj.getMana() - 70 < 0) {
+                coste=70;
+                if(FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.bendicionDeLaDiosa)){
+                    coste=coste/2;
+                }
+                if (FrameCombate.h.pj.getMana() - coste < 0) {
                     return vidaEnemy;
                 } else
-                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 70);
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - coste);
                 return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 200, vidaEnemy);
             }
             case ("Estrellas de perdición.") -> {
-                if (FrameCombate.h.pj.getMana() - 20 < 0) {
+                coste=20;
+                if(FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.bendicionDeLaDiosa)){
+                    coste=coste/2;
+                }
+                if (FrameCombate.h.pj.getMana() - coste < 0) {
                     return vidaEnemy;
                 } else
-                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 20);
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - coste);
                 return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 80, vidaEnemy);
             }
             case ("Estrellas de Elden.") -> {
-                if (FrameCombate.h.pj.getMana() - 90 < 0) {
+                coste=90;
+                if(FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.bendicionDeLaDiosa)){
+                    coste=coste/2;
+                }
+                if (FrameCombate.h.pj.getMana() - coste < 0) {
                     return vidaEnemy;
                 } else
-                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 90);
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - coste);
                 return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 290, vidaEnemy);
             }
             case ("Lluvia de estrellas primigenias.") -> {
-                if (FrameCombate.h.pj.getMana() - 55 < 0) {
+                coste=55;
+                if(FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.bendicionDeLaDiosa)){
+                    coste=coste/2;
+                }
+                if (FrameCombate.h.pj.getMana() - coste < 0) {
                     return vidaEnemy;
                 } else
-                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 55);
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - coste);
                 return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 175, vidaEnemy);
             }
             case ("La luna oscura de Ranni.") -> {
-                if (FrameCombate.h.pj.getMana() - 110 < 0) {
+                coste=110;
+                if(FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.bendicionDeLaDiosa)){
+                    coste=coste/2;
+                }
+                if (FrameCombate.h.pj.getMana() - coste < 0) {
                     return vidaEnemy;
                 } else
-                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 110);
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - coste);
                 return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 300, vidaEnemy);
             }
             case ("Ataúd negro.") -> {
-                if (FrameCombate.h.pj.getMana() - 100 < 0) {
+                coste=100;
+                if(FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.bendicionDeLaDiosa)){
+                    coste=coste/2;
+                }
+                if (FrameCombate.h.pj.getMana() - coste < 0) {
                     return vidaEnemy;
                 } else
-                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - 100);
+                    FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana() - coste);
                 return FrameCombate.h.dmgI.hacerDaño(nombre, ((FrameCombate.h.pj.getInteligencia() / 100 + 1)) * 310, vidaEnemy);
             }
             default -> {
@@ -106,6 +140,9 @@ public class Hechizos {
             }
             case 3 -> {
                 return lunaRanni;
+            }
+            case 4 -> {
+                return ataudNegro;
             }
             default -> {
                 return null;

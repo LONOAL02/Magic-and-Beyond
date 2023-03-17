@@ -4,7 +4,7 @@ import com.proyecto.Npcs.FrameNPC;
 import com.proyecto.core.FrameCombate;
 
 public class Oro {
-    public Item oro = new Item("Monedas de oro.","Monedas de oro antiguas muy preciadas por los comerciantes.",0,Item.NONUSABLE);
+    public Item oro = new Item("Monedas de oro.","Monedas de oro antiguas muy preciadas por los comerciantes.",0,Item.ORO);
 
 
     public void ganarOro(int cantidad){

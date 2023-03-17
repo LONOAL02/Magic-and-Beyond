@@ -59,7 +59,14 @@ public class Vigilante extends NPCs{
             switch (elec) {
                 case 1:
                     //te regala una de sus armas, un arma exclusiva
-
+                    int numarma = (int) (Math.random() * 2 + 1);
+                    if (numarma == 1) {
+                        FrameNPC.h.inventary.agregarItem(FrameNPC.h.arma.armaComun(30));
+                        FrameNPC.h.pj.numarma=32;
+                    }else if (numarma == 2){
+                        FrameNPC.h.inventary.agregarItem(FrameNPC.h.arma.armaComun(31));
+                        FrameNPC.h.pj.numarma=33;
+                    }
                     break;
                 case 2:
                     //te da un hechizo, Ataúd negro: Cargas un poderoso rayo de la noche que hace un daño masivo a un solo enemigo

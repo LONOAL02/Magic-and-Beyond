@@ -69,6 +69,14 @@ public class Damian extends NPCs{
                     break;
                 case 2:
                     // te regala una de sus armas, un arma exclusiva.
+                    int numarma = (int) (Math.random() * 2 + 1);
+                    if (numarma == 1) {
+                        FrameNPC.h.inventary.agregarItem(FrameNPC.h.arma.armaComun(32));
+                        FrameNPC.h.pj.numarma=32;
+                    }else if (numarma == 2){
+                        FrameNPC.h.inventary.agregarItem(FrameNPC.h.arma.armaComun(33));
+                        FrameNPC.h.pj.numarma=33;
+                    }
             }
             break;
             case 2:

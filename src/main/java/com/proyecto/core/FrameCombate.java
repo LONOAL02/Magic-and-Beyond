@@ -243,6 +243,11 @@ public class FrameCombate extends JFrame implements ActionListener {
         logTextArea.append("Te encuentras con "+h.enemy.nombre+"\n");
 
 
+        if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.mascaraDemoníaca)){
+            enemyHealth -= 100;
+            logTextArea.append("\nHaces 100 de daño gracias a la Máscara Demoníaca" + "!\n");
+            enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
+        }
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == attackButton) {
@@ -250,6 +255,11 @@ public class FrameCombate extends JFrame implements ActionListener {
             int precision = calculateDamage(attack);
             float daño = h.combate.atacar(precision, h.pj.calcularAtaque(), h.arma.getDaño());
             enemyHealth -= daño;
+            if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.espírituIndomable)){
+                enemyHealth -= daño;
+                logTextArea.append("\nAtacas 2 veces gracias a Espiritu Indomable" + "!\n");
+                logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
+            }
             if (enemyHealth <= 0) {
                 enemyHealth = 0;
                 enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
@@ -265,6 +275,9 @@ public class FrameCombate extends JFrame implements ActionListener {
                     logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                 }
                 opponentAttack();
+                if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.aguaBendita)){
+                    playerHealth=FrameCombate.h.curas.curarCantidad(playerHealth,FrameCombate.h.vidaMax,FrameCombate.h.vidaMax*0.1f);
+                }
             }
         }
         if (e.getSource() == healthButton) {

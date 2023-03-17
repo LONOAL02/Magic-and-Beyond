@@ -257,10 +257,11 @@ public class FrameMapa {
                 }
                 else if (!estabaDescubierta) {
                     int random = (int) (Math.random()*10+1);
-                    if (random < 9) {
+                    if (random < 7) {
                         // Minimiza el primer JFrame
+                        Main.h.inventary.limpiarInventario();
                         FrameCombate.save(Main.h);
-                        Main.h.empezarCombate();
+                        Main.h.empezarCombate(0);
                         ventana.setExtendedState(JFrame.ICONIFIED);
                         // Crea una instancia del segundo JFrame
                         new FrameCombate(FrameMapa.this);

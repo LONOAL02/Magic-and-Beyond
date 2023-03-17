@@ -361,84 +361,6 @@ public class Armas {
                 ergonomía=2;
                 pcritico=100;
                 break;
-            default:
-        }
-        Item arma = new Item();
-        arma.setNombre(nombreArma);
-        arma.setDescripcion(toString());
-        arma.setCantidad(1);
-        arma.setUso(Item.ARMA);
-        return arma;
-    }
-
-    public int getNumArma(String nombre){
-        switch (nombre){
-            case ("Alabarda"):
-                return 1;
-            case ("Arco Largo"):
-                return 2;
-            case ("Bastón Albináurico"):
-                return 3;
-            case ("Daga"):
-                return 4;
-            case ("Antorcha de Acero"):
-                return 5;
-            case ("Arco Grande"):
-                return 6;
-            case ("Aplastagigantes"):
-                return 7;
-            case ("Balista de Mano"):
-                return 8;
-            case ("Ballesta de Soldado"):
-                return 9;
-            case ("Uchigatana"):
-                return 10;
-            case ("Espada Dorada de Troll"):
-                return 11;
-            case ("Cimitarra"):
-                return 12;
-            case ("Estoque"):
-                return 13;
-            case ("Gran Épée"):
-                return 14;
-            case ("Espada Ancha"):
-                return 15;
-            case ("Claymore"):
-                return 16;
-            case ("Desmontadora"):
-                return 17;
-            case ("Colmillo Ponzoñoso"):
-                return 18;
-            case ("Gran Hacha"):
-                return 19;
-            case ("Gran Maza"):
-                return 20;
-            case ("Guadaña"):
-                return 21;
-            case ("Destral Bifurcado"):
-                return 22;
-            case ("Hoja Doble"):
-                return 23;
-            case ("Lanza de Hierro"):
-                return 24;
-            case ("Lanza de Justas"):
-                return 25;
-            case ("Latigo con Espinas"):
-                return 26;
-            case ("Garrote"):
-                return 27;
-            case ("Mayal de Cadenas"):
-                return 28;
-            case ("Cestus con Pinchos"):
-                return 29;
-            default:
-                return (int) FrameCombate.h.pj.getNumarma();
-        }
-    }
-    public Item armaExclusiva(int num){
-        int narmaex=num;
-
-        switch (narmaex){
             case 34:
                 nombreArma="Libro de Vishanti";
                 calidad="Especial";
@@ -527,7 +449,7 @@ public class Armas {
                 ergonomía=6;
                 pcritico=140;
                 break;
-
+            default:
         }
         Item arma = new Item();
         arma.setNombre(nombreArma);
@@ -536,8 +458,67 @@ public class Armas {
         arma.setUso(Item.ARMA);
         return arma;
     }
-    public int getNumArmaEx(String nombre){
+
+    public int getNumArma(String nombre){
         switch (nombre){
+            case ("Alabarda"):
+                return 1;
+            case ("Arco Largo"):
+                return 2;
+            case ("Bastón Albináurico"):
+                return 3;
+            case ("Daga"):
+                return 4;
+            case ("Antorcha de Acero"):
+                return 5;
+            case ("Arco Grande"):
+                return 6;
+            case ("Aplastagigantes"):
+                return 7;
+            case ("Balista de Mano"):
+                return 8;
+            case ("Ballesta de Soldado"):
+                return 9;
+            case ("Uchigatana"):
+                return 10;
+            case ("Espada Dorada de Troll"):
+                return 11;
+            case ("Cimitarra"):
+                return 12;
+            case ("Estoque"):
+                return 13;
+            case ("Gran Épée"):
+                return 14;
+            case ("Espada Ancha"):
+                return 15;
+            case ("Claymore"):
+                return 16;
+            case ("Desmontadora"):
+                return 17;
+            case ("Colmillo Ponzoñoso"):
+                return 18;
+            case ("Gran Hacha"):
+                return 19;
+            case ("Gran Maza"):
+                return 20;
+            case ("Guadaña"):
+                return 21;
+            case ("Destral Bifurcado"):
+                return 22;
+            case ("Hoja Doble"):
+                return 23;
+            case ("Lanza de Hierro"):
+                return 24;
+            case ("Lanza de Justas"):
+                return 25;
+            case ("Latigo con Espinas"):
+                return 26;
+            case ("Garrote"):
+                return 27;
+            case ("Mayal de Cadenas"):
+                return 28;
+            case ("Cestus con Pinchos"):
+                return 29;
             case ("Libro de Vishanti"):
                 return 34;
             case ("Katana Rios de Sangre "):
@@ -558,6 +539,7 @@ public class Armas {
                 return (int) FrameCombate.h.pj.getNumarma();
         }
     }
+
 
     public String getNombreArma() {
         return nombreArma;

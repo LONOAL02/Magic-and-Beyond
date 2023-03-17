@@ -10,7 +10,7 @@ public class Item {
     public static final int ARMA=1;
     public static final int HECHIZO=2;
     public static final int DAÑO=3;
-    public static final int BUFF=4;
+    public static final int ORO=4;
     public static final int CURACION=5;
     public static final int RELIQUIA=6;
 

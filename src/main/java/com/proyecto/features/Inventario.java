@@ -111,6 +111,8 @@ public class Inventario {
         }
         return 0;
     }
+
+
     public void limpiarInventario() {
         for (Item item : listaItems) {
             if (item.getCantidad() == 0) {

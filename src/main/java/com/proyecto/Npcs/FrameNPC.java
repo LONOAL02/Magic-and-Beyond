@@ -184,6 +184,8 @@ public class FrameNPC extends JFrame implements ActionListener {
                     Vigilante.metodo3Vigilante(1,numOp1);
                     break;
             }
+            Main.h=FrameNPC.update(Main.h);
+            FrameMapa.ventana.setExtendedState(JFrame.NORMAL);
             this.dispose();
         }
         if (e.getSource() == op2Button) {
@@ -209,7 +211,9 @@ public class FrameNPC extends JFrame implements ActionListener {
             }
             Main.h=FrameNPC.update(Main.h);
             FrameMapa.ventana.setExtendedState(JFrame.NORMAL);
+            this.dispose();
         }
+
         if (e.getSource() == op3Button) {
             switch (NpcAleatorio()) {
                 case "Alex":
@@ -231,6 +235,8 @@ public class FrameNPC extends JFrame implements ActionListener {
                     Vigilante.metodo3Vigilante(3,numOp3);
                     break;
             }
+            Main.h=FrameNPC.update(Main.h);
+            FrameMapa.ventana.setExtendedState(JFrame.NORMAL);
             this.dispose();
         }
     }

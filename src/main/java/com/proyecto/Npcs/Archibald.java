@@ -119,7 +119,7 @@ public class Archibald extends NPCs {
                         FrameNPC.op3Button.setEnabled(false);
                     } else {
                         FrameNPC.h.inventary.eliminarItem(listaItems.get(randomN.nextInt(listaItems.size() - 1)));
-                        FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.oro.getOro(), FrameNPC.h.oro.getOro().getCantidad() + 200);
+                        FrameNPC.h.oro.ganarOro(200);
                     }
                     break;
                 case 2:
@@ -129,7 +129,7 @@ public class Archibald extends NPCs {
                         FrameNPC.op3Button.setEnabled(false);
                     } else {
                         FrameNPC.h.inventary.eliminarItem(listaItems.get(randomN.nextInt(listaItems.size() - 1)));
-                        FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.oro.getOro(), FrameNPC.h.oro.getOro().getCantidad() + 100);
+                        FrameNPC.h.oro.ganarOro(100);
                     }
                     break;
             }break;
