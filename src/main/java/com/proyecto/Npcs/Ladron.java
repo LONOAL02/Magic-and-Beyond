@@ -1,5 +1,9 @@
 package com.proyecto.Npcs;
 
+import com.proyecto.core.FrameCombate;
+import com.proyecto.core.FrameCombateBoss;
+import com.proyecto.core.FrameMapa;
+import com.proyecto.core.Main;
 import com.proyecto.inventario.Item;
 
 import java.util.ArrayList;
@@ -68,11 +72,15 @@ public class Ladron extends NPCs{
                 switch (elec) {
                     case 1:
                         //Peleas contra él y si ganas consigues una reliquia exclusiva(Puedes intentar huir con un 50% de probabilidades)
-
+                        FrameNPC.h.empezarCombate(4);
+                        Main.h.inventary.limpiarInventario();
+                        FrameCombate.save(Main.h);
+                        new FrameCombateBoss();
                         break;
                     case 2:
                 /*Intentas huir del ladrón con un 50% de probabilidades si fallas
                  te comes un ataque de 100 de vida y entras en combate contra él sin ninguna recompensa */
+                        break;
                 }
                 break;
             case 2:

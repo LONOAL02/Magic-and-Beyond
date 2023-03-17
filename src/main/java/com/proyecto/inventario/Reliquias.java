@@ -11,7 +11,7 @@ public class Reliquias {
     public Item dagaEnsangrentada = new Item("Daga Ensangrentada.", "Te aumenta un 15% tu probabilidad de golpe crítico.", 1, Item.RELIQUIA);//R
     public Item espírituIndomable = new Item("Espíritu Indomable.", "Te permite atacar dos veces en el mismo turno.", 1, Item.RELIQUIA);//R
     public Item brazaleteArcano = new Item("Brazalete Arcano.", "Aumenta tu maná máximo en 100 .", 1, Item.RELIQUIA);//R
-    public Item tarjetaVip = new Item("Tarjeta Vip.", "Ganas 300 de oro magicamente.", 1, Item.RELIQUIA);
+    public Item tarjetaVip = new Item("Tarjeta Vip.", "Ganas 300 de oro magicamente.", 1, Item.RELIQUIA);//R
     public Item píldoraDeCrecimiento = new Item("Píldora de Crecimiento.", "Subes de nivel.", 1, Item.RELIQUIA);//R
     public Item cotaDeMalla = new Item("Cota De Malla .", "Recibes 30 menos de daño por ataque.", 1, Item.RELIQUIA);//R
     public Item mascaraDemoníaca = new Item("Máscara Demoníaca.", "Infliges 100 de daño a todos los enemigos al entrar en combate.", 1, Item.RELIQUIA);//R

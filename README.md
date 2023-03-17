@@ -15,14 +15,18 @@
 
 - [x] Mapa
 
-- [ ] Eventos Aleatorios
+- [x] Eventos Aleatorios
 
 - [ ] Lobby(Tienda)
 
-- [ ] Armas legendarias(pasiva)
+- [x] Armas legendarias(pasiva)
 
-- [ ] Añadir items(hechizos, items de daño, items de buff(stats, armas(elementales)), items de curacion, reliquias)
+- [x] Añadir items(hechizos, items de daño, items de buff(stats, armas(elementales)), items de curacion, reliquias)
 
-- [ ] Grandes Runas(NPCs).
+- [x] Grandes Runas(NPCs).
+
+- [ ] Bosses. 
+
+- [ ] Acabar NPCs
 
 

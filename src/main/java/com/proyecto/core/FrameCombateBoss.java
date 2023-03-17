@@ -4,17 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class FrameCombate extends JFrame implements ActionListener {
+public class FrameCombateBoss extends JFrame implements ActionListener {
 
     public static Historia h = new Historia();
 
-    private FrameMapa frameMapa;
     DecimalFormat format1 = new DecimalFormat("#");
 
 
@@ -102,8 +99,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         }
     }
 
-    public FrameCombate(FrameMapa frameMapa) {
-        this.frameMapa = frameMapa;
+    public FrameCombateBoss() {
 
         this.setTitle("Magic and beyond");
 
@@ -176,7 +172,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         panelBotones.setOpaque(false);
         seeButton = new JButton("Ver");
-        useButton = new JButton("Usar");
+        useButton = new JButton("usar");
         seeButton.addActionListener(this);
         useButton.addActionListener(this);
         panelBotones.add(seeButton);
@@ -195,25 +191,14 @@ public class FrameCombate extends JFrame implements ActionListener {
         textoMenu.setAlignmentX(CENTER_ALIGNMENT);
         textoMenu.setAlignmentY(CENTER_ALIGNMENT);
         textPanel.add(textoMenu,BorderLayout.CENTER);
-        JPanel panelSalida = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        panelSalida.setOpaque(false);
         exitButton = new JButton("Salir");
         continueButton = new JButton("Continuar");
-        JButton huirButton = new JButton("Huir");
-        huirButton.addActionListener(this);
-        if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.abrigoDeSombras)){
-            huirButton.setEnabled(true);
-        }else {
-            huirButton.setEnabled(false);
-        }
         continueButton.setEnabled(false);
         exitButton.addActionListener(this);
         continueButton.addActionListener(this);
-        panelSalida.add(continueButton);
-        panelSalida.add(huirButton);
-        panelSalida.add(exitButton);
+        menuPanel.add(exitButton,BorderLayout.EAST);
         menuPanel.add(textPanel,BorderLayout.WEST);
-        menuPanel.add(panelSalida,BorderLayout.CENTER);
+        menuPanel.add(continueButton,BorderLayout.CENTER);
         inventoryPanel.add(menuPanel);
 
         try {
@@ -254,7 +239,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         logTextArea.append("Te encuentras con "+h.enemy.nombre+"\n");
 
 
-        if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.mascaraDemoníaca)){
+        if (FrameCombateBoss.h.inventary.comprobarInventario(FrameCombateBoss.h.reliq.mascaraDemoníaca)){
             enemyHealth -= 100;
             logTextArea.append("\nHaces 100 de daño gracias a la Máscara Demoníaca" + "!\n");
             enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
@@ -266,7 +251,7 @@ public class FrameCombate extends JFrame implements ActionListener {
             int precision = calculateDamage(attack);
             float daño = h.combate.atacar(precision, h.pj.calcularAtaque(), h.arma.getDaño());
             enemyHealth -= daño;
-            if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.espírituIndomable)){
+            if (FrameCombateBoss.h.inventary.comprobarInventario(FrameCombateBoss.h.reliq.espírituIndomable)){
                 enemyHealth -= daño;
                 logTextArea.append("\nAtacas 2 veces gracias a Espiritu Indomable" + "!\n");
                 logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
@@ -286,8 +271,8 @@ public class FrameCombate extends JFrame implements ActionListener {
                     logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                 }
                 opponentAttack();
-                if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.aguaBendita)){
-                    playerHealth=FrameCombate.h.curas.curarCantidad(playerHealth,FrameCombate.h.vidaMax,FrameCombate.h.vidaMax*0.1f);
+                if (FrameCombateBoss.h.inventary.comprobarInventario(FrameCombateBoss.h.reliq.aguaBendita)){
+                    playerHealth= FrameCombateBoss.h.curas.curarCantidad(playerHealth, FrameCombateBoss.h.vidaMax, FrameCombateBoss.h.vidaMax*0.1f);
                 }
             }
         }
@@ -356,9 +341,13 @@ public class FrameCombate extends JFrame implements ActionListener {
             new FrameSalir();
         }
         if (e.getSource() == continueButton) {
-            FrameCombate.h.pj.setVida(playerHealth);
-            Main.h=FrameCombate.update(Main.h);
-            FrameMapa.ventana.setExtendedState(JFrame.NORMAL);
+            FrameCombateBoss.h.pj.setVida(playerHealth);
+            Main.h= FrameCombateBoss.update(Main.h);
+            if (FrameCombateBoss.h.enemy.getNombre()=="Ladrón") {
+                FrameCombateBoss.h.inventary.agregarItem(FrameCombateBoss.h.reliq.abrigoDeSombras);
+            }else {
+                FrameCombateBoss.h.inventary.agregarItem(FrameCombateBoss.h.granRuna.granRuna);
+            }
             this.dispose();
         }
 

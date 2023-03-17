@@ -115,10 +115,26 @@ public class Enemigos extends Personajes {
                 setVida(3000);
                 setNivel(1);
                 break;
+            case 4:
+                nombre = "Ladrón";
+                setAtaque(60);
+                setVida(2000);
+                setNivel(1);
+                break;
+            case 5:
+
         }
     }
 
-        @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
         public String toString () {
             return
                     " Nombre: " + nombre + "\n" +
