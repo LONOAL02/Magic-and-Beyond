@@ -1,6 +1,6 @@
 package com.proyecto.core;
 import com.proyecto.Npcs.FrameNPC;
-
+import Random.RandomLibreria;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -256,7 +256,7 @@ public class FrameMapa {
                     ventana.dispose();
                 }
                 else if (!estabaDescubierta) {
-                    int random = (int) (Math.random()*10+1);
+                    int random = (int) RandomLibreria.numeroAleatorio(10,1);
                     if (random < 7) {
                         // Minimiza el primer JFrame
                         Main.h.inventary.limpiarInventario();

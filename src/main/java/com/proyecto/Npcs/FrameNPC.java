@@ -1,17 +1,16 @@
 package com.proyecto.Npcs;
 
+import Random.RandomLibreria;
 import com.proyecto.core.FrameMapa;
 import com.proyecto.core.Historia;
 import com.proyecto.core.Main;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,10 +20,10 @@ public class FrameNPC extends JFrame implements ActionListener {
     private final FrameMapa frameMapa;
 
     String npc;
-    int numOp1 = (int) (Math.random() * 2 + 1);
-    int numOp2 = (int) (Math.random() * 2 + 1);
-    int numOp3 = (int) (Math.random() * 2 + 1);
-    int numNpc = (int) (Math.random() * 6 + 1);
+    int numOp1 = RandomLibreria.numeroAleatorio(2,1);
+    int numOp2 = RandomLibreria.numeroAleatorio(2,1);
+    int numOp3 = RandomLibreria.numeroAleatorio(2,1);
+    int numNpc = RandomLibreria.numeroAleatorio(6,1);
 
 
     public static JPanel imagenNPC;

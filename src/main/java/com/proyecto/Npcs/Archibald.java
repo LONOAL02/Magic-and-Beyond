@@ -1,5 +1,5 @@
 package com.proyecto.Npcs;
-
+import Random.RandomLibreria;
 import com.proyecto.inventario.Item;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class Archibald extends NPCs {
     public static String metodo1Archibald() {
         nombre = "Archibald Reinhard";
         profesion = "Mercader";
-        int opcionDialog = (int) (Math.random() * 3 + 1);
+        int opcionDialog = RandomLibreria.numeroAleatorio(3,1);
         switch (opcionDialog) {
             case 1:
                 dialogo = (" Te encuentras con un señor mayor con una boina amarilla. \n" +
@@ -104,7 +104,7 @@ public class Archibald extends NPCs {
                         FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.oro.getOro(), FrameNPC.h.oro.getOro().getCantidad() - 150);
                         int numReliq;
                         do {
-                            numReliq = (int) (Math.random() * 6 + 1);
+                            numReliq = RandomLibreria.numeroAleatorio(6,1);
                         } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
                         FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
                     }

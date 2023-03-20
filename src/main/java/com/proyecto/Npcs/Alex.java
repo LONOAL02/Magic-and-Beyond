@@ -1,7 +1,7 @@
 package com.proyecto.Npcs;
 
 
-import com.proyecto.core.FrameCombate;
+import Random.RandomLibreria;
 
 public class Alex extends NPCs{
 
@@ -9,7 +9,7 @@ public class Alex extends NPCs{
     public static String metodo1Alex() {
         nombre="Alex";
         profesion="Clérigo";
-        int opcionDialog = (int) (Math.random() * 3 + 1);
+        int opcionDialog = RandomLibreria.numeroAleatorio(3,1);
         switch (opcionDialog) {
             case 1:
                 dialogo=(" Te encuentras con un hombre joven con una túnica azul. \n" +
@@ -87,7 +87,7 @@ public class Alex extends NPCs{
                         //te da una reliquia aleatoria
                         int numReliq;
                         do {
-                            numReliq = (int) (Math.random() * 6 + 1);
+                            numReliq = RandomLibreria.numeroAleatorio(6,1);
                         } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
                         FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
                         break;

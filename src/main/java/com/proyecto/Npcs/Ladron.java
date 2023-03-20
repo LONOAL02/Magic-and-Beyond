@@ -1,8 +1,7 @@
 package com.proyecto.Npcs;
-
+import Random.RandomLibreria;
 import com.proyecto.core.FrameCombate;
 import com.proyecto.core.FrameCombateBoss;
-import com.proyecto.core.FrameMapa;
 import com.proyecto.core.Main;
 import com.proyecto.inventario.Item;
 
@@ -13,7 +12,7 @@ public class Ladron extends NPCs{
     public static String metodo1Ladron() {
         nombre = "???";
         profesion = "???";
-        int opcionDialog = (int) (Math.random() * 3 + 1);
+        int opcionDialog =  RandomLibreria.numeroAleatorio(3,1);
         switch (opcionDialog) {
             case 1:
                 dialogo = (" Te encuentras con un hombre enmascarado que se va acercando a ti.\n" +

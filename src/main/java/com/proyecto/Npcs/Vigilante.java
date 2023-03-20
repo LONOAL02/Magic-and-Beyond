@@ -1,10 +1,11 @@
 package com.proyecto.Npcs;
+import Random.RandomLibreria;
 
 public class Vigilante extends NPCs{
     public static String metodo1Vigilante() {
         nombre = "???";
         profesion = "???";
-        int opcionDialog = (int) (Math.random() * 3 + 1);
+        int opcionDialog = RandomLibreria.numeroAleatorio(3,1);
         switch (opcionDialog) {
             case 1:
                 dialogo = (" Observas un hombre enmascarado vestido de negro en la cornisa de un edificio .\n" +
@@ -59,7 +60,7 @@ public class Vigilante extends NPCs{
             switch (elec) {
                 case 1:
                     //te regala una de sus armas, un arma exclusiva
-                    int numarma = (int) (Math.random() * 2 + 1);
+                  int numarma=RandomLibreria.numeroAleatorio(2,1);
                     if (numarma == 1) {
                         FrameNPC.h.inventary.agregarItem(FrameNPC.h.arma.armaComun(30));
                         FrameNPC.h.pj.numarma=32;
@@ -90,7 +91,7 @@ public class Vigilante extends NPCs{
                     //te da una reliquia aleatoria
                     int numReliq;
                     do {
-                        numReliq = (int) (Math.random() * 6 + 1);
+                        numReliq = RandomLibreria.numeroAleatorio(6,1);
                     } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
                     FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
                     break;

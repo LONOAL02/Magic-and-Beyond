@@ -1,5 +1,6 @@
 package com.proyecto.core;
 
+import Random.RandomLibreria;
 import com.proyecto.features.Combate;
 import com.proyecto.features.Inventario;
 import com.proyecto.inventario.*;
@@ -95,7 +96,7 @@ public class Historia {
 
     public void empezarCombate(int numenemigo) {
         if (numenemigo==0) {
-            int enemigo= (int) (Math.random()*12+1);
+            int enemigo= (int) RandomLibreria.numeroAleatorio(12,1);
             enemy.enemigoBasico(enemigo);
         }
         else{

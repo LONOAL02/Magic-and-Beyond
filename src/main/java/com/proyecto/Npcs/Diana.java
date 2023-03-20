@@ -1,12 +1,12 @@
 package com.proyecto.Npcs;
-
+import Random.RandomLibreria;
 import java.util.Random;
 
 public class Diana extends NPCs {
     public static String metodo1Hechizera() {
         nombre = "Diana Harkness";
         profesion = "Hechizera";
-        int opcionDialog = (int) (Math.random() * 3 + 1);
+        int opcionDialog = RandomLibreria.numeroAleatorio(3,1);
         switch (opcionDialog) {
             case 1:
                 dialogo = (" Observas una mujer con una túnica mirando hacia el cielo.\n" +
@@ -62,7 +62,7 @@ public class Diana extends NPCs {
             switch (elec) {
                 case 1:
                     //te regala un hechizo aleatorio
-                    int numHechizo = (int) (Math.random() * 4 + 1);
+                    int numHechizo = RandomLibreria.numeroAleatorio(4,1);
                     ;
                     FrameNPC.h.inventary.agregarItem(FrameNPC.h.hechizos.getHechizoBase(numHechizo));
                     FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.hechizos.getHechizoBase(numHechizo), 1);
@@ -88,7 +88,7 @@ public class Diana extends NPCs {
                     //te da una reliquia aleatoria
                     int numReliq;
                     do {
-                        numReliq = (int) (Math.random() * 6 + 1);
+                        numReliq = RandomLibreria.numeroAleatorio(6,1);
                     } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
                     FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
                     break;
@@ -98,7 +98,7 @@ public class Diana extends NPCs {
             switch (elec) {
                 case 1:
                     //te da un hechizo poderoso
-                    int numHechizo = (int) (Math.random() * 3 + 1);
+                    int numHechizo = RandomLibreria.numeroAleatorio(3,1);
                     ;
                     FrameNPC.h.inventary.agregarItem(FrameNPC.h.hechizos.getHechizoPoderoso(numHechizo));
                     FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.hechizos.getHechizoPoderoso(numHechizo), 1);

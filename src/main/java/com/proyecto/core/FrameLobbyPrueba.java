@@ -4,6 +4,7 @@
  */
 package com.proyecto.core;
 
+import Random.RandomLibreria;
 import com.proyecto.features.GuardadoObj;
 import com.proyecto.personajes.PPrincipal;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
@@ -36,9 +37,9 @@ public class FrameLobbyPrueba extends JFrame implements ActionListener {
     private JLabel titulo;
     int eleccion=0;
 
-    int num1 = (int) (Math.random() * 29 + 1);
-    int num2 = (int) (Math.random() * 29 + 1);
-    int num3 = (int) (Math.random() * 29 + 1);
+    int num1 =  (RandomLibreria.numeroAleatorio(29,1);
+    int num2 = RandomLibreria.numeroAleatorio(29,1);
+    int num3 = RandomLibreria.numeroAleatorio(29,1);
 
     public FrameLobbyPrueba() {
 
