@@ -1,8 +1,6 @@
 package com.proyecto.Npcs;
+
 import Random.RandomLibreria;
-import com.proyecto.core.FrameCombate;
-import com.proyecto.core.FrameCombateBoss;
-import com.proyecto.core.Main;
 import com.proyecto.inventario.Item;
 
 import java.util.ArrayList;
@@ -39,9 +37,9 @@ public class Ladron extends NPCs{
             case 1:
                 switch (elec) {
                     case 1:
-                        return "Peleas contra él.";
+                        return "Intentar robarle.";
                     case 2:
-                        return "Intenta huir.";
+                        return "Intentar huir.";
                 }
             case 2:
                 switch (elec) {
@@ -70,15 +68,27 @@ public class Ladron extends NPCs{
             case 1:
                 switch (elec) {
                     case 1:
-                        //Peleas contra él y si ganas consigues una reliquia exclusiva(Puedes intentar huir con un 50% de probabilidades)
-                        FrameNPC.h.empezarCombate(4);
-                        Main.h.inventary.limpiarInventario();
-                        FrameCombate.save(Main.h);
-                        new FrameCombateBoss();
-                        break;
+                        //Intentas robarle con un 20% de probabilidades de conseguir una reliquia exclusiva o si no te comes 300 de daño.
+                        int probabilidad=RandomLibreria.numeroAleatorio(10,1);
+                        if (probabilidad>2) {
+                            FrameNPC.h.pj.setVida(FrameNPC.h.pj.getVida() - 300);
+
+                        }
+                        else
+                            FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.abrigoDeSombras);
+
+                            break;
                     case 2:
                 /*Intentas huir del ladrón con un 50% de probabilidades si fallas
-                 te comes un ataque de 100 de vida y entras en combate contra él sin ninguna recompensa */
+                 te comes un ataque de 300 de vida y pierdes 200 de oro */
+                        int probabilidad2=RandomLibreria.numeroAleatorio(10,1);
+                        if (probabilidad2>5) {
+                            break;
+
+                        }
+                        else
+                        FrameNPC.h.pj.setVida(FrameNPC.h.pj.getVida()-300);
+                        FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.oro.getOro(), FrameNPC.h.oro.getOro().getCantidad() - 200);
                         break;
                 }
                 break;
