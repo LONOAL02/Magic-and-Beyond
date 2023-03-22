@@ -1,12 +1,11 @@
 package com.proyecto.core;
 
 import com.proyecto.features.GuardadoObj;
-import com.proyecto.features.Inventario;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrameSalir extends JFrame {
 

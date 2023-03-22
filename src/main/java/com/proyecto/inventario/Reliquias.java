@@ -1,7 +1,6 @@
 package com.proyecto.inventario;
 
 import com.proyecto.Npcs.FrameNPC;
-import com.proyecto.core.Main;
 
 public class Reliquias {
     public Item monedaAntigua = new Item("Moneda antigua.", "Ganas un +20% de oro extra cada vez que ganas oro.", 1, Item.RELIQUIA);//R

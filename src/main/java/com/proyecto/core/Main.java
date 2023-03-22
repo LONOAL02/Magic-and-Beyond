@@ -1,31 +1,34 @@
 package com.proyecto.core;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+
+import com.proyecto.musica.MusicPlayer;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static Historia h = new Historia();
 
     public static void main (String[] args) {
-        try {
-            // Cargar el archivo de música
-            File file = new File("cancion.wav");
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(file);
 
-            // Crear un objeto Clip
-            Clip clip = AudioSystem.getClip();
+        File musicFolder = new File("src/main/java/com/proyecto/musica/Elden Ring Digital Soundtrack [JpopMix.com]");
+        File[] musicFiles = musicFolder.listFiles((dir, name) -> name.endsWith(".mp3"));
 
-            // Abrir el archivo de música con el objeto Clip
-            clip.open(audioIn);
-
-            // Reproducir la música
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
+        // Crear una lista de nombres de archivos
+        List<String> filenames = new ArrayList<>();
+        for (File file : musicFiles) {
+            filenames.add(file.getAbsolutePath());
         }
-    new FrameLobbyPrueba();
+
+        // Crear un objeto MusicPlayer y reproducir la música en segundo plano
+        MusicPlayer musicPlayer = new MusicPlayer();
+        Thread musicThread = new Thread(() -> musicPlayer.playMusic(filenames));
+        musicThread.start();
+        new FrameLobby();
+
+
+        //new FrameCofre();
     }
 }

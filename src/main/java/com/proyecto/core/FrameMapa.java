@@ -256,7 +256,7 @@ public class FrameMapa {
                     ventana.dispose();
                 }
                 else if (!estabaDescubierta) {
-                    int random = (int) RandomLibreria.numeroAleatorio(10,1);
+                    int random =  RandomLibreria.numeroAleatorio(10,1);
                     if (random < 7) {
                         // Minimiza el primer JFrame
                         Main.h.inventary.limpiarInventario();

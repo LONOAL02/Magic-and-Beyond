@@ -1,6 +1,5 @@
 package com.proyecto.inventario;
 
-import com.proyecto.Npcs.FrameNPC;
 import com.proyecto.core.FrameCombate;
 
 public class Oro {

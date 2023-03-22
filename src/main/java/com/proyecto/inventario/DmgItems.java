@@ -1,7 +1,5 @@
 package com.proyecto.inventario;
 
-import com.proyecto.core.FrameCombate;
-
 public class DmgItems {
 
     public Item bomba = new Item("Bomba.", "Explosivo improvisado que se lanza provocando daño incendiario.\nDaño: 100.", 1, Item.DAÑO);

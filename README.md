@@ -9,9 +9,9 @@
 
 ## ToDo:
 
-- [ ] Librerias
+- [x] Librerias
 
-- [x] Roguelike(posibilidad de continuar)
+- [ ] Roguelike(posibilidad de continuar)
 
 - [x] Mapa
 
@@ -25,8 +25,10 @@
 
 - [x] Grandes Runas(NPCs).
 
-- [ ] Bosses. 
+- [ ] Bosses.
 
-- [ ] Acabar NPCs
+- [ ] Frame Subir Nivel
+
+- [x] Acabar NPCs
 
 

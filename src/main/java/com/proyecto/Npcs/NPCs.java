@@ -1,7 +1,5 @@
 package com.proyecto.Npcs;
 
-import com.proyecto.core.Historia;
-
 public class NPCs {
 
 
