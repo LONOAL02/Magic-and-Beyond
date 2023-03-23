@@ -2,19 +2,26 @@
 package com.proyecto.core;
 
 
+import Random.RandomLibreria;
+import com.proyecto.inventario.Item;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FrameCofre extends javax.swing.JFrame implements ActionListener {
+
+    public static Historia h = new Historia();
+
+    private FrameMapa frameMapa;
+
+    int eleccion=0;
+
+    int num1 =  RandomLibreria.numeroAleatorio(29,1);
+    int num2 = RandomLibreria.numeroAleatorio(29,1);
+    int num3 = RandomLibreria.numeroAleatorio(29,1);
 
     private JLabel bg;
     private JLabel cofreAbierto;
@@ -23,7 +30,18 @@ public class FrameCofre extends javax.swing.JFrame implements ActionListener {
     private JPanel panelP;
     private JLabel labelObj;
 
-    public FrameCofre() {
+    public static Historia save(Historia h1){
+        h = h1;
+        return h;
+    }
+
+    public static Historia update(Historia h1){
+        h1 = h;
+        return h1;
+    }
+
+    public FrameCofre(FrameMapa frameMapa) {
+        this.frameMapa = frameMapa;
 
         setUndecorated(true);
         setVisible(true);
@@ -94,14 +112,52 @@ public class FrameCofre extends javax.swing.JFrame implements ActionListener {
     }
 
 
+    public String generarItem(){
+        int random=RandomLibreria.numeroAleatorio(6,1);
+        Item item;
+        switch (random){
+            case 1:
+                item=FrameCofre.h.arma.armaComun(num1);
+                FrameCofre.h.inventary.agregarItem(item);
+                return item.getNombre();
+            case 2:
+                item= FrameCofre.h.curas.getCuraRandom();
+                FrameCofre.h.inventary.agregarItem(item);
+                return item.getNombre();
+            case 3:
+                item= FrameCofre.h.dmgI.getDmgIRandom();
+                FrameCofre.h.inventary.agregarItem(item);
+                return item.getNombre();
+            case 4:
+                item = FrameCofre.h.hechizos.getHechizoBase(RandomLibreria.numeroAleatorio(4,1));
+                FrameCofre.h.inventary.agregarItem(item);
+                return item.getNombre();
+            case 5:
+                item= FrameCofre.h.reliq.relNormales(RandomLibreria.numeroAleatorio(6,1));
+                FrameCofre.h.inventary.agregarItem(item);
+                return item.getNombre();
+            case 6:
+                int cantOro= RandomLibreria.numeroAleatorio(200,100);
+                FrameCofre.h.oro.ganarOro(cantOro);
+                return cantOro+" de Oro.";
+            default:
+                return null;
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()== botonP){
             if(botonP.getText().equals("ABRIR")){
+                String nombre= generarItem();
+                labelObj.setText(nombre);
                 cofreAbierto.setVisible(true);
                 cofreCerrado.setVisible(false);
                 botonP.setText("COGER");
+
             }else{
+                Main.h=FrameCofre.update(Main.h);
+                FrameMapa.ventana.setExtendedState(JFrame.NORMAL);
                 this.dispose();
             }
         }

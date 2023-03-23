@@ -39,7 +39,7 @@ public class Inventario {
     }
 
     public void guardarInventario() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventario.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/com/proyecto/files/inventario.txt"))) {
             for (Item item : listaItems) {
                 writer.write(item.getNombre() + ";" + item.getDescripcion().replace("\n", "\\n") + ";" + item.getCantidad()+";"+item.getUso());
                 writer.newLine();
@@ -51,7 +51,7 @@ public class Inventario {
 
     public void cargarInventario() {
         listaItems.clear();
-        try (BufferedReader reader = new BufferedReader(new FileReader("inventario.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/java/com/proyecto/files/inventario.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] campos = line.split(";");

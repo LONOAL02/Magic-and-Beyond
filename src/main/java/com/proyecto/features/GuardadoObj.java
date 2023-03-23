@@ -7,7 +7,7 @@ import java.io.*;
 public class GuardadoObj {
 
     // Archivo donde se guardará el objeto
-    public static String nombreArchivo = "pjObjeto.dat";
+    public static String nombreArchivo = "src/main/java/com/proyecto/files/pjObjeto.dat";
 
     // Guardar el objeto en el archivo
     public static void guardarObjeto (PPrincipal objeto){

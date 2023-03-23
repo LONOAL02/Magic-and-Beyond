@@ -1,5 +1,7 @@
 package com.proyecto.inventario;
 
+import Random.RandomLibreria;
+
 public class Curas {
 
     public Item curas50 = new Item("Estus pequeño", "El Frasco de Estus es el objeto restaurativo básico, cura 50 PV", 1, Item.CURACION);
@@ -109,6 +111,20 @@ public class Curas {
                 return curas200;
             default:
                 return curas50;
+        }
+    }
+
+    public Item getCuraRandom(){
+        int random = RandomLibreria.numeroAleatorio(3,1);
+        switch (random){
+            case 1:
+                return curas50;
+            case 2:
+                return curas100;
+            case 3:
+                return curas200;
+            default:
+                return null;
         }
     }
 }

@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.proyecto.core;
 
 import Random.RandomLibreria;
+import com.proyecto.features.ClonarArchivo;
 import com.proyecto.features.GuardadoObj;
 import com.proyecto.personajes.PPrincipal;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
@@ -84,6 +82,7 @@ public class FrameLobby extends JFrame implements ActionListener {
         this.setVisible(true);
 
 
+
         jPanel1.setPreferredSize(new Dimension(1280, 720));
         jPanel1.setLayout(new AbsoluteLayout());
 
@@ -100,18 +99,31 @@ public class FrameLobby extends JFrame implements ActionListener {
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
         titulo.setText("MAGIC AND BEYOND");
         titulo.setToolTipText("");
+        titulo.setForeground(new Color(187, 187, 187));
         jPanel1.add(titulo, new AbsoluteConstraints(370, 50, 500, 110));
+
 
         labelPartida.setFont(new Font("Mantinia", 1, 14));
         labelPartida.setText("SELECCIONA LA PARTIDA:");
+        labelPartida.setForeground(new Color(187, 187, 187));
         jPanel1.add(labelPartida, new AbsoluteConstraints(110, 240, 220, 30));
 
-        selecPartida.setModel(new DefaultComboBoxModel<>(new String[] { " ","Nueva Partida","Archivo Guardado 1","Archivo Guardado 2","Archivo Guardado 3"}));
+        selecPartida.setModel(new DefaultComboBoxModel<>(new String[] { " ","Nueva Partida"}));
+        if (FrameSalir.archivoG1.length()!=0){
+            selecPartida.addItem("Archivo Guardado 1");
+        }
+        if (FrameSalir.archivoG2.length()!=0){
+            selecPartida.addItem("Archivo Guardado 2");
+        }
+        if (FrameSalir.archivoG3.length()!=0){
+            selecPartida.addItem("Archivo Guardado 3");
+        }
         selecPartida.addActionListener(this);
         jPanel1.add(selecPartida, new AbsoluteConstraints(100, 280, 310, 40));
 
         labelArma.setFont(new Font("Mantinia", 1, 14));
         labelArma.setText("ARMA:");
+        labelArma.setForeground(new Color(187, 187, 187));
         jPanel1.add(labelArma, new AbsoluteConstraints(110, 520, 120, 20));
 
         selecArma.setModel(new DefaultComboBoxModel<>(new String[] { " ","Arma 1","Arma 2","Arma 3"}));
@@ -121,6 +133,7 @@ public class FrameLobby extends JFrame implements ActionListener {
 
         labelNombre.setFont(new Font("Mantinia", 1, 14));
         labelNombre.setText("NOMBRE:");
+        labelNombre.setForeground(new Color(187, 187, 187));
         jPanel1.add(labelNombre, new AbsoluteConstraints(110, 340, 120, 20));
 
         fieldNombre.setFont(new Font("Mantinia", 1, 18));
@@ -131,6 +144,7 @@ public class FrameLobby extends JFrame implements ActionListener {
 
         labelClase.setFont(new Font("Mantinia", 1, 14));
         labelClase.setText("CLASE:");
+        labelClase.setForeground(new Color(187, 187, 187));
         jPanel1.add(labelClase, new AbsoluteConstraints(110, 420, 220, 30));
 
         selecClase.setModel(new DefaultComboBoxModel<>(new String[] { " ","Heroe", "Guerrero", "Astrólogo", "Profeta" }));
@@ -186,7 +200,7 @@ public class FrameLobby extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnSalir) {
-            this.dispose();
+            System.exit(0);
         }
         if (e.getSource() == fieldNombre) {
             Main.h.pj.setNombre(fieldNombre.getText());
@@ -216,6 +230,7 @@ public class FrameLobby extends JFrame implements ActionListener {
                 btnJugar.setEnabled(true);
             }else{
                 selecClase.setEnabled(false);
+                btnJugar.setEnabled(false);
             }
         }
         if (e.getSource() == btnJugar) {
@@ -225,7 +240,26 @@ public class FrameLobby extends JFrame implements ActionListener {
                 GuardadoObj.guardarObjeto(Main.h.pjSave);
                 Main.h.addCuras();
                 Main.h.inventary.guardarInventario();
-            }else {
+                ClonarArchivo.clonarInventario("inventario.txt","inventarioP.txt");
+                ClonarArchivo.clonarInventario("pjObjeto.dat","pjObjetoP.dat");
+            }
+            else if (selecPartida.getSelectedItem().equals("Archivo Guardado 1")) {
+                ClonarArchivo.clonarInventario("save1.txt","inventario.txt");
+                ClonarArchivo.clonarInventario("pj1.dat","pjObjeto.dat");
+                Main.h.inventary.cargarInventario();
+                Main.h.pj=GuardadoObj.cargarObjeto();
+                Main.h.inventary.cargarInventario();
+            }
+            else if (selecPartida.getSelectedItem().equals("Archivo Guardado 2")) {
+                ClonarArchivo.clonarInventario("save2.txt","inventario.txt");
+                ClonarArchivo.clonarInventario("pj2.dat","pjObjeto.dat");
+                Main.h.inventary.cargarInventario();
+                Main.h.pj=GuardadoObj.cargarObjeto();
+                Main.h.inventary.cargarInventario();
+            }
+            else if (selecPartida.getSelectedItem().equals("Archivo Guardado 3")) {
+                ClonarArchivo.clonarInventario("save3.txt","inventario.txt");
+                ClonarArchivo.clonarInventario("pj3.dat","pjObjeto.dat");
                 Main.h.inventary.cargarInventario();
                 Main.h.pj=GuardadoObj.cargarObjeto();
                 Main.h.inventary.cargarInventario();

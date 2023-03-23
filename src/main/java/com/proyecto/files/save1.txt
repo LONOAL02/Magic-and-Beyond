@@ -1,0 +1,2 @@
+Latigo con Espinas; Escalado de fuerza: 1.25\n Escalado de destreza: 1.75\n Escalado de fe: 1.0\n Escalado de Inteligencia: 1.0\n Daño: 102.0\n Peso: 3.0\n Critico: 100.0\n Calidad: Común;1;1
+Estus pequeño;El Frasco de Estus es el objeto restaurativo básico, cura 50 PV;3;5

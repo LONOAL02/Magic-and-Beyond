@@ -16,7 +16,7 @@ public class Reliquias {
     public Item mascaraDemoníaca = new Item("Máscara Demoníaca.", "Infliges 100 de daño a todos los enemigos al entrar en combate.", 1, Item.RELIQUIA);//R
     public Item corazónDorado = new Item("Corazón dorado.", "Obtienes 75 de vida máxima.", 1, Item.RELIQUIA);//R
 
-public Item RelEspeciales(int Npc){
+public Item relEspeciales(int Npc){
     Item tipo=null;
     switch (Npc) {
         case 1:
@@ -45,7 +45,7 @@ public Item RelEspeciales(int Npc){
     }
     return tipo;
 }
-    public Item RelNormales(int numReliquia){
+    public Item relNormales(int numReliquia){
     Item reliquia = null;
         switch (numReliquia) {
             case 1:

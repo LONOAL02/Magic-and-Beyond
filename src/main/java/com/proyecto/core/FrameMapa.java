@@ -265,10 +265,14 @@ public class FrameMapa {
                         ventana.setExtendedState(JFrame.ICONIFIED);
                         // Crea una instancia del segundo JFrame
                         new FrameCombate(FrameMapa.this);
-                    }else {
+                    }else if (random < 9) {
                         FrameNPC.save(Main.h);
                         ventana.setExtendedState(JFrame.ICONIFIED);
                         new FrameNPC(FrameMapa.this);
+                    }else {
+                        FrameCofre.save(Main.h);
+                        ventana.setExtendedState(JFrame.ICONIFIED);
+                        new FrameCofre(FrameMapa.this);
                     }
                 }
             }

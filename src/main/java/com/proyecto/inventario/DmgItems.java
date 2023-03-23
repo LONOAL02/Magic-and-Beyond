@@ -1,5 +1,7 @@
 package com.proyecto.inventario;
 
+import Random.RandomLibreria;
+
 public class DmgItems {
 
     public Item bomba = new Item("Bomba.", "Explosivo improvisado que se lanza provocando daño incendiario.\nDaño: 100.", 1, Item.DAÑO);
@@ -55,6 +57,22 @@ public class DmgItems {
                 return dagaMetalica;
             default:
                 return bomba;
+        }
+    }
+
+    public Item getDmgIRandom(){
+        int random = RandomLibreria.numeroAleatorio(4,1);
+        switch (random){
+            case 1:
+                return bomba;
+            case 2:
+                return fragmentoMeteorito;
+            case 3:
+                return cuchilloHueso;
+            case 4:
+                return dagaMetalica;
+            default:
+                return null;
         }
     }
 }

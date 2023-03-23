@@ -1,14 +1,16 @@
 package com.proyecto.musica;
 
-import java.io.FileInputStream;
-import java.util.List;
+
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.JavaSoundAudioDevice;
 import javazoom.jl.player.Player;
 
+
+import java.io.FileInputStream;
+import java.util.List;
+
 public class MusicPlayer implements Runnable {
-    private Thread musicThread;
     private Player player;
 
     public void playMusic(List<String> filenames) {
@@ -22,7 +24,7 @@ public class MusicPlayer implements Runnable {
                 player = new Player(fileInputStream, audioDevice);
 
                 // Iniciar un nuevo hilo para la reproducción de la música
-                musicThread = new Thread(this);
+                Thread musicThread = new Thread(this);
                 musicThread.start();
 
                 // Esperar a que el hilo de música termine antes de continuar con el siguiente archivo

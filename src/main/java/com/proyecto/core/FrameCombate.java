@@ -260,32 +260,36 @@ public class FrameCombate extends JFrame implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == attackButton) {
-            String attack = (String) attacksComboBox.getSelectedItem();
-            int precision = calculateDamage(attack);
-            float daño = h.combate.atacar(precision, h.pj.calcularAtaque(), h.arma.getDaño());
-            enemyHealth -= daño;
-            if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.espírituIndomable)){
+            if (FrameCombate.h.arma.getDaño() == 0) {
+                logTextArea.append("\nEquipa un arma primero" + "!\n");
+            }else {
+                String attack = (String) attacksComboBox.getSelectedItem();
+                int precision = calculateDamage(attack);
+                float daño = h.combate.atacar(precision, h.pj.calcularAtaque(), h.arma.getDaño());
                 enemyHealth -= daño;
-                logTextArea.append("\nAtacas 2 veces gracias a Espiritu Indomable" + "!\n");
-                logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
-            }
-            if (enemyHealth <= 0) {
-                enemyHealth = 0;
-                enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
-                logTextArea.append("Enemigo derrotado!\n");
-                attackButton.setEnabled(false);
-                continueButton.setEnabled(true);
-            } else {
-                enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
-                if (daño == 0) {
-                    logTextArea.append("\nFallaste" + "!\n");
-                } else {
-                    logTextArea.append("\nAtaque realizado" + "!\n");
+                if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.espírituIndomable)) {
+                    enemyHealth -= daño;
+                    logTextArea.append("\nAtacas 2 veces gracias a Espiritu Indomable" + "!\n");
                     logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                 }
-                opponentAttack();
-                if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.aguaBendita)){
-                    playerHealth=FrameCombate.h.curas.curarCantidad(playerHealth,FrameCombate.h.vidaMax,FrameCombate.h.vidaMax*0.1f);
+                if (enemyHealth <= 0) {
+                    enemyHealth = 0;
+                    enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
+                    logTextArea.append("Enemigo derrotado!\n");
+                    attackButton.setEnabled(false);
+                    continueButton.setEnabled(true);
+                } else {
+                    enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
+                    if (daño == 0) {
+                        logTextArea.append("\nFallaste" + "!\n");
+                    } else {
+                        logTextArea.append("\nAtaque realizado" + "!\n");
+                        logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
+                    }
+                    opponentAttack();
+                    if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.aguaBendita)) {
+                        playerHealth = FrameCombate.h.curas.curarCantidad(playerHealth, FrameCombate.h.vidaMax, FrameCombate.h.vidaMax * 0.1f);
+                    }
                 }
             }
         }

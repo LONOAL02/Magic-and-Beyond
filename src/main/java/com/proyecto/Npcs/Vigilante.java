@@ -92,8 +92,8 @@ public class Vigilante extends NPCs{
                     int numReliq;
                     do {
                         numReliq = RandomLibreria.numeroAleatorio(6,1);
-                    } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.RelNormales(numReliq)));
-                    FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.RelNormales(numReliq));
+                    } while (FrameNPC.h.inventary.comprobarInventario(FrameNPC.h.reliq.relNormales(numReliq)));
+                    FrameNPC.h.inventary.agregarItem(FrameNPC.h.reliq.relNormales(numReliq));
                     break;
             }
             break;

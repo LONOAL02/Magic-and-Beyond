@@ -11,6 +11,7 @@ public class Main {
 
     public static Historia h = new Historia();
 
+
     public static void main (String[] args) {
 
         File musicFolder = new File("src/main/java/com/proyecto/musica/Elden Ring Digital Soundtrack [JpopMix.com]");
@@ -26,9 +27,9 @@ public class Main {
         MusicPlayer musicPlayer = new MusicPlayer();
         Thread musicThread = new Thread(() -> musicPlayer.playMusic(filenames));
         musicThread.start();
+
         new FrameLobby();
-
-
-        //new FrameCofre();
     }
+
+
 }
