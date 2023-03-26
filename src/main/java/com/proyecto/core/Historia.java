@@ -11,8 +11,19 @@ import java.util.Scanner;
 
 public class Historia {
 
-    //Nombre del personaje principal.
+    /*Elementos roguelike de la tienda COMING SOON
+    public float vidaExtra=0;
+    public float dañoExtra=0;
+    public float xpExtra=0;
+    public boolean reliqExtra=false;
+    public boolean armaExtra=false;
+    public float curasExtra=0;
+     */
+
+    //Stage en el que se encuentra
     public int stage = 1;
+
+    //Nombre del personaje principal.
     public String nombrePJ;
     public float vidaMax;
     public float manaMax;

@@ -130,4 +130,13 @@ public class Inventario {
             }
         }return false;
     }
+
+    public int getCantidad(Item buscado){
+        for (Item item : listaItems) {
+            if (item==buscado) {
+                return item.getCantidad();
+            }
+        }
+        return 0;
+    }
 }

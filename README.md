@@ -11,13 +11,13 @@
 
 - [x] Librerias
 
-- [ ] Roguelike(posibilidad de continuar)
+- [x] Roguelike(posibilidad de continuar)
 
 - [x] Mapa
 
 - [x] Eventos Aleatorios
 
-- [ ] Lobby(Tienda)
+- [ ] Lobby(Tienda) 50 vidamax, 5% daño, xp extra(max3), reliq aleatoria(compra unica), arma extra(compra unica), curas extra 50(maximo 3) 
 
 - [x] Armas legendarias(pasiva)
 
@@ -25,9 +25,9 @@
 
 - [x] Grandes Runas(NPCs).
 
-- [ ] Bosses.
+- [x] Bosses.
 
-- [ ] Frame Subir Nivel
+- [x] Frame Subir Nivel
 
 - [x] Acabar NPCs
 

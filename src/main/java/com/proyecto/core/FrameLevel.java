@@ -366,7 +366,19 @@ public class FrameLevel extends JFrame implements ActionListener {
             inteligenciaN.setText(String.valueOf((int)h.pj.getInteligencia()));
             feN.setText(String.valueOf((int)h.pj.getFe()));
         }
-        puntosXp.setText(String.valueOf("PUNTOS DE EXPERIENCIA DISPONIBLES: "+h.pj.getPuntosMejora()));
+        puntosXp.setText("PUNTOS DE EXPERIENCIA DISPONIBLES: "+h.pj.getPuntosMejora());
+        if (h.pj.getPuntosMejora()==0){
+            fuerzaMas.setEnabled(false);
+            destrezaMas.setEnabled(false);
+            inteligenciaMas.setEnabled(false);
+            feMas.setEnabled(false);
+        } else {
+            fuerzaMas.setEnabled(true);
+            destrezaMas.setEnabled(true);
+            inteligenciaMas.setEnabled(true);
+            feMas.setEnabled(true);
+
+        }
     }
 
 }

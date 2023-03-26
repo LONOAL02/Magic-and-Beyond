@@ -13,7 +13,7 @@ public class Main {
 
 
     public static void main (String[] args) {
-/*
+
         File musicFolder = new File("src/main/java/com/proyecto/musica/Elden Ring Digital Soundtrack [JpopMix.com]");
         File[] musicFiles = musicFolder.listFiles((dir, name) -> name.endsWith(".mp3"));
 
@@ -27,7 +27,7 @@ public class Main {
         MusicPlayer musicPlayer = new MusicPlayer();
         Thread musicThread = new Thread(() -> musicPlayer.playMusic(filenames));
         musicThread.start();
- */
+
         new FrameLobby();
     }
 

@@ -161,7 +161,8 @@ public class FrameLobby extends JFrame implements ActionListener {
         jPanel1.add(btnJugar, new AbsoluteConstraints(470, 550, 300, 60));
 
         btnTienda.setFont(new Font("Mantinia", 1, 24));
-        btnTienda.setText("TIENDA");
+        btnTienda.setText("COMING SOON");
+        btnTienda.setEnabled(false);
         btnTienda.setCursor(new Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnTienda, new AbsoluteConstraints(470, 630, 300, 60));
 
@@ -235,6 +236,7 @@ public class FrameLobby extends JFrame implements ActionListener {
         }
         if (e.getSource() == btnJugar) {
             if (selecPartida.getSelectedItem().equals("Nueva Partida")) {
+                Main.h.inventary.agregarItem(Main.h.oro.getOro());
                 Main.h.pjSave = new PPrincipal(Main.h.pj.getNombre(),Main.h.pj.getVida(), Main.h.pj.getAtaque(), Main.h.pj.getVelAtaque(), Main.h.pj.getMana(),Main.h.pj.getNivel(),Main.h.pj.getClase(),Main.h.pj.getNumarma(),Main.h.pj.getFuerza(),Main.h.pj.getDestreza(),Main.h.pj.getInteligencia(),Main.h.pj.getFe());
                 Main.h.eleccionArma(eleccion,num1,num2,num3);
                 GuardadoObj.guardarObjeto(Main.h.pjSave);
