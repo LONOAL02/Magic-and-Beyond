@@ -1,23 +1,21 @@
 package com.proyecto.core;
 
-import javax.imageio.ImageIO;
+import Random.RandomLibreria;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class FrameCombate extends JFrame implements ActionListener {
+public class FrameBoss extends JFrame implements ActionListener {
 
     public static Historia h = new Historia();
 
     private FrameMapa frameMapa;
     DecimalFormat format1 = new DecimalFormat("#");
-
-    public int nivelI = (int) h.pj.getNivel();
 
 
     private JLabel playerLabel;
@@ -60,7 +58,13 @@ public class FrameCombate extends JFrame implements ActionListener {
         private Image background;
 
         public JTextAreaWithBackground() {
-            background = new ImageIcon("src//main//java/com/proyecto/imagenes/fondo.jpg").getImage();
+            if (FrameBoss.h.stage==1){
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/Godrick.jpg").getImage();
+            }else if (FrameBoss.h.stage==2){
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/Rennala.jpg").getImage();
+            }else {
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/Radahn.jpg").getImage();
+            }
             setOpaque(false); // make the JTextArea transparent
         }
 
@@ -77,7 +81,13 @@ public class FrameCombate extends JFrame implements ActionListener {
         private Image background;
 
         public JPanelWithBackground() {
-            background = new ImageIcon("src//main//java/com/proyecto/imagenes/fondo2.jpg").getImage();
+            if (FrameBoss.h.stage==1){
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/pjGodrick.jpg").getImage();
+            }else if (FrameBoss.h.stage==2){
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/pjRennala.jpg").getImage();
+            }else {
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/pjRadahn.jpg").getImage();
+            }
             setOpaque(false);
         }
 
@@ -93,7 +103,13 @@ public class FrameCombate extends JFrame implements ActionListener {
         private Image background;
 
         public JPanelWithBackground2() {
-            background = new ImageIcon(FrameCombate.h.enemy.getImgPath()).getImage();
+            if (FrameBoss.h.stage==1){
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/enemyGodrick.jpg").getImage();
+            }else if (FrameBoss.h.stage==2){
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/enemyRennala.jpg").getImage();
+            }else {
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/enemyRadahn.jpg").getImage();
+            }
             setOpaque(false);
         }
 
@@ -104,7 +120,29 @@ public class FrameCombate extends JFrame implements ActionListener {
         }
     }
 
-    public FrameCombate(FrameMapa frameMapa) {
+    private static class JPanelWithBackground3 extends JPanel {
+
+        private Image background;
+
+        public JPanelWithBackground3() {
+            if (FrameBoss.h.stage==1){
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/abGodrick.jpg").getImage();
+            }else if (FrameBoss.h.stage==2){
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/abRennala.jpg").getImage();
+            }else {
+                background = new ImageIcon("src/main/java/com/proyecto/imagenes/ui/boss/abRadahn.jpg").getImage();
+            }
+            setOpaque(false);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+            super.paintComponent(g);
+        }
+    }
+
+    public FrameBoss(FrameMapa frameMapa) {
         this.frameMapa = frameMapa;
 
         this.setTitle("Magic and beyond");
@@ -151,7 +189,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         add(opponentPanel, BorderLayout.EAST);
 
         // Crear el panel de ataque
-        JPanel attackPanel = new JPanelWithBackground();
+        JPanel attackPanel = new JPanelWithBackground3();
         attackPanel.setOpaque(false);
         attacksComboBox = new JComboBox<>(new String[]{"Cuerpo (90% Daño x1)", "Piernas (70% Daño x2)", "Cabeza (50% Daño x3)"});
         attackPanel.add(attacksComboBox, BorderLayout.CENTER);
@@ -203,7 +241,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         continueButton = new JButton("Continuar");
         JButton huirButton = new JButton("Huir");
         huirButton.addActionListener(this);
-        if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.abrigoDeSombras)){
+        if (FrameBoss.h.inventary.comprobarInventario(FrameBoss.h.reliq.abrigoDeSombras)){
             huirButton.setEnabled(true);
         }else {
             huirButton.setEnabled(false);
@@ -229,8 +267,38 @@ public class FrameCombate extends JFrame implements ActionListener {
             // Obtener el nombre de la fuente cargada
             String fontName = customFont.getFamily();
 
-            // Crear el área de registro de ataques
             logTextArea = new JTextAreaWithBackground();
+
+            // Crear el área de registro de ataques
+            if (FrameBoss.h.stage==1){
+                logTextArea.setForeground(Color.WHITE);
+                textoMenu.setForeground(Color.WHITE);
+                playerLabel.setForeground(Color.WHITE);
+                enemyLabel.setForeground(Color.WHITE);
+                playerDescription.setForeground(Color.WHITE);
+                enemyDescription.setForeground(Color.WHITE);
+                enemyHealthLabel.setForeground(Color.WHITE);
+                playerHealthLabel.setForeground(Color.WHITE);
+            }else if (FrameBoss.h.stage==2){
+                logTextArea.setForeground(Color.GRAY);
+                textoMenu.setForeground(Color.GRAY);
+                playerLabel.setForeground(Color.GRAY);
+                enemyLabel.setForeground(Color.GRAY);
+                playerDescription.setForeground(Color.GRAY);
+                enemyDescription.setForeground(Color.GRAY);
+                enemyHealthLabel.setForeground(Color.GRAY);
+                playerHealthLabel.setForeground(Color.GRAY);
+            }else {
+                logTextArea.setForeground(Color.WHITE);
+                textoMenu.setForeground(Color.WHITE);
+                playerLabel.setForeground(Color.WHITE);
+                enemyLabel.setForeground(Color.WHITE);
+                playerDescription.setForeground(Color.WHITE);
+                enemyDescription.setForeground(Color.WHITE);
+                enemyHealthLabel.setForeground(Color.WHITE);
+                playerHealthLabel.setForeground(Color.WHITE);
+            }
+
             logTextArea.setEditable(false);
             logTextArea.setLineWrap(true);
             logTextArea.setWrapStyleWord(true);
@@ -258,7 +326,7 @@ public class FrameCombate extends JFrame implements ActionListener {
         logTextArea.append("Te encuentras con "+h.enemy.nombre+"\n");
 
 
-        if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.mascaraDemoníaca)){
+        if (FrameBoss.h.inventary.comprobarInventario(FrameBoss.h.reliq.mascaraDemoníaca)){
             enemyHealth -= 100;
             logTextArea.append("\nHaces 100 de daño gracias a la Máscara Demoníaca" + "!\n");
             enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
@@ -266,14 +334,14 @@ public class FrameCombate extends JFrame implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == attackButton) {
-            if (FrameCombate.h.arma.getDaño() == 0) {
+            if (FrameBoss.h.arma.getDaño() == 0) {
                 logTextArea.append("\nEquipa un arma primero" + "!\n");
             }else {
                 String attack = (String) attacksComboBox.getSelectedItem();
                 int precision = calculateDamage(attack);
                 float daño = h.combate.atacar(precision, h.pj.calcularAtaque(), h.arma.getDaño());
                 enemyHealth -= daño;
-                if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.espírituIndomable)) {
+                if (FrameBoss.h.inventary.comprobarInventario(FrameBoss.h.reliq.espírituIndomable)) {
                     enemyHealth -= daño;
                     logTextArea.append("\nAtacas 2 veces gracias a Espiritu Indomable" + "!\n");
                     logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
@@ -282,6 +350,9 @@ public class FrameCombate extends JFrame implements ActionListener {
                     enemyHealth = 0;
                     enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
                     logTextArea.append("Enemigo derrotado!\n");
+                    FrameBoss.h.inventary.agregarItem(FrameBoss.h.arma.armaComun(RandomLibreria.numeroAleatorio(37,34)));
+                    FrameBoss.h.inventary.agregarItem(FrameBoss.h.granRuna.getGranRuna());
+                    logTextArea.append("\n Has obtenido "+ FrameBoss.h.arma.getNombreArma()+" y una Gran Runa por derrotar a "+FrameBoss.h.enemy.getNombre());
                     h.pj.setXp((int) (h.pj.getXp()+h.enemy.getNivel()));
                     h.oro.ganarOro(h.enemy.getRecompensa());
                     do {
@@ -302,8 +373,8 @@ public class FrameCombate extends JFrame implements ActionListener {
                         logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                     }
                     opponentAttack();
-                    if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.aguaBendita)) {
-                        playerHealth = FrameCombate.h.curas.curarCantidad(playerHealth, FrameCombate.h.vidaMax, FrameCombate.h.vidaMax * 0.1f);
+                    if (FrameBoss.h.inventary.comprobarInventario(FrameBoss.h.reliq.aguaBendita)) {
+                        playerHealth = FrameBoss.h.curas.curarCantidad(playerHealth, FrameBoss.h.vidaMax, FrameBoss.h.vidaMax * 0.1f);
                     }
                 }
             }
@@ -313,21 +384,21 @@ public class FrameCombate extends JFrame implements ActionListener {
             int elecCuras = calculateHealth(health);
             switch (elecCuras) {
                 case 1:
-                    if (FrameCombate.h.curas.getCuras50().getCantidad()>0){
+                    if (FrameBoss.h.curas.getCuras50().getCantidad()>0){
                         playerHealth=(h.curas.curarCantidad(playerHealth, h.vidaMax, 50));
-                        FrameCombate.h.inventary.actualizarCantidad(FrameCombate.h.curas.getCuras50(), FrameCombate.h.curas.getCuras50().getCantidad()-1);
+                        FrameBoss.h.inventary.actualizarCantidad(FrameBoss.h.curas.getCuras50(), FrameBoss.h.curas.getCuras50().getCantidad()-1);
                     }
                     break;
                 case 2:
-                    if (FrameCombate.h.curas.getCuras100().getCantidad()>0){
+                    if (FrameBoss.h.curas.getCuras100().getCantidad()>0){
                         playerHealth=(h.curas.curarCantidad(playerHealth, h.vidaMax, 100));
-                        FrameCombate.h.inventary.actualizarCantidad(FrameCombate.h.curas.getCuras100(), FrameCombate.h.curas.getCuras100().getCantidad()-1);
+                        FrameBoss.h.inventary.actualizarCantidad(FrameBoss.h.curas.getCuras100(), FrameBoss.h.curas.getCuras100().getCantidad()-1);
                     }
                     break;
                 case 3:
-                    if (FrameCombate.h.curas.getCuras200().getCantidad()>0){
+                    if (FrameBoss.h.curas.getCuras200().getCantidad()>0){
                         playerHealth=(h.curas.curarCantidad(playerHealth, h.vidaMax, 200));
-                        FrameCombate.h.inventary.actualizarCantidad(FrameCombate.h.curas.getCuras200(), FrameCombate.h.curas.getCuras200().getCantidad()-1);
+                        FrameBoss.h.inventary.actualizarCantidad(FrameBoss.h.curas.getCuras200(), FrameBoss.h.curas.getCuras200().getCantidad()-1);
                     }
                     break;
             }
@@ -385,14 +456,10 @@ public class FrameCombate extends JFrame implements ActionListener {
             new FrameSalir();
         }
         if (e.getSource() == continueButton) {
-            FrameCombate.h.pj.setVida(playerHealth);
-            Main.h=FrameCombate.update(Main.h);
-            if (nivelI<h.pj.getNivel()){
-                FrameLevel.save(Main.h);
-                new FrameLevel(frameMapa);
-            }else{
-                FrameMapa.ventana.setExtendedState(JFrame.NORMAL);
-            }
+            FrameBoss.h.pj.setVida(playerHealth);
+            Main.h= FrameBoss.update(Main.h);
+            FrameBoss.h.stage++;
+            new FrameMapa(11,11);
             this.dispose();
         }
 

@@ -3,7 +3,7 @@ package com.proyecto.core;
 import Random.RandomLibreria;
 import com.proyecto.features.Combate;
 import com.proyecto.features.Inventario;
-import com.proyecto.inventario.*;
+import com.proyecto.inv.*;
 import com.proyecto.personajes.Enemigos;
 import com.proyecto.personajes.PPrincipal;
 
@@ -12,9 +12,11 @@ import java.util.Scanner;
 public class Historia {
 
     //Nombre del personaje principal.
+    public int stage = 1;
     public String nombrePJ;
     public float vidaMax;
     public float manaMax;
+
     //Creo los objetos de las distintas clases.
     public PPrincipal pj = new PPrincipal();
     public PPrincipal pjSave;
@@ -25,6 +27,7 @@ public class Historia {
     public Curas curas = new Curas();
     public DmgItems dmgI = new DmgItems();
     public Hechizos hechizos = new Hechizos();
+
     public Reliquias reliq = new Reliquias();
 
     public Inventario inventary = new Inventario();
@@ -34,7 +37,10 @@ public class Historia {
     //Inicio del juego, pide el nombre del pj.
     public void selecClase(String eleccion) {
                 if (eleccion.equals("Heroe")) {
+                    pj.setClase("HEROE");
                     pj.setNivel(1);
+                    pj.setXp(0);
+                    pj.setPuntosMejora(0);
                     pj.setVida(1000);
                     pj.setMana(100);
                     manaMax=100;
@@ -45,7 +51,10 @@ public class Historia {
                     pj.setFe(8);
                 }
                 if (eleccion.equals("Guerrero")) {
+                    pj.setClase("GUERRERO");
                     pj.setNivel(1);
+                    pj.setXp(0);
+                    pj.setPuntosMejora(0);
                     pj.setVida(850);
                     pj.setMana(150);
                     manaMax=150;
@@ -56,7 +65,10 @@ public class Historia {
                     pj.setFe(8);
                 }
                 if (eleccion.equals("Astrólogo")) {
+                    pj.setClase("ASTROLOGO");
                     pj.setNivel(1);
+                    pj.setXp(0);
+                    pj.setPuntosMejora(0);
                     pj.setVida(700);
                     pj.setMana(300);
                     manaMax=300;
@@ -67,7 +79,10 @@ public class Historia {
                     pj.setFe(7);
                 }
                 if (eleccion.equals("Profeta")) {
+                    pj.setClase("PROFETA");
                     pj.setNivel(1);
+                    pj.setXp(0);
+                    pj.setPuntosMejora(0);
                     pj.setVida(700);
                     pj.setMana(300);
                     manaMax=300;
@@ -95,14 +110,23 @@ public class Historia {
 
 
     public void empezarCombate(int numenemigo) {
-        if (numenemigo==0) {
-            int enemigo= (int) RandomLibreria.numeroAleatorio(12,1);
+        if (numenemigo==1) {
+            int enemigo= RandomLibreria.numeroAleatorio(4,1);
             enemy.enemigoBasico(enemigo);
         }
-        else{
-            enemy.enemigoBoss(numenemigo);
+        else if (numenemigo==2) {
+            int enemigo= RandomLibreria.numeroAleatorio(8,5);
+            enemy.enemigoBasico(enemigo);
+        }
+        else if (numenemigo==3) {
+            int enemigo= RandomLibreria.numeroAleatorio(12,9);
+            enemy.enemigoBasico(enemigo);
         }
     }
+    public void empezarCombateBoss(int numenemigo) {
+        enemy.enemigoBoss(numenemigo);
+    }
+
 
     public void addCuras(){
         inventary.agregarItem(curas.curas50);

@@ -13,19 +13,15 @@ public class FrameMapa {
     JLayeredPane capas;
     public static JFrame ventana;
     private JPanel panelMapa;
-    private Habitacion[][] mapa;
+    private final Habitacion[][] mapa;
     private Habitacion habitacionActual;
-    private int tamañoTablero = 122; // Tamaño del tablero en casillas
-    private int tamañoCasillaH = 174;
-    private int tamañoCasillaV= 98;
+    private final int tamañoTablero = 122; // Tamaño del tablero en casillas
 
     // Establecer la casilla inicial del personaje
-    private int posX =5;
-    private int posY =5;
-    private int metay;
-    private int metax;
-    private int filas;
-    private int columnas;
+    private final int posX =5;
+    private final int posY =5;
+    private final int filas;
+    private final int columnas;
     private int idy;
     private int idx;
     private int x = 5;
@@ -86,7 +82,7 @@ public class FrameMapa {
 
         // Define la posición inicial del jugador
         Random rand = new Random();
-        String id = Integer.toString(y) + "," + Integer.toString(x);
+        String id = y + "," + x;
         mapa[y][x] = new Habitacion(id,false);
         mapa[y][x].setEsCasillaInicial(true);
         mapa[y][x].setEsDescubierta(true);
@@ -97,8 +93,6 @@ public class FrameMapa {
         int minNumCells = 20;
         int numCells = 1; // Inicia el contador de casillas en 1
 
-        // Define el número de ramas que saldrán de la posición inicial
-        int numBranches = rand.nextInt(10) + 2;
 
         // Genera las ramas aleatoriamente
         while (numCells < minNumCells) {
@@ -109,7 +103,7 @@ public class FrameMapa {
                 case 0: // izquierda
                     for (int j = 0; j < branchLength; j++) {
                         if (x - j - 1 >= 0 && mapa[idy=y][idx=(x - j - 1)] == null) {
-                            id = Integer.toString(idy) + "," + Integer.toString(idx);
+                            id = idy + "," + idx;
                             mapa[idy][idx] = new Habitacion(id, false);
                             mapa[idy][idx].setEsDescubierta(false);
                             numCells++;
@@ -120,7 +114,7 @@ public class FrameMapa {
                 case 1: // derecha
                     for (int j = 0; j < branchLength; j++) {
                         if (x + j + 1 < columnas && mapa[idy=y][idx=(x + j + 1)] == null) {
-                            id = Integer.toString(idy) + "," + Integer.toString(idx);
+                            id = idy + "," + idx;
                             mapa[idy][idx] = new Habitacion(id, false);
                             mapa[idy][idx].setEsDescubierta(false);
                             numCells++;
@@ -131,7 +125,7 @@ public class FrameMapa {
                 case 2: // arriba
                     for (int j = 0; j < branchLength; j++) {
                         if (y - j - 1 >= 0 && mapa[idy=(y - j - 1)][idx=x] == null) {
-                            id = Integer.toString(idy) + "," + Integer.toString(idx);
+                            id = idy + "," + idx;
                             mapa[idy][idx] = new Habitacion(id, false);
                             mapa[idy][idx].setEsDescubierta(false);
                             numCells++;
@@ -142,7 +136,7 @@ public class FrameMapa {
                 case 3: // abajo
                     for (int j = 0; j < branchLength; j++) {
                         if (y + j + 1 < filas && mapa[idy=(y + j + 1)][idx=x] == null) {
-                            id = Integer.toString(idy) + "," + Integer.toString(idx);
+                            id = idy + "," + idx;
                             mapa[idy][idx] = new Habitacion(id, false);
                             mapa[idy][idx].setEsDescubierta(false);
                             numCells++;
@@ -252,8 +246,13 @@ public class FrameMapa {
                 }
                 // Si el personaje llegó a la meta, mostrar un mensaje de felicitación y cerrar el juego
                 if (habitacionActual.esMeta()) {
-                    JOptionPane.showMessageDialog(ventana, "¡Felicidades, has llegado a la meta!");
-                    ventana.dispose();
+                    // Minimiza el primer JFrame
+                    Main.h.inventary.limpiarInventario();
+                    FrameBoss.save(Main.h);
+                    Main.h.empezarCombateBoss(Main.h.stage);
+                    ventana.setExtendedState(JFrame.ICONIFIED);
+                    // Crea una instancia del segundo JFrame
+                    new FrameBoss(FrameMapa.this);
                 }
                 else if (!estabaDescubierta) {
                     int random =  RandomLibreria.numeroAleatorio(10,1);
@@ -261,7 +260,7 @@ public class FrameMapa {
                         // Minimiza el primer JFrame
                         Main.h.inventary.limpiarInventario();
                         FrameCombate.save(Main.h);
-                        Main.h.empezarCombate(0);
+                        Main.h.empezarCombate(Main.h.stage);
                         ventana.setExtendedState(JFrame.ICONIFIED);
                         // Crea una instancia del segundo JFrame
                         new FrameCombate(FrameMapa.this);
@@ -284,7 +283,7 @@ public class FrameMapa {
         // Generar entre 1 y 3 paredes por fila
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-            String id = Integer.toString(j) + "," + Integer.toString(i);
+            String id = j + "," + i;
                 if (mapa[i][j] == null) {
                     mapa[i][j] = new Habitacion(id, true);
                     mapa[i][j].setColor(Color.GRAY);

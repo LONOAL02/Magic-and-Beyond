@@ -2,6 +2,7 @@ package com.proyecto.features;
 
 import Random.RandomLibreria;
 import com.proyecto.core.FrameCombate;
+import com.proyecto.core.Main;
 
 public class Combate {
 
@@ -20,7 +21,7 @@ public class Combate {
         if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.dagaEnsangrentada)){
             critico= critico + critico*0.15f;
         }
-        float random = (float) RandomLibreria.numeroAleatorio(1,0);
+        float random = (float) Math.random();
         float probabilidadCritico = critico/500;
         if (apuntado==1){
             if (RandomLibreria.numeroAleatorio(10,1)==1){

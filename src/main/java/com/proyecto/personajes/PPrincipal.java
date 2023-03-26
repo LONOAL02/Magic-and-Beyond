@@ -14,8 +14,8 @@ public class PPrincipal extends Personajes implements Serializable {
     public int puntosMejora;
 
 
-    public PPrincipal(String nombre, float vida, float ataque, float velAtaque, float mana, float nivel, float numarma, float fuerza, float destreza, float inteligencia, float fe) {
-        super(vida, ataque, velAtaque, mana, nivel);
+    public PPrincipal(String nombre, float vida, float ataque, float velAtaque, float mana, float nivel,String clase, float numarma, float fuerza, float destreza, float inteligencia, float fe) {
+        super(vida, ataque, velAtaque, mana, nivel, clase);
         this.nombre=nombre;
         this.numarma = numarma;
         this.fuerza = fuerza;

@@ -8,13 +8,15 @@ public class Personajes implements Serializable {
     public float velAtaque;
     public float mana;
     public float nivel;
+    public String clase;
 
-    public Personajes(float vida, float ataque, float velAtaque, float mana, float nivel) {
+    public Personajes(float vida, float ataque, float velAtaque, float mana, float nivel, String clase) {
         this.vida = vida;
         this.ataque = ataque;
         this.velAtaque = velAtaque;
         this.mana = mana;
         this.nivel = nivel;
+        this.clase = clase;
     }
 
     public Personajes() {
@@ -58,5 +60,13 @@ public class Personajes implements Serializable {
 
     public void setNivel(float nivel) {
         this.nivel = nivel;
+    }
+
+    public String getClase() {
+        return clase;
+    }
+
+    public void setClase(String clase) {
+        this.clase = clase;
     }
 }

@@ -1,6 +1,6 @@
 package com.proyecto.Npcs;
 import Random.RandomLibreria;
-import com.proyecto.inventario.Item;
+import com.proyecto.inv.Item;
 
 import java.util.ArrayList;
 import java.util.Random;

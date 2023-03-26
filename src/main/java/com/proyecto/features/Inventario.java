@@ -1,6 +1,6 @@
 package com.proyecto.features;
 
-import com.proyecto.inventario.Item;
+import com.proyecto.inv.Item;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -115,8 +115,10 @@ public class Inventario {
 
     public void limpiarInventario() {
         for (Item item : listaItems) {
-            if (item.getCantidad() == 0) {
-                eliminarItem(item);
+            if (item.getUso()!=Item.CURACION){
+                if (item.getCantidad() == 0) {
+                    eliminarItem(item);
+                }
             }
         }
     }

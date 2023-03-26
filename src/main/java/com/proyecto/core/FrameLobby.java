@@ -235,7 +235,7 @@ public class FrameLobby extends JFrame implements ActionListener {
         }
         if (e.getSource() == btnJugar) {
             if (selecPartida.getSelectedItem().equals("Nueva Partida")) {
-                Main.h.pjSave = new PPrincipal(Main.h.pj.getNombre(),Main.h.pj.getVida(), Main.h.pj.getAtaque(), Main.h.pj.getVelAtaque(), Main.h.pj.getMana(),Main.h.pj.getNivel(),Main.h.pj.getNumarma(),Main.h.pj.getFuerza(),Main.h.pj.getDestreza(),Main.h.pj.getInteligencia(),Main.h.pj.getFe());
+                Main.h.pjSave = new PPrincipal(Main.h.pj.getNombre(),Main.h.pj.getVida(), Main.h.pj.getAtaque(), Main.h.pj.getVelAtaque(), Main.h.pj.getMana(),Main.h.pj.getNivel(),Main.h.pj.getClase(),Main.h.pj.getNumarma(),Main.h.pj.getFuerza(),Main.h.pj.getDestreza(),Main.h.pj.getInteligencia(),Main.h.pj.getFe());
                 Main.h.eleccionArma(eleccion,num1,num2,num3);
                 GuardadoObj.guardarObjeto(Main.h.pjSave);
                 Main.h.addCuras();
@@ -248,21 +248,18 @@ public class FrameLobby extends JFrame implements ActionListener {
                 ClonarArchivo.clonarInventario("pj1.dat","pjObjeto.dat");
                 Main.h.inventary.cargarInventario();
                 Main.h.pj=GuardadoObj.cargarObjeto();
-                Main.h.inventary.cargarInventario();
             }
             else if (selecPartida.getSelectedItem().equals("Archivo Guardado 2")) {
                 ClonarArchivo.clonarInventario("save2.txt","inventario.txt");
                 ClonarArchivo.clonarInventario("pj2.dat","pjObjeto.dat");
                 Main.h.inventary.cargarInventario();
                 Main.h.pj=GuardadoObj.cargarObjeto();
-                Main.h.inventary.cargarInventario();
             }
             else if (selecPartida.getSelectedItem().equals("Archivo Guardado 3")) {
                 ClonarArchivo.clonarInventario("save3.txt","inventario.txt");
                 ClonarArchivo.clonarInventario("pj3.dat","pjObjeto.dat");
                 Main.h.inventary.cargarInventario();
                 Main.h.pj=GuardadoObj.cargarObjeto();
-                Main.h.inventary.cargarInventario();
             }
             new FrameMapa(11,11);
             this.dispose();

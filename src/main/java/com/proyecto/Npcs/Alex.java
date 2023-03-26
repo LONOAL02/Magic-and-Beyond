@@ -68,7 +68,7 @@ public class Alex extends NPCs{
                         break;
                     case 2:
                         //obten un estus mediano
-                        FrameNPC.h.inventary.actualizarCantidad(FrameNPC.h.curas.getCuras100(), FrameNPC.h.curas.getCantidad("Estus mediano") + 1);
+                        FrameNPC.h.inventary.agregarItem(FrameNPC.h.curas.getCuras100());
                         break;
                 }
                 break;
