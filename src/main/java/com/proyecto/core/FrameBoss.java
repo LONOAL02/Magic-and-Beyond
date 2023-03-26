@@ -280,28 +280,29 @@ public class FrameBoss extends JFrame implements ActionListener {
                 enemyHealthLabel.setForeground(Color.WHITE);
                 playerHealthLabel.setForeground(Color.WHITE);
             }else if (FrameBoss.h.stage==2){
-                logTextArea.setForeground(Color.GRAY);
-                textoMenu.setForeground(Color.GRAY);
-                playerLabel.setForeground(Color.GRAY);
-                enemyLabel.setForeground(Color.GRAY);
-                playerDescription.setForeground(Color.GRAY);
-                enemyDescription.setForeground(Color.GRAY);
-                enemyHealthLabel.setForeground(Color.GRAY);
-                playerHealthLabel.setForeground(Color.GRAY);
+                logTextArea.setForeground(Color.BLACK);
+                textoMenu.setForeground(Color.BLACK);
+                playerLabel.setForeground(Color.BLACK);
+                enemyLabel.setForeground(Color.BLACK);
+                playerDescription.setForeground(Color.BLACK);
+                enemyDescription.setForeground(Color.BLACK);
+                enemyHealthLabel.setForeground(Color.BLACK);
+                playerHealthLabel.setForeground(Color.BLACK);
             }else {
-                logTextArea.setForeground(Color.WHITE);
-                textoMenu.setForeground(Color.WHITE);
-                playerLabel.setForeground(Color.WHITE);
-                enemyLabel.setForeground(Color.WHITE);
-                playerDescription.setForeground(Color.WHITE);
-                enemyDescription.setForeground(Color.WHITE);
-                enemyHealthLabel.setForeground(Color.WHITE);
-                playerHealthLabel.setForeground(Color.WHITE);
+                logTextArea.setForeground(Color.BLACK);
+                textoMenu.setForeground(Color.BLACK);
+                playerLabel.setForeground(Color.BLACK);
+                enemyLabel.setForeground(Color.BLACK);
+                playerDescription.setForeground(Color.BLACK);
+                enemyDescription.setForeground(Color.BLACK);
+                enemyHealthLabel.setForeground(Color.BLACK);
+                playerHealthLabel.setForeground(Color.BLACK);
             }
 
             logTextArea.setEditable(false);
             logTextArea.setLineWrap(true);
             logTextArea.setWrapStyleWord(true);
+            logTextArea.setBorder(null);
             textoMenu.setFont(new Font(fontName, Font.ITALIC, 20));
             logTextArea.setFont(new Font(fontName, Font.PLAIN, 20));
             playerLabel.setFont(new Font(fontName, Font.PLAIN, 18));
@@ -311,7 +312,9 @@ public class FrameBoss extends JFrame implements ActionListener {
             enemyHealthLabel.setFont(new Font(fontName, Font.PLAIN, 20));
             playerHealthLabel.setFont(new Font(fontName, Font.PLAIN, 20));
             JScrollPane scrollPane = new JScrollPane(logTextArea);
-            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane.setBorder(null);
+            scrollPane.getViewport().setOpaque(false);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
             add(scrollPane, BorderLayout.CENTER);
         }catch (IOException | FontFormatException e) {
             e.printStackTrace();
@@ -456,11 +459,15 @@ public class FrameBoss extends JFrame implements ActionListener {
             new FrameSalir();
         }
         if (e.getSource() == continueButton) {
-            FrameBoss.h.pj.setVida(playerHealth);
-            Main.h= FrameBoss.update(Main.h);
-            FrameBoss.h.stage++;
-            new FrameMapa(11,11);
-            this.dispose();
+            if (FrameBoss.h.stage<3) {
+                FrameBoss.h.pj.setVida(playerHealth);
+                Main.h = FrameBoss.update(Main.h);
+                FrameBoss.h.stage++;
+                new FrameMapa(11, 11);
+                this.dispose();
+            }else {
+                System.exit(0);
+            }
         }
 
     }

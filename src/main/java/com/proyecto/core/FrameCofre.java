@@ -76,7 +76,7 @@ public class FrameCofre extends javax.swing.JFrame implements ActionListener {
         labelObj.setFont(new Font("Mantinia", 1, 36));
         labelObj.setForeground(new Color(255, 255, 255));
         labelObj.setText("Cofre");
-        panelP.add(labelObj, new AbsoluteConstraints(520, 20,400,70));
+        panelP.add(labelObj, new AbsoluteConstraints(500, 20,450,70));
 
         botonP.setBackground(new Color(51, 51, 51));
         botonP.setFont(new Font("Mantinia", 2, 40));

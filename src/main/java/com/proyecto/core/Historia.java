@@ -52,7 +52,7 @@ public class Historia {
                     pj.setNivel(1);
                     pj.setXp(0);
                     pj.setPuntosMejora(0);
-                    pj.setVida(1000);
+                    pj.setVida(10000);
                     pj.setMana(100);
                     manaMax=100;
                     vidaMax = 1000;

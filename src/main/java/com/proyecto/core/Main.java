@@ -29,6 +29,7 @@ public class Main {
         musicThread.start();
 
         new FrameLobby();
+
     }
 
 

@@ -92,12 +92,7 @@ public class PPrincipal extends Personajes implements Serializable {
     }
 
     public void setXp(int xp) {
-        this.xp = xp;
-        if (xp == getNivel()){
-            this.xp=0;
-            this.puntosMejora+=4;
-            setNivel(getNivel()+1);
-        }
+    this.xp = xp;
     }
 
     public int getPuntosMejora() {

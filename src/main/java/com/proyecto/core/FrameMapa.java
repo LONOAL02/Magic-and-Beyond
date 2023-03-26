@@ -15,7 +15,7 @@ public class FrameMapa {
     private JPanel panelMapa;
     private final Habitacion[][] mapa;
     private Habitacion habitacionActual;
-    private final int tamañoTablero = 122; // Tamaño del tablero en casillas
+    private final int tamañoTablero = 11; // Tamaño del tablero en casillas
 
     // Establecer la casilla inicial del personaje
     private final int posX =5;
@@ -191,7 +191,7 @@ public class FrameMapa {
                     }
                     break;
                 case KeyEvent.VK_DOWN:
-                    if (filaActual < tamañoTablero - 1) {
+                    if (filaActual <  (tamañoTablero-1)) {
                         nuevaCasilla = mapa[filaActual + 1][columnaActual];
 
                     }
@@ -203,7 +203,7 @@ public class FrameMapa {
                     }
                     break;
                 case KeyEvent.VK_RIGHT:
-                    if (columnaActual < tamañoTablero - 1) {
+                    if (columnaActual < (tamañoTablero-1)) {
                         nuevaCasilla = mapa[filaActual][columnaActual + 1];
 
                     }
@@ -247,18 +247,16 @@ public class FrameMapa {
                 // Si el personaje llegó a la meta, mostrar un mensaje de felicitación y cerrar el juego
                 if (habitacionActual.esMeta()) {
                     // Minimiza el primer JFrame
-                    Main.h.inventary.limpiarInventario();
                     FrameBoss.save(Main.h);
                     Main.h.empezarCombateBoss(Main.h.stage);
-                    ventana.setExtendedState(JFrame.ICONIFIED);
                     // Crea una instancia del segundo JFrame
                     new FrameBoss(FrameMapa.this);
+                    ventana.dispose();
                 }
                 else if (!estabaDescubierta) {
                     int random =  RandomLibreria.numeroAleatorio(10,1);
                     if (random < 7) {
                         // Minimiza el primer JFrame
-                        Main.h.inventary.limpiarInventario();
                         FrameCombate.save(Main.h);
                         Main.h.empezarCombate(Main.h.stage);
                         ventana.setExtendedState(JFrame.ICONIFIED);

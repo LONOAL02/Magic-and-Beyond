@@ -113,16 +113,6 @@ public class Inventario {
     }
 
 
-    public void limpiarInventario() {
-        for (Item item : listaItems) {
-            if (item.getUso()!=Item.CURACION){
-                if (item.getCantidad() == 0) {
-                    eliminarItem(item);
-                }
-            }
-        }
-    }
-
     public boolean comprobarInventario(Item buscado) {
         for (Item item : listaItems) {
             if (item==buscado) {
