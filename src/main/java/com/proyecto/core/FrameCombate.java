@@ -278,12 +278,16 @@ public class FrameCombate extends JFrame implements ActionListener {
                 if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.espírituIndomable)) {
                     enemyHealth -= daño;
                     logTextArea.append("\nAtacas 2 veces gracias a Espiritu Indomable" + "!\n");
-                    logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
+                    logTextArea.append("\nEl oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                 }
+                if ((FrameCombate.h.pj.getMana()+FrameCombate.h.manaMax/2)>FrameCombate.h.manaMax){
+                    FrameCombate.h.pj.setMana(FrameCombate.h.manaMax);
+                }
+                FrameCombate.h.pj.setMana(FrameCombate.h.pj.getMana()+FrameCombate.h.manaMax/2);
                 if (enemyHealth <= 0) {
                     enemyHealth = 0;
                     enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
-                    logTextArea.append("Enemigo derrotado!\n");
+                    logTextArea.append("\nEnemigo derrotado!\n");
                     h.pj.setXp((int) (h.pj.getXp()+h.enemy.getNivel()));
                     h.oro.ganarOro(h.enemy.getRecompensa());
                     do {
@@ -301,7 +305,7 @@ public class FrameCombate extends JFrame implements ActionListener {
                         logTextArea.append("\nFallaste" + "!\n");
                     } else {
                         logTextArea.append("\nAtaque realizado" + "!\n");
-                        logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
+                        logTextArea.append("\nEl oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                     }
                     opponentAttack();
                     if (FrameCombate.h.inventary.comprobarInventario(FrameCombate.h.reliq.aguaBendita)) {
@@ -352,7 +356,7 @@ public class FrameCombate extends JFrame implements ActionListener {
                     case 1:
                         h.arma.armaComun(h.arma.getNumArma(item));
                         h.pj.setNumarma(h.arma.getNumArma(item));
-                        logTextArea.append("Ahora estas usando: "+item+".");
+                        logTextArea.append("\nAhora estas usando: "+item+".");
                         break;
                     case 2:
                         enemyHealth=h.hechizos.usarHechizo(item,enemyHealth);
@@ -435,15 +439,15 @@ public class FrameCombate extends JFrame implements ActionListener {
         if (playerHealth <= 0) {
             playerHealth = 0;
             playerHealthLabel.setText("HP: " + format1.format(playerHealth));
-            logTextArea.append("Has muerto\n");
+            logTextArea.append("\nHas muerto\n");
             attackButton.setEnabled(false);
         } else {
             playerHealthLabel.setText("HP: " + format1.format(playerHealth));
             if (daño==0){
-                logTextArea.append("El oponente " + enemyLabel.getText()+ " falló" + "!\n");
+                logTextArea.append("\nEl oponente " + enemyLabel.getText()+ " falló" + "!\n");
             }else {
-                logTextArea.append("El oponente " + enemyLabel.getText()+ " realizó un ataque" + "!\n");
-                logTextArea.append("Recibiste " + format1.format(daño) + " de daño.\n");
+                logTextArea.append("\nEl oponente " + enemyLabel.getText()+ " realizó un ataque" + "!\n");
+                logTextArea.append("\nRecibiste " + format1.format(daño) + " de daño.\n");
             }
         }
     }

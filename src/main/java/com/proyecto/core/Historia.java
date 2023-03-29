@@ -55,7 +55,7 @@ public class Historia {
                     pj.setVida(10000);
                     pj.setMana(100);
                     manaMax=100;
-                    vidaMax = 1000;
+                    vidaMax = 10000;
                     pj.setFuerza(16);
                     pj.setDestreza(9);
                     pj.setInteligencia(7);

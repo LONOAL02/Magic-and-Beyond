@@ -347,15 +347,20 @@ public class FrameBoss extends JFrame implements ActionListener {
                 if (FrameBoss.h.inventary.comprobarInventario(FrameBoss.h.reliq.espírituIndomable)) {
                     enemyHealth -= daño;
                     logTextArea.append("\nAtacas 2 veces gracias a Espiritu Indomable" + "!\n");
-                    logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
+                    logTextArea.append("\nEl oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                 }
+                if ((FrameBoss.h.pj.getMana()+FrameBoss.h.manaMax/2)>FrameBoss.h.manaMax){
+                    FrameBoss.h.pj.setMana(FrameBoss.h.manaMax);
+                }
+                FrameBoss.h.pj.setMana(FrameBoss.h.pj.getMana()+FrameBoss.h.manaMax/2);
                 if (enemyHealth <= 0) {
                     enemyHealth = 0;
                     enemyHealthLabel.setText("HP: " + format1.format(enemyHealth));
-                    logTextArea.append("Enemigo derrotado!\n");
+                    logTextArea.append("\nEnemigo derrotado!\n");
                     FrameBoss.h.inventary.agregarItem(FrameBoss.h.arma.armaComun(RandomLibreria.numeroAleatorio(37,34)));
                     FrameBoss.h.inventary.agregarItem(FrameBoss.h.granRuna.getGranRuna());
                     logTextArea.append("\n Has obtenido "+ FrameBoss.h.arma.getNombreArma()+" y una Gran Runa por derrotar a "+FrameBoss.h.enemy.getNombre());
+                    FrameBoss.h.pj.setVida(FrameBoss.h.vidaMax);
                     h.pj.setXp((int) (h.pj.getXp()+h.enemy.getNivel()));
                     h.oro.ganarOro(h.enemy.getRecompensa());
                     do {
@@ -373,7 +378,7 @@ public class FrameBoss extends JFrame implements ActionListener {
                         logTextArea.append("\nFallaste" + "!\n");
                     } else {
                         logTextArea.append("\nAtaque realizado" + "!\n");
-                        logTextArea.append("El oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
+                        logTextArea.append("\nEl oponente " + enemyLabel.getText() + " recibió " + format1.format(daño) + " de daño.\n");
                     }
                     opponentAttack();
                     if (FrameBoss.h.inventary.comprobarInventario(FrameBoss.h.reliq.aguaBendita)) {
@@ -424,7 +429,7 @@ public class FrameBoss extends JFrame implements ActionListener {
                     case 1:
                         h.arma.armaComun(h.arma.getNumArma(item));
                         h.pj.setNumarma(h.arma.getNumArma(item));
-                        logTextArea.append("Ahora estas usando: "+item+".");
+                        logTextArea.append("\nAhora estas usando: "+item+".");
                         break;
                     case 2:
                         enemyHealth=h.hechizos.usarHechizo(item,enemyHealth);
@@ -507,15 +512,15 @@ public class FrameBoss extends JFrame implements ActionListener {
         if (playerHealth <= 0) {
             playerHealth = 0;
             playerHealthLabel.setText("HP: " + format1.format(playerHealth));
-            logTextArea.append("Has muerto\n");
+            logTextArea.append("\nHas muerto\n");
             attackButton.setEnabled(false);
         } else {
             playerHealthLabel.setText("HP: " + format1.format(playerHealth));
             if (daño==0){
-                logTextArea.append("El oponente " + enemyLabel.getText()+ " falló" + "!\n");
+                logTextArea.append("\nEl oponente " + enemyLabel.getText()+ " falló" + "!\n");
             }else {
-                logTextArea.append("El oponente " + enemyLabel.getText()+ " realizó un ataque" + "!\n");
-                logTextArea.append("Recibiste " + format1.format(daño) + " de daño.\n");
+                logTextArea.append("\nEl oponente " + enemyLabel.getText()+ " realizó un ataque" + "!\n");
+                logTextArea.append("\nRecibiste " + format1.format(daño) + " de daño.\n");
             }
         }
     }
