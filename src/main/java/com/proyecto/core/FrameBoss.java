@@ -360,7 +360,7 @@ public class FrameBoss extends JFrame implements ActionListener {
                     FrameBoss.h.inventary.agregarItem(FrameBoss.h.arma.armaComun(RandomLibreria.numeroAleatorio(37,34)));
                     FrameBoss.h.inventary.agregarItem(FrameBoss.h.granRuna.getGranRuna());
                     logTextArea.append("\n Has obtenido "+ FrameBoss.h.arma.getNombreArma()+" y una Gran Runa por derrotar a "+FrameBoss.h.enemy.getNombre());
-                    FrameBoss.h.pj.setVida(FrameBoss.h.vidaMax);
+                    playerHealth=FrameBoss.h.vidaMax;
                     h.pj.setXp((int) (h.pj.getXp()+h.enemy.getNivel()));
                     h.oro.ganarOro(h.enemy.getRecompensa());
                     do {
