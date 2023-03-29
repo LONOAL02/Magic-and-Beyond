@@ -181,8 +181,6 @@ public class FrameMapa {
         System.out.println(filaActual);
         System.out.println(columnaActual);
 
-
-        try {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_UP:
                     if (filaActual > 0) {
@@ -209,9 +207,6 @@ public class FrameMapa {
                     }
                     break;
             }
-        } catch (IndexOutOfBoundsException exc) {
-            System.out.println(exc.getMessage());
-        }
 
         // Si se encontró una nueva casilla válida, mover al personaje
         try {
@@ -223,8 +218,6 @@ public class FrameMapa {
                 habitacionActual.repaint();
                 habitacionActual = nuevaCasilla;
                 habitacionActual.repaint();
-                int x = columnaActual;
-                int y = filaActual;
                 String[] subcadenaNueva = nuevaCasilla.getId().split(",");
                 int filaNueva = Integer.parseInt(subcadenaNueva[0]);
                 int columnaNueva = Integer.parseInt(subcadenaNueva[1]);
@@ -236,11 +229,11 @@ public class FrameMapa {
                     mapa[filaNueva - 1][columnaNueva].setEsCercana(true);
                     mapa[filaNueva - 1][columnaNueva].repaint();
                 }
-                if (columnaActual + 1 <= 10) {
+                if (columnaNueva + 1 <= 10) {
                     mapa[filaNueva][columnaNueva + 1].setEsCercana(true);
                     mapa[filaNueva][columnaNueva + 1].repaint();
                 }
-                if (columnaActual - 1 >= 0) {
+                if (columnaNueva - 1 >= 0) {
                     mapa[filaNueva][columnaNueva - 1].setEsCercana(true);
                     mapa[filaNueva][columnaNueva - 1].repaint();
                 }
@@ -257,8 +250,8 @@ public class FrameMapa {
                     int random =  RandomLibreria.numeroAleatorio(10,1);
                     if (random < 7) {
                         // Minimiza el primer JFrame
-                        FrameCombate.save(Main.h);
                         Main.h.empezarCombate(Main.h.stage);
+                        FrameCombate.save(Main.h);
                         ventana.setExtendedState(JFrame.ICONIFIED);
                         // Crea una instancia del segundo JFrame
                         new FrameCombate(FrameMapa.this);

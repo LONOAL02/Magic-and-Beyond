@@ -142,6 +142,8 @@ public class FrameCombate extends JFrame implements ActionListener {
         enemyLabel = new JLabel(h.enemy.nombre, JLabel.CENTER);
         enemyHealthLabel = new JLabel("HP: " + format1.format(enemyHealth), JLabel.CENTER);
         enemyDescription = new JTextArea();
+        enemyDescription.setLineWrap(true);
+        enemyDescription.setWrapStyleWord(true);
         enemyDescription.setEditable(false);
         enemyDescription.setOpaque(false);
         enemyDescription.setText(h.enemy.toString());
