@@ -1,6 +1,6 @@
 package com.proyecto.Npcs;
 
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 import com.proyecto.core.FrameMapa;
 import com.proyecto.core.Historia;
 import com.proyecto.core.Main;

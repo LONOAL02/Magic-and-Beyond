@@ -1,5 +1,5 @@
 package com.proyecto.Npcs;
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 import java.util.Random;
 
 public class Diana extends NPCs {

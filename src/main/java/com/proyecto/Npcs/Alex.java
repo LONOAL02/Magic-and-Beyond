@@ -1,7 +1,7 @@
 package com.proyecto.Npcs;
 
 
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 
 public class Alex extends NPCs{
 

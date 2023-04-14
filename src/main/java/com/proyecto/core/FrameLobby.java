@@ -1,7 +1,7 @@
 
 package com.proyecto.core;
 
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 import com.proyecto.features.ClonarArchivo;
 import com.proyecto.features.GuardadoObj;
 import com.proyecto.personajes.PPrincipal;

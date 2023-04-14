@@ -1,6 +1,6 @@
 package com.proyecto.core;
 
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 
 import javax.swing.*;
 import java.awt.*;

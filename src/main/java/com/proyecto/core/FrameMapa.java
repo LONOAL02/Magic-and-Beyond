@@ -1,6 +1,6 @@
 package com.proyecto.core;
 import com.proyecto.Npcs.FrameNPC;
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;

@@ -1,5 +1,5 @@
 package com.proyecto.Npcs;
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 import com.proyecto.inv.Item;
 
 import java.util.ArrayList;

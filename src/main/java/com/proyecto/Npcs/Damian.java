@@ -1,6 +1,6 @@
 package com.proyecto.Npcs;
 
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 
 public class Damian extends NPCs{
     public static String metodo1Damian() {

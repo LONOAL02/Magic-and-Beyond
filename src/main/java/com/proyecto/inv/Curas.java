@@ -1,6 +1,6 @@
 package com.proyecto.inv;
 
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 
 public class Curas {
 

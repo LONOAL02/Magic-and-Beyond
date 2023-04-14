@@ -1,5 +1,5 @@
 package com.proyecto.Npcs;
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 
 public class Vigilante extends NPCs{
     public static String metodo1Vigilante() {

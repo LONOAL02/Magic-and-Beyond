@@ -2,7 +2,7 @@
 package com.proyecto.core;
 
 
-import Random.RandomLibreria;
+import com.Random.RandomLibreria;
 import com.proyecto.inv.Item;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
